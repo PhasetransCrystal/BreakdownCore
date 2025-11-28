@@ -14,4 +14,9 @@ repositories {
         name = 'Kotlin for Forge'
         url = 'https://thedarkcolour.github.io/KotlinForForge/'
     }
+    // MUI
+    maven {
+        name = 'IzzelAliz Maven'
+        url = 'https://maven.izzel.io/releases/'
+    }
 }
