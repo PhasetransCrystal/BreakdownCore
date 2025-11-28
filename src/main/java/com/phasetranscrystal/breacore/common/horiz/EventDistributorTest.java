@@ -11,11 +11,7 @@ import com.mojang.serialization.MapCodec;
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
-import com.tterrag.registrate.util.entry.RegistryEntry;
 import lombok.Getter;
-
-import static com.phasetranscrystal.breacore.api.registry.BreaRegistries.SAVABLE_EVENT_CONSUMER_TYPE_KEY;
-import static com.phasetranscrystal.breacore.api.registry.registry.BreaRegistrate.Brea;
 
 @EventBusSubscriber(modid = BreaCore.MOD_ID)
 public class EventDistributorTest {
@@ -53,15 +49,21 @@ public class EventDistributorTest {
 
         @Override
         public MapCodec<LoginListener> getCodec() {
-            return LOGIN_SHOW_TEXT.get();
+            return CODEC;
         }
     }
 
-    public static final RegistryEntry<MapCodec<? extends SavableEventConsumerData<?>>, MapCodec<LoginListener>> LOGIN_SHOW_TEXT = Brea.simple("horiz/login_show_text", BreaRegistries.SAVABLE_EVENT_CONSUMER_TYPE_KEY, () -> LoginListener.CODEC);
+    public static final MapCodec<LoginListener> LOGIN_SHOW_TEXT;
 
     private static void bingingToPlayer(EntityDistributorInit.GatherEntityDistributeEvent event) {
         if (event.getEntity() instanceof Player) {
             event.getEntity().getData(BreaHoriz.EVENT_DISTRIBUTOR).add(new LoginListener("HELLO PLAYER!"), BreaUtil.byPath("testing"));
         }
+    }
+
+    static {
+        BreaRegistries.SAVABLE_EVENT_CONSUMER_TYPE.unfreeze(false);
+        LOGIN_SHOW_TEXT = BreaRegistries.SAVABLE_EVENT_CONSUMER_TYPE.register(BreaUtil.byPath("horiz/login_show_text"), LoginListener.CODEC);
+        BreaRegistries.SAVABLE_EVENT_CONSUMER_TYPE.freeze();
     }
 }

@@ -4,6 +4,8 @@
   "package": "com.phasetranscrystal.breacore.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "registrate.neoforge.MappedRegistryAccess",
+    "registrate.neoforge.ResourceKeyAccessor"
   ],
   "client": [
   ],

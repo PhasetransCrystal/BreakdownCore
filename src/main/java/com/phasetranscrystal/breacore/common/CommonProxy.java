@@ -4,6 +4,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
 import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.api.registry.registry.BreaRegistrate;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
 import com.phasetranscrystal.breacore.config.ConfigHolder;
@@ -22,6 +23,7 @@ public class CommonProxy {
         IEventBus eventBus = BreaCore.getModEventBus();
         ConfigHolder.init();
         BreaRegistrate.Brea.registerEventListeners(eventBus);
+        BreaRegistries.init(eventBus);
         BreaHoriz.bootstrap(eventBus);
         eventBus.addListener(CommonProxy::onCommonSetup);
         registry();

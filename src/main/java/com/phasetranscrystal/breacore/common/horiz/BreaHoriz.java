@@ -18,7 +18,10 @@ public class BreaHoriz {
         }
     }
 
-    public static final RegistryEntry<AttachmentType<?>, AttachmentType<EventDistributor>> EVENT_DISTRIBUTOR = Brea.simple("horiz/event_distributor",
-            NeoForgeRegistries.Keys.ATTACHMENT_TYPES,
-            () -> AttachmentType.builder(holder -> new EventDistributor()).serialize(EventDistributor.CODEC).build());
+    public static final RegistryEntry<AttachmentType<?>, AttachmentType<EventDistributor>> EVENT_DISTRIBUTOR;
+    static {
+        EVENT_DISTRIBUTOR = Brea.simple("horiz/event_distributor",
+                NeoForgeRegistries.Keys.ATTACHMENT_TYPES,
+                () -> AttachmentType.builder(holder -> new EventDistributor()).serialize(EventDistributor.CODEC).build());
+    }
 }
