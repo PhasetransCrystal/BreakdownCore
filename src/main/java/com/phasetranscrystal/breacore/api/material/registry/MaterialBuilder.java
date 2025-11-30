@@ -14,6 +14,7 @@ import com.phasetranscrystal.breacore.api.material.info.MaterialIconSet;
 import com.phasetranscrystal.breacore.api.material.property.*;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.AbstractBuilder;
@@ -22,6 +23,7 @@ import com.tterrag.registrate.util.nullness.NonnullType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.function.UnaryOperator;
 
 public class MaterialBuilder<T extends Material, P> extends AbstractBuilder<Material, T, P, MaterialBuilder<T, P>> {
 
@@ -232,6 +234,28 @@ public class MaterialBuilder<T extends Material, P> extends AbstractBuilder<Mate
         return this;
     }
 
+    public MaterialBuilder<T, P> blastTemp(int temp) {
+        return blast(temp);
+    }
+
+    public MaterialBuilder<T, P> blastTemp(int temp, int eutOverride) {
+        return blast(b -> b.temp(temp).blastStats(eutOverride));
+    }
+
+    public MaterialBuilder<T, P> blastTemp(int temp, int eutOverride, int durationOverride) {
+        return blast(b -> b.temp(temp).blastStats(eutOverride, durationOverride));
+    }
+
+    public MaterialBuilder<T, P> blast(int temp) {
+        properties.setProperty(PropertyKey.BLAST, new BlastProperty(temp));
+        return this;
+    }
+
+    public MaterialBuilder<T, P> blast(UnaryOperator<BlastProperty.Builder> b) {
+        properties.setProperty(PropertyKey.BLAST, b.apply(new BlastProperty.Builder()).build());
+        return this;
+    }
+
     public MaterialBuilder<T, P> burnTime(int burnTime) {
         DustProperty prop = properties.getProperty(PropertyKey.DUST);
         if (prop == null) {
@@ -292,9 +316,9 @@ public class MaterialBuilder<T extends Material, P> extends AbstractBuilder<Mate
      * 设置此材料的{@link MaterialIconSet}（图标集）。<br/>
      * 默认值根据材料具有的属性而定：<br/>
      * <ul>
-     * <li>若具有{@link GemProperty}，默认值为{@link MaterialIconSet#GEM_VERTICAL}
-     * <li>若具有{@link IngotProperty}或{@link DustProperty}，默认值为{@link MaterialIconSet#DULL}
-     * <li>若具有{@link FluidProperty}，默认值为{@link MaterialIconSet#FLUID}
+     * <li>若具有{@link GemProperty}，默认值为{@link BreaMaterialIconSet#GEM_VERTICAL}
+     * <li>若具有{@link IngotProperty}或{@link DustProperty}，默认值为{@link BreaMaterialIconSet#DULL}
+     * <li>若具有{@link FluidProperty}，默认值为{@link BreaMaterialIconSet#FLUID}
      * </ul>
      * 除非特别指定，否则将按此顺序根据第一个找到的属性确定默认值。
      *
@@ -353,6 +377,12 @@ public class MaterialBuilder<T extends Material, P> extends AbstractBuilder<Mate
      */
     public MaterialBuilder<T, P> flags(MaterialFlag... flags) {
         this.flags.addFlags(flags);
+        return this;
+    }
+
+    public MaterialBuilder<T, P> appendFlags(Collection<MaterialFlag> f1, MaterialFlag... f2) {
+        this.flags.addFlags(f1.toArray(new MaterialFlag[0]));
+        this.flags.addFlags(f2);
         return this;
     }
 

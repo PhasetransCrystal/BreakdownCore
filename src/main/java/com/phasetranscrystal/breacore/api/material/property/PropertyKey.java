@@ -8,6 +8,8 @@ public class PropertyKey<T extends IMaterialProperty> {
     public static final PropertyKey<WoodProperty> WOOD = new PropertyKey<>("wood", WoodProperty.class);
     public static final PropertyKey<GemProperty> GEM = new PropertyKey<>("gem", GemProperty.class);
     public static final PropertyKey<FluidProperty> FLUID = new PropertyKey<>("fluid", FluidProperty.class);
+    public static final PropertyKey<OreProperty> ORE = new PropertyKey<>("ore", OreProperty.class);
+    public static final PropertyKey<BlastProperty> BLAST = new PropertyKey<>("blast", BlastProperty.class);
     // Empty property used to allow property-less Materials without removing base type enforcement
     public static final PropertyKey<EmptyProperty> EMPTY = new PropertyKey<>("empty", EmptyProperty.class);
 
