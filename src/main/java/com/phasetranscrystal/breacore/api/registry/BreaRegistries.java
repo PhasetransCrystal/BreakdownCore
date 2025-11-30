@@ -12,6 +12,9 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.mojang.serialization.MapCodec;
+import com.phasetranscrystal.breacore.api.material.Element;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
 import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.ApiStatus;
@@ -74,4 +77,9 @@ public class BreaRegistries {
 
     public static final ResourceKey<Registry<MapCodec<? extends SavableEventConsumerData<?>>>> SAVABLE_EVENT_CONSUMER_TYPE_KEY = makeRegistryKey(BreaUtil.byPath("horiz/savable_event_consumer"));
     public static final BreaRegistry<MapCodec<? extends SavableEventConsumerData<?>>> SAVABLE_EVENT_CONSUMER_TYPE = new BreaRegistry<>(SAVABLE_EVENT_CONSUMER_TYPE_KEY);
+
+    public static final ResourceKey<Registry<Material>> MATERIAL_KEY = makeRegistryKey(BreaUtil.byPath("material"));
+    public static final ResourceKey<Registry<Element>> ELEMENT_KEY = makeRegistryKey(BreaUtil.byPath("element"));
+    public static final MaterialRegistry<Material> MATERIALS = new MaterialRegistry<>(MATERIAL_KEY);
+    public static final BreaRegistry<Element> ELEMENTS = new BreaRegistry<>(ELEMENT_KEY);
 }
