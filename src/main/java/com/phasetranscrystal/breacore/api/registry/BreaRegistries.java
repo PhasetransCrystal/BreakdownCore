@@ -1,5 +1,6 @@
 package com.phasetranscrystal.breacore.api.registry;
 
+import com.phasetranscrystal.breacore.common.quench.EquipType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -36,7 +37,7 @@ public class BreaRegistries {
     }
 
     // ignore the generics and hope the registered objects are still correctly typed :3
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     private static void actuallyRegister(RegisterEvent event) {
         for (Registry reg : TO_REGISTER.rowKeySet()) {
             event.register(reg.key(), helper -> {
@@ -73,5 +74,8 @@ public class BreaRegistries {
     }
 
     public static final ResourceKey<Registry<MapCodec<? extends SavableEventConsumerData<?>>>> SAVABLE_EVENT_CONSUMER_TYPE_KEY = makeRegistryKey(BreaUtil.byPath("horiz/savable_event_consumer"));
+    public static final ResourceKey<Registry<EquipType>> EQUIP_TYPE_KEY = makeRegistryKey(BreaUtil.byPath("quench/equip_type"));
+
     public static final BreaRegistry<MapCodec<? extends SavableEventConsumerData<?>>> SAVABLE_EVENT_CONSUMER_TYPE = new BreaRegistry<>(SAVABLE_EVENT_CONSUMER_TYPE_KEY);
+    public static final BreaRegistry<EquipType> EQUIP_TYPE = new BreaRegistry<>(EQUIP_TYPE_KEY);
 }

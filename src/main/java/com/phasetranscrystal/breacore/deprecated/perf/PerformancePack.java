@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.deprecated.perf;
 
 import com.google.common.collect.*;
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
 import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
 import it.unimi.dsi.fastutil.Pair;
@@ -54,11 +55,11 @@ public record PerformancePack(ResourceLocation[] eventPath,
             List<Pair<Holder<Attribute>, AttributeModifier>> list = new ArrayList<>();
             this.attribute.forEach((atr, tri) -> {
                 if (tri.v1() != 0)
-                    list.add(Pair.of(atr, new AttributeModifier(combinePath.withSuffix("/stage1"), tri.v1, AttributeModifier.Operation.ADD_VALUE)));
+                    list.add(Pair.of(atr, new AttributeModifier(combinePath.withSuffix("/stage1"), tri.v1(), AttributeModifier.Operation.ADD_VALUE)));
                 if (tri.v2() != 0)
-                    list.add(Pair.of(atr, new AttributeModifier(combinePath.withSuffix("/stage2"), tri.v2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)));
+                    list.add(Pair.of(atr, new AttributeModifier(combinePath.withSuffix("/stage2"), tri.v2(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE)));
                 if (tri.v3() != 1)
-                    list.add(Pair.of(atr, new AttributeModifier(combinePath.withSuffix("/stage3"), tri.v3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)));
+                    list.add(Pair.of(atr, new AttributeModifier(combinePath.withSuffix("/stage3"), tri.v3(), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)));
             });
             return list;
         }
@@ -91,21 +92,21 @@ public record PerformancePack(ResourceLocation[] eventPath,
         }
 
         public PerformancePack build() {
-            Map<Holder<Attribute>, MutableTriNum> attribute = new HashMap<>();
-            Map<ResourceLocation, MutableTriNum> equipAttribute = new HashMap<>();
+            Map<Holder<Attribute>, TriNum.Mutable> attribute = new HashMap<>();
+            Map<ResourceLocation, TriNum.Mutable> equipAttribute = new HashMap<>();
             Multimap<Class<Event>, Consumer<Event>> events = HashMultimap.create();
             IntSet elementHashes = new IntOpenHashSet();
 
             for (PerformancePack child : children) {
                 if (child.attribute != null) {
                     child.attribute.forEach((key, value) -> {
-                        attribute.computeIfAbsent(key, k -> new MutableTriNum()).add(value);
+                        attribute.computeIfAbsent(key, k -> new TriNum.Mutable()).add(value);
                     });
                 }
 
                 if (child.equipAttribute != null) {
                     child.equipAttribute.forEach((key, value) -> {
-                        equipAttribute.computeIfAbsent(key, k -> new MutableTriNum()).add(value);
+                        equipAttribute.computeIfAbsent(key, k -> new TriNum.Mutable()).add(value);
                     });
                 }
 
@@ -131,8 +132,8 @@ public record PerformancePack(ResourceLocation[] eventPath,
     public static class SingleBuilder {
         public final ResourceLocation[] path;
         private final List<PerformancePack> children = new ArrayList<>();
-        private Map<Holder<Attribute>, MutableTriNum> attribute = new HashMap<>();
-        private Map<ResourceLocation, MutableTriNum> equipAttribute = new HashMap<>();
+        private Map<Holder<Attribute>, TriNum.Mutable> attribute = new HashMap<>();
+        private Map<ResourceLocation, TriNum.Mutable> equipAttribute = new HashMap<>();
         private Multimap<Class<Event>, Consumer<Event>> listeners = HashMultimap.create();
 
         public SingleBuilder(ResourceLocation[] path) {
@@ -144,12 +145,12 @@ public record PerformancePack(ResourceLocation[] eventPath,
         }
 
         public SingleBuilder attribute(Holder<Attribute> holder, double v1, double v2, double v3) {
-            attribute.computeIfAbsent(holder, v -> new MutableTriNum()).add(v1, v2, v3);
+            attribute.computeIfAbsent(holder, v -> new TriNum.Mutable()).add(v1, v2, v3);
             return this;
         }
 
         public SingleBuilder attribute(Holder<Attribute> holder, AttributeModifier.Operation op, double value) {
-            attribute.computeIfAbsent(holder, v -> new MutableTriNum()).add(op, value);
+            attribute.computeIfAbsent(holder, v -> new TriNum.Mutable()).add(op, value);
             return this;
         }
 
@@ -166,12 +167,12 @@ public record PerformancePack(ResourceLocation[] eventPath,
         }
 
         public SingleBuilder equipAttribute(ResourceLocation rl, double v1, double v2, double v3) {
-            equipAttribute.computeIfAbsent(rl, v -> new MutableTriNum()).add(v1, v2, v3);
+            equipAttribute.computeIfAbsent(rl, v -> new TriNum.Mutable()).add(v1, v2, v3);
             return this;
         }
 
         public SingleBuilder equipAttribute(ResourceLocation rl, AttributeModifier.Operation op, double value) {
-            equipAttribute.computeIfAbsent(rl, v -> new MutableTriNum()).add(op, value);
+            equipAttribute.computeIfAbsent(rl, v -> new TriNum.Mutable()).add(op, value);
             return this;
         }
 
@@ -197,70 +198,8 @@ public record PerformancePack(ResourceLocation[] eventPath,
         }
     }
 
-    public record TriNum(double v1, double v2, double v3) {
 
-        public TriNum() {
-            this(0, 0, 1);
-        }
 
-        public TriNum add1(double value) {
-            return new TriNum(v1 + value, v2, v3);
-        }
-
-        public TriNum add2(double value) {
-            return new TriNum(v1, v2 + value, v3);
-        }
-
-        public TriNum add3(double value) {
-            return new TriNum(v1, v2, v3 * (1 + value));
-        }
-
-        public TriNum add(double v1, double v2, double v3) {
-            return new TriNum(this.v1 + v1, this.v2 + v2, this.v3 * (1 + v3));
-        }
-    }
-
-    public static class MutableTriNum {
-        public double v1 = 0, v2 = 0, v3 = 1;
-
-        public MutableTriNum add1(double value) {
-            v1 += value;
-            return this;
-        }
-
-        public MutableTriNum add2(double value) {
-            v2 += value;
-            return this;
-        }
-
-        public MutableTriNum add3(double value) {
-            v3 *= (1 + value);
-            return this;
-        }
-
-        public MutableTriNum add(AttributeModifier.Operation op, double value) {
-            return switch (op) {
-                case ADD_VALUE -> add1(value);
-                case ADD_MULTIPLIED_BASE -> add2(value);
-                case ADD_MULTIPLIED_TOTAL -> add3(value);
-            };
-        }
-
-        public MutableTriNum add(double v1, double v2, double v3) {
-            this.v1 += v1;
-            this.v2 += v2;
-            this.v3 *= (1 + v3);
-            return this;
-        }
-
-        public MutableTriNum add(TriNum triNum) {
-            return add(triNum.v1, triNum.v2, triNum.v3);
-        }
-
-        public TriNum build() {
-            return new TriNum(this.v1, this.v2, this.v3);
-        }
-    }
 
     public static Map<Class<Event>, Consumer<Event>> buildEvents(Multimap<Class<Event>, Consumer<Event>> listeners) {
         ImmutableMap.Builder<Class<Event>, Consumer<Event>> lc = new ImmutableMap.Builder<>();
@@ -270,7 +209,7 @@ public record PerformancePack(ResourceLocation[] eventPath,
         return lc.build();
     }
 
-    public static <T> Map<T, TriNum> buildTriNum(Map<T, MutableTriNum> origin) {
+    public static <T> Map<T, TriNum> buildTriNum(Map<T, TriNum.Mutable> origin) {
         if (origin.isEmpty()) return null;
         ImmutableMap.Builder<T, TriNum> builder = ImmutableMap.builder();
         origin.forEach((key, value) -> builder.put(key, value.build()));
