@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.data.materials;
+package com.phasetranscrystal.breacore.data.materials.material;
 
 import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
@@ -10,7 +10,7 @@ import static com.phasetranscrystal.breacore.data.materials.BreaMaterials.*;
 
 public class ElementMaterials {
 
-    public static void init() {
+    public static void register() {
         Actinium = new MaterialBuilder(BreaUtil.byPath("actinium"))
                 .color(0xC3D1FF).secondaryColor(0x397090).iconSet(METALLIC)
                 .element(Ac)

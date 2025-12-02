@@ -27,51 +27,51 @@ public class TagType {
 
     // formatter:off
     /**
-     * Create a tag with a specified path, with the "default" formatter, meaning
-     * that there is 1 "%s" format character in the path, intended for the Material name.
+     * 使用指定的路径创建一个标签，采用"默认"格式化器，意味着
+     * 路径中包含1个"%s"格式化字符，用于材料名称。
      */
-    public static TagType withDefaultFormatter(String tagPath, boolean isVanilla) {
+    public static @NotNull TagType withDefaultFormatter(String tagPath, boolean isVanilla) {
         TagType type = new TagType(tagPath);
         type.formatter = Util.memoize((prefix, mat) -> TagUtil.createItemTag(type.tagPath.formatted(mat.getName()), isVanilla));
         return type;
     }
 
     /**
-     * Create a tag with a specified path, with the "default" formatter, meaning
-     * that there is 2 "%s" format characters in the path, with the first being the
-     * prefix name, and the second being the material name.
+     * 使用指定的路径创建一个标签，采用"默认"格式化器，意味着
+     * 路径中包含2个"%s"格式化字符，第一个是前缀名称，
+     * 第二个是材料名称。
      */
-    public static TagType withPrefixFormatter(String tagPath) {
+    public static @NotNull TagType withPrefixFormatter(String tagPath) {
         TagType type = new TagType(tagPath);
         type.formatter = Util.memoize((prefix, mat) -> TagUtil.createItemTag(type.tagPath.formatted(FormattingUtil.toLowerCaseUnderscore(prefix.name), mat.getName())));
         return type;
     }
 
     /**
-     * Create a tag with a specified path, with the "default" formatter, meaning
-     * that there is 1 "%s" format character in the path, intended for the prefix name.
+     * 使用指定的路径创建一个标签，采用"默认"格式化器，意味着
+     * 路径中包含1个"%s"格式化字符，用于前缀名称。
      */
-    public static TagType withPrefixOnlyFormatter(String tagPath) {
+    public static @NotNull TagType withPrefixOnlyFormatter(String tagPath) {
         TagType type = new TagType(tagPath);
         type.formatter = Util.memoize((prefix, mat) -> TagUtil.createItemTag(type.tagPath.formatted(FormattingUtil.toLowerCaseUnderscore(prefix.name))));
         type.isParentTag = true;
         return type;
     }
 
-    public static TagType withNoFormatter(String tagPath, boolean isVanilla) {
+    public static @NotNull TagType withNoFormatter(String tagPath, boolean isVanilla) {
         TagType type = new TagType(tagPath);
         type.formatter = Util.memoize((prefix, material) -> TagUtil.createItemTag(type.tagPath, isVanilla));
         type.isParentTag = true;
         return type;
     }
 
-    public static TagType withCustomFormatter(String tagPath, BiFunction<TagPrefix, Material, TagKey<Item>> formatter) {
+    public static @NotNull TagType withCustomFormatter(String tagPath, BiFunction<TagPrefix, Material, TagKey<Item>> formatter) {
         TagType type = new TagType(tagPath);
         type.formatter = Util.memoize(formatter);
         return type;
     }
 
-    public static TagType withCustomFilter(String tagPath, boolean isVanilla, Predicate<Material> filter) {
+    public static @NotNull TagType withCustomFilter(String tagPath, boolean isVanilla, Predicate<Material> filter) {
         TagType type = new TagType(tagPath);
         type.filter = filter;
         type.formatter = Util.memoize((prefix, material) -> TagUtil.createItemTag(type.tagPath, isVanilla));

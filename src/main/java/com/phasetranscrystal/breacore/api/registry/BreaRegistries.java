@@ -16,6 +16,7 @@ import com.phasetranscrystal.breacore.api.material.Element;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
 import com.phasetranscrystal.breacore.api.sound.SoundEntry;
+import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
 import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.ApiStatus;
@@ -86,4 +87,7 @@ public class BreaRegistries {
 
     public static final ResourceKey<Registry<SoundEntry>> SOUND_KEY = makeRegistryKey(BreaUtil.byPath("sound"));
     public static final BreaRegistry<SoundEntry> SOUNDS = new BreaRegistry<>(SOUND_KEY);
+
+    public static final ResourceKey<Registry<DimensionMarker>> DIMENSION_MARKER_REGISTRY = makeRegistryKey(BreaUtil.byPath("dimension_marker"));
+    public static final BreaRegistry<DimensionMarker> DIMENSION_MARKERS = new BreaRegistry<>(DIMENSION_MARKER_REGISTRY);
 }

@@ -8,7 +8,7 @@ import com.phasetranscrystal.brealib.utils.BreaUtil;
 public class MarkerMaterials {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public static void init() {
+    public static void register() {
         Color.Colorless.toString();
         Empty.toString();
     }

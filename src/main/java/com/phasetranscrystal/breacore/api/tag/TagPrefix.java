@@ -124,7 +124,7 @@ public class TagPrefix {
     @Nullable
     @Getter
     @Setter
-    private BiConsumer<Material, List<Component>> tooltip;
+    private BiConsumer<Material, Consumer<Component>> tooltip;
 
     private final Map<Material, Supplier<? extends ItemLike>[]> ignoredMaterials = new HashMap<>();
     private final Object2FloatMap<Material> materialAmounts = new Object2FloatOpenHashMap<>();

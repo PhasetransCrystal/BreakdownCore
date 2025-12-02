@@ -14,8 +14,8 @@ import net.neoforged.fml.ModLoadingContext;
 
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Lifecycle;
-import com.phasetranscrystal.breacore.mixin.registrate.neoforge.MappedRegistryAccess;
-import com.phasetranscrystal.breacore.mixin.registrate.neoforge.ResourceKeyAccessor;
+import com.phasetranscrystal.breacore.mixin.neoforge.MappedRegistryAccess;
+import com.phasetranscrystal.breacore.mixin.neoforge.ResourceKeyAccessor;
 import com.phasetranscrystal.brealib.BreaLib;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

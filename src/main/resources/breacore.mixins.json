@@ -5,8 +5,8 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "registrate.AbstractRegistrateAccessor",
-    "registrate.neoforge.MappedRegistryAccess",
-    "registrate.neoforge.ResourceKeyAccessor"
+    "neoforge.MappedRegistryAccess",
+    "neoforge.ResourceKeyAccessor"
   ],
   "client": [
   ],
