@@ -2,7 +2,6 @@ package com.phasetranscrystal.breacore.common.quench;
 
 import com.phasetranscrystal.breacore.api.attribute.TriNum;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributorTest;
 import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
@@ -11,7 +10,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Items;
@@ -44,7 +42,7 @@ public class BreaQuenchTest {
 
         @Override
         public double getMaxPerkStrength() {
-            return 0;
+            return 1;
         }
 
         @Override

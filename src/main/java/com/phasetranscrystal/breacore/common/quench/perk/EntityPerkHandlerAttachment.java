@@ -87,7 +87,8 @@ public class EntityPerkHandlerAttachment {
         //收集所有装备上的词条数据，取最大值
         HashMap<Perk, Double> npas = new HashMap<>();
         perksBySlot.values().forEach(comp -> comp.enabledPerks().forEach((perk, strength) -> {
-            npas.merge(perk, strength, Math::max);
+            npas.put(perk, Math.max(npas.getOrDefault(perk, 0D), strength));
+//            npas.put(perk, Math.clamp(0, perk.getMaxPerkStrength(), Math.max(npas.getOrDefault(perk, 0D), strength)));
         }));
 
         //计算新添加与移除的词条，用于处理事件系统
@@ -100,7 +101,7 @@ public class EntityPerkHandlerAttachment {
         npas.keySet().stream()
                 .filter(p -> !perksAndStrength.containsKey(p))
                 .forEach(perk -> perk.getEventConsumers().forEach((event, consumer) -> {
-                    distributor.add(event, e -> consumer.accept(e, perksAndStrength.get(perk)), EVENT_ROOT, perk.getId());
+                    distributor.add(event, e -> consumer.accept(e, this.getPerkStrength(perk)), EVENT_ROOT, perk.getId());
                 }));
 
         //将新数据覆盖旧数据
@@ -144,6 +145,10 @@ public class EntityPerkHandlerAttachment {
         });
 
         attributes = na;
+    }
+
+    public double getPerkStrength(Perk perk) {
+        return perksAndStrength.get(perk);
     }
 
     /**
