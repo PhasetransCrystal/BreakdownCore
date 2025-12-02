@@ -9,7 +9,6 @@ import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
-import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 
 import com.google.common.collect.Multimaps;
 import com.phasetranscrystal.breacore.BreaCore;
@@ -21,6 +20,7 @@ import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
+import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 import com.phasetranscrystal.breacore.config.ConfigHolder;
 import com.phasetranscrystal.breacore.data.blockentity.BreaBlockEntities;
 import com.phasetranscrystal.breacore.data.blocks.BreaBlocks;

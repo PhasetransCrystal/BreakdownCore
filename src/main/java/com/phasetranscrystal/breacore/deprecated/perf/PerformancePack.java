@@ -1,5 +1,13 @@
 package com.phasetranscrystal.breacore.deprecated.perf;
 
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.neoforged.bus.api.Event;
+
 import com.google.common.collect.*;
 import com.phasetranscrystal.breacore.api.attribute.TriNum;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
@@ -8,13 +16,6 @@ import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.neoforged.bus.api.Event;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -24,9 +25,8 @@ public record PerformancePack(ResourceLocation[] eventPath,
                               ResourceLocation combinePath,
                               @Nullable Map<Holder<Attribute>, TriNum> attribute,
                               @Nullable Map<ResourceLocation, TriNum> equipAttribute,
-                              @Nullable Map<Class<Event>, Consumer<Event>> listeners,  //TO ENTITY
-                              IntSet elementHashes
-) {
+                              @Nullable Map<Class<Event>, Consumer<Event>> listeners,  // TO ENTITY
+                              IntSet elementHashes) {
 
     public PerformancePack(ResourceLocation[] eventPath,
                            @Nullable Map<Holder<Attribute>, TriNum> attribute,
@@ -36,7 +36,7 @@ public record PerformancePack(ResourceLocation[] eventPath,
         this(eventPath, combine(eventPath), attribute, equipAttribute, listeners, elementHashes);
     }
 
-    //附加实体事件部分
+    // 附加实体事件部分
     public void binding(Entity entity) {
         if (this.listeners != null) {
             EventDistributor distribute = entity.getData(BreaHoriz.EVENT_DISTRIBUTOR.get());
@@ -49,7 +49,7 @@ public record PerformancePack(ResourceLocation[] eventPath,
         distribute.add(clazz, (Consumer<T>) consumer, eventPath);
     }
 
-    //附加属性部分
+    // 附加属性部分
     public List<Pair<Holder<Attribute>, AttributeModifier>> createAttributes() {
         if (this.attribute != null) {
             List<Pair<Holder<Attribute>, AttributeModifier>> list = new ArrayList<>();
@@ -74,6 +74,7 @@ public record PerformancePack(ResourceLocation[] eventPath,
     }
 
     public static class GroupBuilder {
+
         public final ResourceLocation[] path;
         private final List<PerformancePack> children = new ArrayList<>();
 
@@ -116,7 +117,6 @@ public record PerformancePack(ResourceLocation[] eventPath,
                 elementHashes.add(child.hashCode());
             }
 
-
             return new PerformancePack(path,
                     buildTriNum(attribute),
                     buildTriNum(equipAttribute),
@@ -130,6 +130,7 @@ public record PerformancePack(ResourceLocation[] eventPath,
     }
 
     public static class SingleBuilder {
+
         public final ResourceLocation[] path;
         private final List<PerformancePack> children = new ArrayList<>();
         private Map<Holder<Attribute>, TriNum.Mutable> attribute = new HashMap<>();
@@ -198,9 +199,6 @@ public record PerformancePack(ResourceLocation[] eventPath,
         }
     }
 
-
-
-
     public static Map<Class<Event>, Consumer<Event>> buildEvents(Multimap<Class<Event>, Consumer<Event>> listeners) {
         ImmutableMap.Builder<Class<Event>, Consumer<Event>> lc = new ImmutableMap.Builder<>();
         listeners.keySet().forEach(key -> {
@@ -241,7 +239,7 @@ public record PerformancePack(ResourceLocation[] eventPath,
     public static final ResourceLocation STABLE = rl("stable");
     public static final ResourceLocation ACTIVE = rl("active");
 
-    //SLOTPOS IS_STABLE PATH
+    // SLOTPOS IS_STABLE PATH
     public static final Table<EquipmentSlotGroup, Boolean, ResourceLocation[]> PATH_BY_SLOT = HashBasedTable.create();
 
     static {

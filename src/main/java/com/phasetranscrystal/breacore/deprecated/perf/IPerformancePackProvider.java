@@ -5,6 +5,7 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import java.util.Collection;
 
 public interface IPerformancePackProvider {
+
     PerformancePack get(EquipmentSlotGroup slotGroup);
 
     boolean isStable();

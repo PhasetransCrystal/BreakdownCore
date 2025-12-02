@@ -1,13 +1,13 @@
 package com.phasetranscrystal.breacore.common.quench;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
 import com.phasetranscrystal.breacore.common.quench.perk.IPerkElemProvider;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
 import java.util.Map;
@@ -20,9 +20,10 @@ import java.util.Map;
  */
 public record EquipAssemblyComponent(EquipType type,
                                      EquipType.AssemblyResult slots,
-                                     List<ItemAttributeModifiers.Entry> entries) implements IAttributeModifierProvider, IPerkElemProvider {
+                                     List<ItemAttributeModifiers.Entry> entries)
+        implements IAttributeModifierProvider, IPerkElemProvider {
 
-    public static final Codec<EquipAssemblyComponent> CODEC = Codec.unit(new EquipAssemblyComponent(null, null, List.of()));//TODO
+    public static final Codec<EquipAssemblyComponent> CODEC = Codec.unit(new EquipAssemblyComponent(null, null, List.of()));// TODO
 
     public EquipAssemblyComponent(EquipType type,
                                   EquipType.AssemblyResult slots,
@@ -37,6 +38,6 @@ public record EquipAssemblyComponent(EquipType type,
 
     @Override
     public Map<Perk, Double> getPerkAndStrength() {
-        return Map.of();//从材料系统拉取各部件材料的词条 强度为1
+        return Map.of();// 从材料系统拉取各部件材料的词条 强度为1
     }
 }

@@ -1,13 +1,14 @@
 package com.phasetranscrystal.breacore.api.attribute;
 
-import com.google.common.collect.Multimap;
-import lombok.Getter;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+
+import com.google.common.collect.Multimap;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -61,6 +62,7 @@ public record TriNum(double v1, double v2, double v3) {
     }
 
     public static class Mutable {
+
         @Getter
         public double v1 = 0, v2 = 0, v3 = 1;
 
