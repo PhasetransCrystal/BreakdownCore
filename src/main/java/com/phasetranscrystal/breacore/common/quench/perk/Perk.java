@@ -7,12 +7,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.neoforged.bus.api.Event;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
 /**
  * 装备词条<p>
@@ -32,11 +30,11 @@ public abstract class Perk {
      * 词条提供的属性。<p>
      * 词条强度 -> 各属性以及其三阶段对应的值
      */
-    public abstract Function<Double, Map<Holder<Attribute>, TriNum>> getAttributesByStrength();
+    public abstract Map<Holder<Attribute>, TriNum> getAttributesByStrength(double strength);
 
     /**
      * 词条提供的事件监听器。<p>
-     * 由{@link _ 实体词条控制器}统一处理。<p>
+     * 由{@link EntityPerkHandlerAttachment 实体词条控制器}统一处理。<p>
      * 事件类型 -> 消费器(事件实例，词条强度)
      *
      * @see com.phasetranscrystal.breacore.common.horiz.EventDistributor 实体事件调度器

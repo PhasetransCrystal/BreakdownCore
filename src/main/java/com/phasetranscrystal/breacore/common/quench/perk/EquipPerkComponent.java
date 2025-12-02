@@ -1,7 +1,6 @@
 package com.phasetranscrystal.breacore.common.quench.perk;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -15,21 +14,25 @@ import java.util.*;
  * 装备词条组件
  */
 public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
-                                 Map<Perk, Double> perksAndStrength, ImmutableSet<Perk> enabledPerks) {
+                                 Map<Perk, Double> perksAndStrength, Map<Perk, Double> enabledPerks) {
     public static final Codec<EquipPerkComponent> CODEC = RecordCodecBuilder.create(i -> i.group(
             Codec.INT.fieldOf("max").forGetter(EquipPerkComponent::maxPerkWeight),
-            Codec.INT.fieldOf("used").forGetter(EquipPerkComponent::usedPerkWeight),
             Codec.unboundedMap(BreaRegistries.PERK.byNameCodec(), Codec.DOUBLE).fieldOf("pas").forGetter(EquipPerkComponent::perksAndStrength),
-            BreaRegistries.PERK.byNameCodec().listOf().xmap(ImmutableSet::copyOf, List::copyOf).fieldOf("enabled").forGetter(EquipPerkComponent::enabledPerks)
-    ).apply(i, EquipPerkComponent::new));
+            BreaRegistries.PERK.byNameCodec().listOf().fieldOf("enabled").forGetter(EquipPerkComponent::getEnabledPerks)
+    ).apply(i, EquipPerkComponent::create));
 
-
-    public Map<Perk, Double> getPerks() {
-        HashMap<Perk, Double> map = new HashMap<>();
-        for (Perk perk : enabledPerks) {
-            map.put(perk, perksAndStrength.get(perk));
+    public static EquipPerkComponent create(int maxPerkWeight, Map<Perk, Double> perksAndStrength, Collection<Perk> enabled) {
+        ImmutableMap.Builder<Perk, Double> map = new ImmutableMap.Builder<>();
+        for (Perk perk : enabled) {
+            if (perksAndStrength.containsKey(perk))
+                map.put(perk, perksAndStrength.get(perk));
         }
-        return map;
+        ImmutableMap<Perk, Double> build = map.build();
+        return new EquipPerkComponent(maxPerkWeight, build.keySet().stream().mapToInt(Perk::getPerkWeight).sum(), perksAndStrength, build);
+    }
+
+    public List<Perk> getEnabledPerks() {
+        return List.copyOf(enabledPerks.keySet());
     }
 
     public Mutable toMutable() {
@@ -46,7 +49,7 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
         public Mutable(EquipPerkComponent component) {
             this.maxPerkWeight = component.maxPerkWeight;
             this.perksAndStrength = component.perksAndStrength;
-            this.enabledPerks = new HashSet<>(component.enabledPerks);
+            this.enabledPerks = new HashSet<>(component.enabledPerks.keySet());
             this.usedPerkWeight = component.usedPerkWeight;
         }
 
@@ -116,7 +119,7 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
 
         public EquipPerkComponent build() {
             if (!canBuild()) return null;
-            return new EquipPerkComponent(maxPerkWeight, usedPerkWeight, ImmutableMap.copyOf(perksAndStrength), ImmutableSet.copyOf(enabledPerks));
+            return EquipPerkComponent.create(maxPerkWeight, ImmutableMap.copyOf(perksAndStrength), enabledPerks);
         }
 
 
@@ -155,7 +158,7 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
         // 2. 处理启用名单
         Set<Perk> enabledPerks = new HashSet<>();
         if (component != null) {
-            enabledPerks.addAll(component.enabledPerks());
+            enabledPerks.addAll(component.enabledPerks().keySet());
         }
 
         // 移除已消失的perk
@@ -185,16 +188,12 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
             // 移除非强制启用的词条
             enabledPerks.removeAll(toRemove);
         }
-        usedWeight = enabledPerks.stream()
-                .mapToInt(Perk::getPerkWeight)
-                .sum();
 
         // 5. 创建新的组件实例并设置到stack中
-        EquipPerkComponent newComponent = new EquipPerkComponent(
+        EquipPerkComponent newComponent = EquipPerkComponent.create(
                 sumWeight,
-                usedWeight,
                 ImmutableMap.copyOf(allPerksAndStrength),
-                ImmutableSet.copyOf(enabledPerks)
+                enabledPerks
         );
 
         stack.set(BreaQuench.EQUIP_PERK_COMPONENT, newComponent);
@@ -233,4 +232,5 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
             }
         }
     }
+
 }

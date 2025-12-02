@@ -1,11 +1,14 @@
 package com.phasetranscrystal.breacore.common.quench;
 
 import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
+import com.phasetranscrystal.breacore.common.quench.perk.IPerkElemProvider;
+import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 装备组装信息组件。内容只应在装备被重新锻造时发生变化
@@ -15,7 +18,7 @@ import java.util.List;
  */
 public record EquipAssemblyComponent(EquipType type,
                                      EquipType.AssemblyResult slots,
-                                     List<ItemAttributeModifiers.Entry> entries) implements IAttributeModifierProvider {
+                                     List<ItemAttributeModifiers.Entry> entries) implements IAttributeModifierProvider, IPerkElemProvider {
 
     public EquipAssemblyComponent(EquipType type,
                                   EquipType.AssemblyResult slots,
@@ -26,5 +29,10 @@ public record EquipAssemblyComponent(EquipType type,
     @Override
     public List<ItemAttributeModifiers.Entry> getEntries() {
         return entries;
+    }
+
+    @Override
+    public Map<Perk, Double> getPerkAndStrength() {
+        return Map.of();//从材料系统拉取各部件材料的词条 强度为1
     }
 }
