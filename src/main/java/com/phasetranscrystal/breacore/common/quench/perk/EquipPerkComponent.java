@@ -7,11 +7,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 import net.minecraft.world.item.ItemStack;
+import org.joml.Math;
 
 import java.util.*;
 
 /**
- * 装备词条组件
+ * 装备词条组件<p>
+ * 存储一件装备的最大词条质量，已消耗词条质量，可用词条质量与对应强度，以及启用的词条。<p>
+ * 主要起缓存作用。数据收集自实现了{@link IPerkElemProvider}接口的物品与物品组件。<p>
+ * 用于为{@link EntityPerkHandlerAttachment 实体词条处理器}提供物品的词条信息。<p>
+ * 应在物品重锻或词条状态变化时调用{@link EquipPerkComponent#update(ItemStack)}方法更新。
+ *
+ * @see ExtraPerkWeightComponent 为物品提供自定义额外词条质量的组件
  */
 public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
                                  Map<Perk, Double> perksAndStrength, Map<Perk, Double> enabledPerks) {
@@ -21,6 +28,11 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
             BreaRegistries.PERK.byNameCodec().listOf().fieldOf("enabled").forGetter(EquipPerkComponent::getEnabledPerks)
     ).apply(i, EquipPerkComponent::create));
 
+    /**
+     * 装备词条组件序列化的信息只有最大词条比重，各词条强度以及启用的词条。
+     * 考虑到在被调用时需要的信息，会在构造实例时进行额外处理。<p>
+     * 所有数据来源于收集其它组件或物品本体信息。此组件仅起缓存功能。
+     */
     public static EquipPerkComponent create(int maxPerkWeight, Map<Perk, Double> perksAndStrength, Collection<Perk> enabled) {
         ImmutableMap.Builder<Perk, Double> map = new ImmutableMap.Builder<>();
         for (Perk perk : enabled) {
@@ -31,14 +43,24 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
         return new EquipPerkComponent(maxPerkWeight, build.keySet().stream().mapToInt(Perk::getPerkWeight).sum(), perksAndStrength, build);
     }
 
+    /**
+     * 获取当前启用的词条
+     */
     public List<Perk> getEnabledPerks() {
         return List.copyOf(enabledPerks.keySet());
     }
 
+    /**
+     * 将信息转换为一个可变对象<p>
+     * 可变对象更适合在对应的工作台中调整启用的词条。
+     */
     public Mutable toMutable() {
         return new Mutable(this);
     }
 
+    /**
+     * 一个物品词条组件的可变版本。用于在对应的工作台中快捷处理词条的启用与禁用。
+     */
     public static class Mutable {
         public static final Pair<Set<Perk>, Integer> EMPTY_PAIR = new Pair<>(Collections.emptySet(), 0);
         public final int maxPerkWeight;
@@ -113,22 +135,36 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
             return new Result(1, perksToEnable, newUsedWeight);
         }
 
+        /**
+         * 检查能否构造，即已使用的词条比重是否大于最大比重容量。
+         */
         public boolean canBuild() {
             return usedPerkWeight <= maxPerkWeight;
         }
 
+        /**
+         * 检查构造并重新将可变组件变回固定组件。
+         */
         public EquipPerkComponent build() {
             if (!canBuild()) return null;
             return EquipPerkComponent.create(maxPerkWeight, ImmutableMap.copyOf(perksAndStrength), enabledPerks);
         }
 
-
+        /**
+         * 修改结果。不保证占用的词条比重小等于最大比重。
+         *
+         * @param success       是否成功 0为前置判断不成立，1为成功，-1为存在依赖缺失。
+         * @param extraModified 连带产生的修改(启用/禁用)。若success=-1则代表缺失的依赖。
+         * @param usedWeight    在结束状态下消耗的词条比重量。
+         */
         public record Result(int success, Set<Perk> extraModified, int usedWeight) {
             public static final Result FAILED = new Result(0, Collections.emptySet(), 0);
         }
     }
 
-
+    /**
+     * 更新物品堆的装备词条组件
+     * */
     public static void update(ItemStack stack) {
         EquipPerkComponent component = stack.get(BreaQuench.EQUIP_PERK_COMPONENT);
         List<IPerkElemProvider> providers = new ArrayList<>();
@@ -151,7 +187,7 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
 
             // 累加词条强度
             provider.getPerkAndStrength().forEach((perk, strength) ->
-                    allPerksAndStrength.merge(perk, strength, Double::sum)
+                    allPerksAndStrength.merge(perk, strength, (v1, v2) -> Math.clamp(0, perk.getMaxPerkStrength(), v1 + v2))
             );
         }
 

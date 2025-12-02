@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.api.attribute;
 
 import com.google.common.collect.Multimap;
+import lombok.Getter;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -10,6 +11,9 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
 
+/**
+ * 就是三个数 给attribute用的 分别表示加 混合乘区 独立乘区
+ */
 public record TriNum(double v1, double v2, double v3) {
 
     public TriNum() {
@@ -32,31 +36,32 @@ public record TriNum(double v1, double v2, double v3) {
         return new TriNum(this.v1 + v1, this.v2 + v2, this.v3 * (1 + v3));
     }
 
-    public void createAttributeModifier(Holder<Attribute> attribute, ResourceLocation id, Multimap<Holder<Attribute>,AttributeModifier> map) {
-        if(this.v1 != 0){
+    public void createAttributeModifier(Holder<Attribute> attribute, ResourceLocation id, Multimap<Holder<Attribute>, AttributeModifier> map) {
+        if (this.v1 != 0) {
             map.put(attribute, new AttributeModifier(id.withSuffix("/stage1"), v1, AttributeModifier.Operation.ADD_VALUE));
         }
-        if(this.v2 != 0){
+        if (this.v2 != 0) {
             map.put(attribute, new AttributeModifier(id.withSuffix("/stage2"), v2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
-        if(this.v3 != 1){
+        if (this.v3 != 1) {
             map.put(attribute, new AttributeModifier(id.withSuffix("/stage3"), v3 - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
     }
 
-    public void createItemAttributeModifier(Holder<Attribute> attribute, EquipmentSlotGroup group, ResourceLocation id, List<ItemAttributeModifiers.Entry> list){
-        if(this.v1 != 0){
-            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage1"),v1, AttributeModifier.Operation.ADD_VALUE), group));
+    public void createItemAttributeModifier(Holder<Attribute> attribute, EquipmentSlotGroup group, ResourceLocation id, List<ItemAttributeModifiers.Entry> list) {
+        if (this.v1 != 0) {
+            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage1"), v1, AttributeModifier.Operation.ADD_VALUE), group));
         }
-        if(this.v2 != 0){
-            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage2"),v2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group));
+        if (this.v2 != 0) {
+            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage2"), v2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group));
         }
-        if(this.v3 != 1){
-            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage3"),v3 - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), group));
+        if (this.v3 != 1) {
+            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage3"), v3 - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), group));
         }
     }
 
     public static class Mutable {
+        @Getter
         public double v1 = 0, v2 = 0, v3 = 1;
 
         public Mutable add1(double value) {
