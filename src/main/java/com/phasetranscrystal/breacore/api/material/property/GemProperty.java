@@ -1,5 +1,8 @@
 package com.phasetranscrystal.breacore.api.material.property;
 
+/**
+ * 宝石类材料基本信息
+ */
 public class GemProperty implements IMaterialProperty {
 
     @Override

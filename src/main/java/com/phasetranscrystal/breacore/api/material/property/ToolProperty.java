@@ -1,5 +1,8 @@
 package com.phasetranscrystal.breacore.api.material.property;
 
+/**
+ * 工具属性
+ */
 public class ToolProperty implements IMaterialProperty {
 
     @Override

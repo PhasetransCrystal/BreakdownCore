@@ -10,15 +10,16 @@ import java.util.*;
 
 public class MaterialProperties {
 
-    private static final Set<PropertyKey<?>> baseTypes = new HashSet<>();
+    private static final Set<PropertyKey<?>> baseTypes = new HashSet<>(Arrays.asList(
+            PropertyKey.FLUID,
+            PropertyKey.DUST,
+            PropertyKey.INGOT,
+            PropertyKey.GEM,
+            PropertyKey.EMPTY));
 
     @SuppressWarnings("unused")
     public static void addBaseType(PropertyKey<?> baseTypeKey) {
         baseTypes.add(baseTypeKey);
-    }
-
-    static {
-        addBaseType(PropertyKey.EMPTY);
     }
 
     private final Map<PropertyKey<? extends IMaterialProperty>, IMaterialProperty> propertyMap;
@@ -77,14 +78,15 @@ public class MaterialProperties {
             oldList.forEach(p -> p.verifyProperty(this));
         } while (oldList.size() != propertyMap.size());
 
+        // 空属性，用于允许无属性的材料，同时不保留基础类型强制约束
         if (propertyMap.keySet().stream().noneMatch(baseTypes::contains)) {
             if (propertyMap.isEmpty()) {
                 if (BreaUtil.isDev()) {
-                    BreaCore.LOGGER.debug("Creating empty placeholder Material {}", material);
+                    BreaCore.LOGGER.debug("正在创建空占位符材料 {}", material);
                 }
                 propertyMap.put(PropertyKey.EMPTY, PropertyKey.EMPTY.constructDefault());
             } else
-                throw new IllegalArgumentException("Material must have at least one of: " + baseTypes + " specified!");
+                throw new IllegalArgumentException("材料必须至少指定以下属性之一：" + baseTypes);
         }
     }
 

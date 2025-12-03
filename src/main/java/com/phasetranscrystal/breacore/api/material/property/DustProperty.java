@@ -2,6 +2,9 @@ package com.phasetranscrystal.breacore.api.material.property;
 
 import lombok.Getter;
 
+/**
+ * 材料的基本性质 如挖掘等级,燃烧时间
+ */
 public class DustProperty implements IMaterialProperty {
 
     /**

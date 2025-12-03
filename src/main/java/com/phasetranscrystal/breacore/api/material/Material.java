@@ -5,12 +5,14 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 
 import com.google.common.collect.ImmutableList;
+import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.material.info.MaterialFlag;
 import com.phasetranscrystal.breacore.api.material.info.MaterialFlags;
 import com.phasetranscrystal.breacore.api.material.info.MaterialIconSet;
 import com.phasetranscrystal.breacore.api.material.property.IMaterialProperty;
 import com.phasetranscrystal.breacore.api.material.property.MaterialProperties;
 import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import com.phasetranscrystal.breacore.utils.BreaMath;
@@ -119,6 +121,10 @@ public class Material implements Comparable<Material> {
         materialInfo.iconSet = MaterialIconSet.DULL;
         properties = new MaterialProperties();
         flags = new MaterialFlags();
+    }
+
+    public void registerMaterial() {
+        BreaAPI.materialManager.register(this);
     }
 
     public String getName() {

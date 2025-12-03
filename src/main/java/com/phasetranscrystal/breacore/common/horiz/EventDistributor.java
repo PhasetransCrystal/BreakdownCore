@@ -133,7 +133,7 @@ public class EventDistributor {
      */
     public <T extends Event> boolean add(@NotNull SavableEventConsumerData<T> data, ResourceLocation... path) {
         if (data.getPath() != null)
-            throw new IllegalArgumentException("Savable event consumer's path is exist. Don't registry one instance multi.");
+            throw new IllegalArgumentException("Savable event consumer's path is exist. Don't registrate one instance multi.");
         boolean result = listeners.put(data.getEventClass(), data.getConsumer());
         if (result) {
             data.setPath(List.of(path));

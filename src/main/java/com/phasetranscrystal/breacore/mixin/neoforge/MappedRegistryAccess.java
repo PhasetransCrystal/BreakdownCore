@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.mixin.registrate.neoforge;
+package com.phasetranscrystal.breacore.mixin.neoforge;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.MappedRegistry;

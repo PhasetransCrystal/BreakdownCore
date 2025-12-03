@@ -3,6 +3,7 @@ package com.phasetranscrystal.breacore.api;
 import net.neoforged.fml.ModLoader;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
+import com.phasetranscrystal.breacore.api.material.registry.IMaterialRegistry;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistry;
 import com.phasetranscrystal.brealib.mixin.registrate.neoforge.RegisterEventAccessor;
 import org.jetbrains.annotations.ApiStatus;
@@ -10,7 +11,29 @@ import org.jetbrains.annotations.ApiStatus;
 public class BreaAPI {
 
     /**
-     * Post the register event for a specific (GT) registry. Internal use only, do not attempt to call this.
+     * <p/>
+     * 这正好相当于一个正常物品的价值。
+     * 这个常数可以被许多常用数字整除，例如
+     * 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 24, ... 64 或 81
+     * 而不会丢失精度，因此被用作数量的单位。
+     * 但它也足够小，可以与更大的数字相乘。
+     * <p/>
+     * 这用于确定前缀矿石中所含材料的数量。
+     * 例如，Nugget = M / 9，因为它由 Ingot 的 1/9 组成。
+     */
+    public static final long M = 3628800;
+
+    /**
+     * 从 "FLUID_MATERIAL_UNIT" 重命名为 "L"
+     * <p/>
+     * 每个材料单位的流体量（质因数：3 * 3 * 2 * 2 * 2 * 2）
+     */
+    public static final int L = 144;
+
+    public static IMaterialRegistry materialManager;
+
+    /**
+     * 为特定的注册器发布注册事件。仅内部使用，不要尝试调用此方法。
      */
     @ApiStatus.Internal
     public static <T> void postRegisterEvent(BreaRegistry<T> registry) {

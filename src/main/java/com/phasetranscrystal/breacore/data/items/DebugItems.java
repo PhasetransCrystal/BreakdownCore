@@ -1,18 +1,20 @@
 package com.phasetranscrystal.breacore.data.items;
 
 import com.phasetranscrystal.breacore.api.item.debug.MuiItem;
-import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
 
-import static com.phasetranscrystal.breacore.api.registry.registry.BreaRegistrate.Brea;
+import static com.phasetranscrystal.breacore.common.registry.BreaRegistration.REGISTRATE;
 import static com.phasetranscrystal.breacore.data.items.BreaItems.*;
+import static com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs.DEBUG_ITEMS;
 
 public class DebugItems {
 
     static {
-        Brea.defaultCreativeTab(BreaCreativeModeTabs.DEBUG_ITEMS.getKey());
+        REGISTRATE.creativeModeTab(() -> DEBUG_ITEMS);
     }
 
     public static void init() {
-        MUI_ITEM = Brea.item("mui_item", MuiItem::new).register();
+        MUI_ITEM = REGISTRATE.item("mui_item", MuiItem::new)
+                .lang("Mui Test")
+                .register();
     }
 }

@@ -14,8 +14,8 @@ import net.neoforged.fml.ModLoadingContext;
 
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Lifecycle;
-import com.phasetranscrystal.breacore.mixin.registrate.neoforge.MappedRegistryAccess;
-import com.phasetranscrystal.breacore.mixin.registrate.neoforge.ResourceKeyAccessor;
+import com.phasetranscrystal.breacore.mixin.neoforge.MappedRegistryAccess;
+import com.phasetranscrystal.breacore.mixin.neoforge.ResourceKeyAccessor;
 import com.phasetranscrystal.brealib.BreaLib;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -67,7 +67,7 @@ public class BreaRegistry<T> extends MappedRegistry<T> {
     public <V extends T> V register(ResourceKey<T> key, V value) {
         if (containsKey(key)) {
             throw new IllegalStateException(
-                    "[BreaRegistry] registry %s contains key %s already".formatted(key().location(), key.location()));
+                    "[BreaRegistry] registrate %s contains key %s already".formatted(key().location(), key.location()));
         }
         return this.registerOrOverride(key, value);
     }
@@ -84,7 +84,7 @@ public class BreaRegistry<T> extends MappedRegistry<T> {
     @Nullable
     public <V extends T> V replace(ResourceKey<T> key, V value) {
         if (!containsKey(key)) {
-            BreaLib.LOGGER.warn("[BreaRegistry] couldn't find key {} in registry {}", key, key().location());
+            BreaLib.LOGGER.warn("[BreaRegistry] couldn't find key {} in registrate {}", key, key().location());
         }
         registerOrOverride(key, value);
         return value;

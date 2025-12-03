@@ -9,7 +9,8 @@ dependencies {
 
     //jarJar(api("com.tterrag.registrate:Registrate:1.4.0"))
     jarJar(api("dev:Registrate:1.4.0"))
-    jarJar(api("com.phasetranscrystal:BreaLib:1.0.0"))
+//    jarJar(api("com.phasetranscrystal:BreaLib:1.0.0"))
+    jarJar(api("com.github.PhasetransCrystal:BreaLib:-SNAPSHOT"))
 
     // Modern UI
     implementation("icyllis.modernui:ModernUI-NeoForge:${minecraft_version}-${modernui_version}.+")

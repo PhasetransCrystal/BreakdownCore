@@ -22,41 +22,41 @@ public class MaterialIconSet {
     public final boolean isRootIconset;
 
     /**
-     * This can be null if {@link MaterialIconSet#isRootIconset} is true,
-     * otherwise it will be Nonnull
+     * 父图标集。如果{@link MaterialIconSet#isRootIconset}为true，则可以为null，
+     * 否则必须为非null。
      */
     public final MaterialIconSet parentIconset;
 
     /**
-     * Create a new MaterialIconSet whose parent is {@link MaterialIconSet#DULL}
+     * 创建一个新的MaterialIconSet，其父图标集为{@link MaterialIconSet#DULL}
      *
-     * @param name the name of the iconset
+     * @param name 图标集名称
      */
     public MaterialIconSet(@NotNull String name) {
         this(name, MaterialIconSet.DULL);
     }
 
     /**
-     * Create a new MaterialIconSet whose parent is one of your choosing
+     * 创建一个新的MaterialIconSet，可指定父图标集
      *
-     * @param name          the name of the iconset
-     * @param parentIconset the parent iconset
+     * @param name          图标集名称
+     * @param parentIconset 父图标集
      */
     public MaterialIconSet(@NotNull String name, @NotNull MaterialIconSet parentIconset) {
         this(name, parentIconset, false);
     }
 
     /**
-     * Create a new MaterialIconSet which is a root
+     * 创建一个新的MaterialIconSet，可作为根图标集
      *
-     * @param name          the name of the iconset
-     * @param parentIconset the parent iconset, should be null if this should be a root iconset
-     * @param isRootIconset true if this should be a root iconset, otherwise false
+     * @param name          图标集名称
+     * @param parentIconset 父图标集，若此图标集为根图标集则应为null
+     * @param isRootIconset 如果此图标集为根图标集则为true，否则为false
      */
     public MaterialIconSet(@NotNull String name, @Nullable MaterialIconSet parentIconset, boolean isRootIconset) {
         this.name = name.toLowerCase(Locale.ENGLISH);
         Preconditions.checkArgument(!ICON_SETS.containsKey(this.name),
-                "MaterialIconSet " + this.name + " already registered!");
+                "MaterialIconSet " + this.name + " 已注册！");
         this.id = idCounter++;
         this.isRootIconset = isRootIconset;
         this.parentIconset = parentIconset;

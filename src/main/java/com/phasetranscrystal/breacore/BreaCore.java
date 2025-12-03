@@ -11,14 +11,15 @@ import com.tterrag.registrate.util.RegistrateDistExecutor;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(BreaCore.MOD_ID)
 public class BreaCore {
 
-    public static final Logger LOGGER = LogManager.getLogger(BreaCore.MOD_ID);
+    public static final Logger LOGGER = LogManager.getLogger("BreaCore:Main");
     public static final String MOD_ID = BreaLib.Core_ID;
-    public static final String NAME = "舟尘";
+    public static final String NAME = "瓦解核心";
     @Getter
     private static ModContainer modContainer;
     @Getter
@@ -28,5 +29,13 @@ public class BreaCore {
         BreaCore.modContainer = container;
         BreaCore.modEventBus = modEventBus;
         RegistrateDistExecutor.unsafeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+    }
+
+    public static Logger getLogger(String module) {
+        return getLogger(module, null);
+    }
+
+    public static Logger getLogger(String module, @Nullable String content) {
+        return LogManager.getLogger("BreaCore." + module + (content == null ? "" : ":" + content));
     }
 }

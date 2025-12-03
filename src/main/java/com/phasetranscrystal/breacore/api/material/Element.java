@@ -5,49 +5,49 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
- * This is some kind of Periodic Table, which can be used to determine "Properties" of the Materials.
+ * 这是一种周期表元素，可用于确定材料的"属性"。
  */
 @Accessors(fluent = true, chain = false)
 public class Element {
 
     /**
-     * Amount of Protons
+     * 质子数
      */
     @Getter
     @Setter
     private long protons;
     /**
-     * Amount of Neutrons
+     * 中子数
      */
     @Getter
     @Setter
     private long neutrons;
     /**
-     * Amount of Half Life this Material has in Seconds. -1 for stable Materials
+     * 该元素的半衰期（秒）。稳定材料为-1。
      */
     @Getter
     @Setter
     private long halfLifeSeconds;
     /**
-     * String representing the Elements this element decays to. Separated by an '&' Character
+     * 表示该元素衰变为何种元素的字符串。以'&'字符分隔。
      */
     @Getter
     @Setter
     private String decayTo;
     /**
-     * Name of the Element
+     * 元素名称
      */
     @Getter
     @Setter
     private String name;
     /**
-     * Symbol of the Element
+     * 元素符号
      */
     @Getter
     @Setter
     private String symbol;
     /**
-     * Is this element an isotope?
+     * 该元素是否为同位素？
      */
     @Getter
     @Setter
