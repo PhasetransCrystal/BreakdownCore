@@ -1,12 +1,13 @@
 package com.phasetranscrystal.breacore.data.materials.material;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
 import com.phasetranscrystal.breacore.api.fluid.FluidState;
 import com.phasetranscrystal.breacore.api.fluid.attribute.FluidAttributes;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
 import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.data.materials.BreaElements.*;
