@@ -1,5 +1,9 @@
 package com.phasetranscrystal.breacore.api.worldgen;
 
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
+import com.phasetranscrystal.breacore.utils.memoization.MemoizedSupplier;
+
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -8,9 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
-import com.phasetranscrystal.breacore.utils.memoization.MemoizedSupplier;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 

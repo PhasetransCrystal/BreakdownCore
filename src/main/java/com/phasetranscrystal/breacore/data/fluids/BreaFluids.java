@@ -1,8 +1,6 @@
 package com.phasetranscrystal.breacore.data.fluids;
 
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.common.NeoForgeMod;
+import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.fluid.potion.PotionFluid;
@@ -13,7 +11,11 @@ import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
 import com.phasetranscrystal.breacore.data.tags.CustomTags;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.common.NeoForgeMod;
+
 import com.tterrag.registrate.util.entry.FluidEntry;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,10 +1,11 @@
 package com.phasetranscrystal.breacore.api.fluid;
 
+import com.phasetranscrystal.breacore.data.tags.CustomTags;
+
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.Tags;
 
-import com.phasetranscrystal.breacore.data.tags.CustomTags;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 

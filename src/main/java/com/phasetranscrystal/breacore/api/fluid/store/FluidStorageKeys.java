@@ -1,11 +1,13 @@
 package com.phasetranscrystal.breacore.api.fluid.store;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import com.phasetranscrystal.breacore.api.fluid.FluidState;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.property.FluidProperty;
 import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconTypes;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import org.jetbrains.annotations.NotNull;
 
 public final class FluidStorageKeys {

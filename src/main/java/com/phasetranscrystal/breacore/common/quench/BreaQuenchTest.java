@@ -1,5 +1,14 @@
 package com.phasetranscrystal.breacore.common.quench;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
+import com.phasetranscrystal.breacore.common.quench.perk.Perk;
+import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
+
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,14 +19,6 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.Event;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-
-import com.phasetranscrystal.breacore.BreaCore;
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
-import com.phasetranscrystal.breacore.common.quench.perk.Perk;
-import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import java.util.List;
 import java.util.Map;

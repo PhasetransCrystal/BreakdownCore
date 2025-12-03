@@ -1,8 +1,5 @@
 package com.phasetranscrystal.breacore.api.material.property;
 
-import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.fluids.FluidStack;
-
 import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorage;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageImpl;
@@ -10,6 +7,10 @@ import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKey;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
+
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.fluids.FluidStack;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

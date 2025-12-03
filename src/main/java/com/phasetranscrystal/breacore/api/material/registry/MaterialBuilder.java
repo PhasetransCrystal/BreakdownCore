@@ -1,9 +1,5 @@
 package com.phasetranscrystal.breacore.api.material.registry;
 
-import net.minecraft.resources.ResourceLocation;
-
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableList;
 import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
 import com.phasetranscrystal.breacore.api.fluid.FluidState;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKey;
@@ -18,6 +14,11 @@ import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+
+import net.minecraft.resources.ResourceLocation;
+
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

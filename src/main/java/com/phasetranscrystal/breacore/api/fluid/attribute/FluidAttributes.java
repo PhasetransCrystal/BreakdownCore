@@ -1,8 +1,8 @@
 package com.phasetranscrystal.breacore.api.fluid.attribute;
 
-import net.minecraft.network.chat.Component;
-
 import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import net.minecraft.network.chat.Component;
 
 public final class FluidAttributes {
 

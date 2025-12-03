@@ -1,5 +1,9 @@
 package com.phasetranscrystal.breacore.deprecated.perf;
 
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
+import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
+
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -9,9 +13,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.neoforged.bus.api.Event;
 
 import com.google.common.collect.*;
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
-import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
 import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;

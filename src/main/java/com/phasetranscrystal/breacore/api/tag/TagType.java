@@ -1,11 +1,13 @@
 package com.phasetranscrystal.breacore.api.tag;
 
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import com.phasetranscrystal.breacore.api.material.Material;
+
 import net.minecraft.Util;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 

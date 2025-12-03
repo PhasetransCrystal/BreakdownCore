@@ -1,9 +1,7 @@
 package com.phasetranscrystal.breacore.data.blocks;
 
-import net.minecraft.world.level.block.Blocks;
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
 
-import com.google.common.collect.ImmutableTable;
-import com.google.common.collect.Table;
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.block.MaterialBlock;
@@ -14,7 +12,11 @@ import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import net.minecraft.world.level.block.Blocks;
+
+import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Table;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;

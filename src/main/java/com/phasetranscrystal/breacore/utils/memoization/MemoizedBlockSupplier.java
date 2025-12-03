@@ -1,8 +1,8 @@
 package com.phasetranscrystal.breacore.utils.memoization;
 
-import net.minecraft.world.level.block.Block;
-
 import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
+
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 

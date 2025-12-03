@@ -1,13 +1,14 @@
 package com.phasetranscrystal.breacore.common.quench;
 
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-
-import com.mojang.serialization.Codec;
 import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
 import com.phasetranscrystal.breacore.common.quench.perk.IPerkElemProvider;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
+
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+
+import com.mojang.serialization.Codec;
 
 import java.util.List;
 import java.util.Map;

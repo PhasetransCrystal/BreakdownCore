@@ -1,7 +1,8 @@
 package com.phasetranscrystal.breacore.data.materials.material;
 
-import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet.*;

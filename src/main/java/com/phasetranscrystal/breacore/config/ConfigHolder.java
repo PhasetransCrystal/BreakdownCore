@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.config;
 
 import com.phasetranscrystal.breacore.BreaCore;
+
 import dev.toma.configuration.Configuration;
 import dev.toma.configuration.config.Config;
 import dev.toma.configuration.config.Configurable;

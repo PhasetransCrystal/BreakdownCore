@@ -1,5 +1,11 @@
 package com.phasetranscrystal.breacore.api.block;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.config.ConfigHolder;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -20,10 +26,6 @@ import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.config.ConfigHolder;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.NotNull;
 
 public class MaterialBlock extends AppearanceBlock {

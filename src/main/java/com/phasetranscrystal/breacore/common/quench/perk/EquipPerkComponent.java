@@ -1,13 +1,14 @@
 package com.phasetranscrystal.breacore.common.quench.perk;
 
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.common.quench.BreaQuench;
+
 import net.minecraft.world.item.ItemStack;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 import org.joml.Math;
 
 import java.util.*;

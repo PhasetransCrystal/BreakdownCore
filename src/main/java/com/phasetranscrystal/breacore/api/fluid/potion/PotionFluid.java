@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.api.fluid.potion;
 
+import com.phasetranscrystal.breacore.data.fluids.BreaFluids;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -15,7 +17,6 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 
-import com.phasetranscrystal.breacore.data.fluids.BreaFluids;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

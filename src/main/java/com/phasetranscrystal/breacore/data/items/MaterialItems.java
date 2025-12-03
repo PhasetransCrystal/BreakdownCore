@@ -1,15 +1,16 @@
 package com.phasetranscrystal.breacore.data.items;
 
-import net.minecraft.world.level.ItemLike;
-
-import com.google.common.collect.ImmutableTable;
-import com.google.common.collect.Table;
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.item.TagPrefixItem;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+
+import net.minecraft.world.level.ItemLike;
+
+import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Table;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;

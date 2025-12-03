@@ -1,5 +1,18 @@
 package com.phasetranscrystal.breacore.api.tag;
 
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.material.ItemMaterialData;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.info.MaterialIconType;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
+import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconTypes;
+import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+import com.phasetranscrystal.breacore.utils.LocalizationUtils;
+import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -15,17 +28,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Table;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.phasetranscrystal.breacore.api.BreaAPI;
-import com.phasetranscrystal.breacore.api.material.ItemMaterialData;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.material.info.MaterialIconType;
-import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
-import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconTypes;
-import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
-import com.phasetranscrystal.breacore.utils.LocalizationUtils;
-import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
 import it.unimi.dsi.fastutil.objects.Object2FloatMap;
 import it.unimi.dsi.fastutil.objects.Object2FloatOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;

@@ -1,9 +1,10 @@
 package com.phasetranscrystal.breacore.api.addon.event;
 
+import com.phasetranscrystal.breacore.api.material.Material;
+
 import net.minecraft.world.level.block.Block;
 
 import com.google.common.collect.ImmutableMap;
-import com.phasetranscrystal.breacore.api.material.Material;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
 public class MaterialCasingCollectionEvent {

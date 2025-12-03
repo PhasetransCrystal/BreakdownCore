@@ -1,5 +1,11 @@
 package com.phasetranscrystal.breacore.data.misc;
 
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
+
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.ResourceLocation;
@@ -7,10 +13,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
-import com.phasetranscrystal.breacore.api.BreaAPI;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import org.jetbrains.annotations.Nullable;
 

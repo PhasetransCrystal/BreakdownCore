@@ -1,14 +1,16 @@
 package com.phasetranscrystal.breacore.common.quench;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.common.quench.perk.EntityPerkHandlerAttachment;
+import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
+import com.phasetranscrystal.breacore.common.quench.perk.ExtraPerkWeightComponent;
+
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import com.phasetranscrystal.breacore.common.quench.perk.EntityPerkHandlerAttachment;
-import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
-import com.phasetranscrystal.breacore.common.quench.perk.ExtraPerkWeightComponent;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 
 import static com.phasetranscrystal.breacore.common.registry.BreaRegistration.REGISTRATE;

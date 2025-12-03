@@ -1,10 +1,11 @@
 package com.phasetranscrystal.breacore.api.fluid.store;
 
-import net.minecraft.resources.ResourceLocation;
-
 import com.phasetranscrystal.breacore.api.fluid.FluidState;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.info.MaterialIconType;
+
+import net.minecraft.resources.ResourceLocation;
+
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;

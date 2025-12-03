@@ -1,14 +1,7 @@
 package com.phasetranscrystal.breacore.api.material;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.fluids.FluidStack;
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
 
-import com.google.common.collect.ImmutableList;
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKey;
@@ -25,7 +18,16 @@ import com.phasetranscrystal.breacore.api.tag.TagUtil;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import com.phasetranscrystal.breacore.utils.BreaMath;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.fluids.FluidStack;
+
+import com.google.common.collect.ImmutableList;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import lombok.Getter;

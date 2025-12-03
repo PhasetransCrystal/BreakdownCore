@@ -1,9 +1,9 @@
 package com.phasetranscrystal.breacore.common.quench;
 
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
+
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
 
 import java.util.Map;
 

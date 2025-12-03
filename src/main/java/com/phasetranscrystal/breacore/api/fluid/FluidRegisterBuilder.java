@@ -1,16 +1,5 @@
 package com.phasetranscrystal.breacore.api.fluid;
 
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.common.SoundActions;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.FluidType;
-
-import com.google.common.base.Preconditions;
 import com.phasetranscrystal.breacore.api.fluid.attribute.FluidAttribute;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKey;
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
@@ -22,6 +11,18 @@ import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaFluidTypeExtensions;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.utils.CoreUtil;
+
+import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
+
+import com.google.common.base.Preconditions;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;

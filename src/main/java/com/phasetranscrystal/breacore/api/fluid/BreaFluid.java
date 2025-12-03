@@ -1,5 +1,8 @@
 package com.phasetranscrystal.breacore.api.fluid;
 
+import com.phasetranscrystal.breacore.api.fluid.attribute.FluidAttribute;
+import com.phasetranscrystal.breacore.api.fluid.attribute.IAttributedFluid;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -8,8 +11,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
-import com.phasetranscrystal.breacore.api.fluid.attribute.FluidAttribute;
-import com.phasetranscrystal.breacore.api.fluid.attribute.IAttributedFluid;
 import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;

@@ -1,8 +1,9 @@
 package com.phasetranscrystal.breacore.api.fluid.store;
 
+import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
+
 import net.minecraft.world.level.material.Fluid;
 
-import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

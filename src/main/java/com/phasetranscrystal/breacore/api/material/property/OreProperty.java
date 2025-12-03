@@ -1,10 +1,11 @@
 package com.phasetranscrystal.breacore.api.material.property;
 
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+
 import net.minecraft.util.Mth;
 
 import com.mojang.datafixers.util.Pair;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;

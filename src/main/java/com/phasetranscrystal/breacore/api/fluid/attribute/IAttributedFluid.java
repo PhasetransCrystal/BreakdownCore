@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.api.fluid.attribute;
 
 import com.phasetranscrystal.breacore.api.fluid.FluidState;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 

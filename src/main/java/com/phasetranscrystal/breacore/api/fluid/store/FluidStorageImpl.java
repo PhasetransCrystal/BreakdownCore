@@ -1,11 +1,12 @@
 package com.phasetranscrystal.breacore.api.fluid.store;
 
-import net.minecraft.world.level.material.Fluid;
-
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
+
+import net.minecraft.world.level.material.Fluid;
+
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;

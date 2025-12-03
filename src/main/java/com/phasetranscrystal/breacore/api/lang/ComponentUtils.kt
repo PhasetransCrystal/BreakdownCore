@@ -1,11 +1,12 @@
 package com.phasetranscrystal.breacore.api.lang
 
+import com.phasetranscrystal.breacore.api.annotation.TranslationKeyProvider
+
 import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
 
 import com.google.common.base.Supplier
-import com.phasetranscrystal.breacore.api.annotation.TranslationKeyProvider
 
 import kotlin.also
 import kotlin.apply

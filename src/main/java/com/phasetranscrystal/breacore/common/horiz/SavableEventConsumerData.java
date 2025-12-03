@@ -1,11 +1,12 @@
 package com.phasetranscrystal.breacore.common.horiz;
 
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.Event;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import lombok.Getter;
 
 import java.util.List;

@@ -1,5 +1,14 @@
 package com.phasetranscrystal.breacore.api.material;
 
+import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -12,14 +21,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import com.mojang.datafixers.util.Pair;
-import com.phasetranscrystal.breacore.BreaCore;
-import com.phasetranscrystal.breacore.api.BreaAPI;
-import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
-import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

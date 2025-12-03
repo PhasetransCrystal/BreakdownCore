@@ -1,5 +1,16 @@
 package com.phasetranscrystal.breacore.data.blocks;
 
+import com.phasetranscrystal.breacore.api.material.ItemMaterialData;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.common.block.StoneBlockType;
+import com.phasetranscrystal.breacore.common.block.StoneTypes;
+import com.phasetranscrystal.breacore.data.items.MaterialItems;
+import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
+import com.phasetranscrystal.breacore.mixin.neoforge.BlockPropertiesAccessor;
+import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
+
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -11,16 +22,6 @@ import net.neoforged.neoforge.common.Tags;
 
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Table;
-import com.phasetranscrystal.breacore.api.material.ItemMaterialData;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.common.block.StoneBlockType;
-import com.phasetranscrystal.breacore.common.block.StoneTypes;
-import com.phasetranscrystal.breacore.data.items.MaterialItems;
-import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
-import com.phasetranscrystal.breacore.mixin.neoforge.BlockPropertiesAccessor;
-import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;

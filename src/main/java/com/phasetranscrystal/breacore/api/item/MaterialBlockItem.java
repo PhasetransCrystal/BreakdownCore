@@ -1,15 +1,16 @@
 package com.phasetranscrystal.breacore.api.item;
 
+import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.block.MaterialBlock;
+import com.phasetranscrystal.breacore.api.material.property.DustProperty;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.FuelValues;
 
-import com.phasetranscrystal.breacore.api.BreaAPI;
-import com.phasetranscrystal.breacore.api.block.MaterialBlock;
-import com.phasetranscrystal.breacore.api.material.property.DustProperty;
-import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,9 +1,6 @@
 package com.phasetranscrystal.breacore.data.materials;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
+import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.BreaAPI;
@@ -14,7 +11,12 @@ import com.phasetranscrystal.breacore.api.material.info.MaterialFlag;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.material.*;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

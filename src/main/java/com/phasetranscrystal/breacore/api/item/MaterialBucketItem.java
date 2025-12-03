@@ -1,5 +1,9 @@
 package com.phasetranscrystal.breacore.api.item;
 
+import com.phasetranscrystal.breacore.api.fluid.BreaFluid;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
@@ -8,9 +12,6 @@ import net.minecraft.world.level.block.entity.FuelValues;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
-import com.phasetranscrystal.breacore.api.fluid.BreaFluid;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import org.jetbrains.annotations.Nullable;
 
 public class MaterialBucketItem extends BucketItem {

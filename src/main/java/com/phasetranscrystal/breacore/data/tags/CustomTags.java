@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.data.tags;
 
+import com.phasetranscrystal.breacore.api.tag.TagUtil;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -9,8 +11,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.Tags;
-
-import com.phasetranscrystal.breacore.api.tag.TagUtil;
 
 public class CustomTags {
 

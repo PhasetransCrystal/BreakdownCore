@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.common.horiz;
 
+import com.phasetranscrystal.breacore.BreaCore;
+
 import net.minecraft.world.entity.Entity;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.ICancellableEvent;
@@ -13,7 +15,6 @@ import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
-import com.phasetranscrystal.breacore.BreaCore;
 import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = BreaCore.MOD_ID)

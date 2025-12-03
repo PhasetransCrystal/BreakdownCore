@@ -1,5 +1,12 @@
 package com.phasetranscrystal.breacore.api.material;
 
+import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.utils.ItemStackHashStrategy;
+import com.phasetranscrystal.breacore.utils.memoization.MemoizedBlockSupplier;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.TagKey;
@@ -13,12 +20,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import com.mojang.datafixers.util.Pair;
-import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.utils.ItemStackHashStrategy;
-import com.phasetranscrystal.breacore.utils.memoization.MemoizedBlockSupplier;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;

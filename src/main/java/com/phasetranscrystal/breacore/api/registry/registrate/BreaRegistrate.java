@@ -1,5 +1,9 @@
 package com.phasetranscrystal.breacore.api.registry.registrate;
 
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import com.phasetranscrystal.breacore.BreaCore;
+
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -13,8 +17,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-import com.phasetranscrystal.breacore.BreaCore;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.Builder;
 import com.tterrag.registrate.builders.ItemBuilder;

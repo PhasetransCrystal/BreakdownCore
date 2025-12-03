@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.api.tag;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -9,7 +11,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.NotNull;
 
 public class TagUtil {

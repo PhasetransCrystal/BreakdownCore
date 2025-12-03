@@ -1,10 +1,11 @@
 package com.phasetranscrystal.breacore.api.registry.registrate;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;

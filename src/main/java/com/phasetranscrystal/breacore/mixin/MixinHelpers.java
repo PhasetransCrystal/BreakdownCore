@@ -1,10 +1,10 @@
 package com.phasetranscrystal.breacore.mixin;
 
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
-
 import com.phasetranscrystal.breacore.api.fluid.store.FluidStorage;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaFluidTypeExtensions;
+
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
 public class MixinHelpers {
 

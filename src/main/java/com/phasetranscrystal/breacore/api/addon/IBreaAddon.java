@@ -1,10 +1,10 @@
 package com.phasetranscrystal.breacore.api.addon;
 
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
-
 import com.phasetranscrystal.breacore.api.addon.event.MaterialCasingCollectionEvent;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
+
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 
