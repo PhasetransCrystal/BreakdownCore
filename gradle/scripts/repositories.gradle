@@ -5,8 +5,12 @@ repositories {
     }
     mavenCentral()
 
+    exclusiveContent { // Modrinth Maven
+        forRepository { maven { url = "https://api.modrinth.com/maven/" } }
+        filter { includeGroup("maven.modrinth") }
+    }
     exclusiveContent { // Curseforge Maven
-        forRepository { maven { url = "https://cursemaven.com" } }
+        forRepository { maven { url = "https://cursemaven.com/" } }
         filter { includeGroup("curse.maven") }
     }
     maven {
@@ -16,6 +20,7 @@ repositories {
         name = 'Kotlin for Forge'
         url = 'https://thedarkcolour.github.io/KotlinForForge/'
     }
+
     // MUI
     maven {
         name = 'IzzelAliz Maven'
