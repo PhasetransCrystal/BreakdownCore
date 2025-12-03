@@ -4,6 +4,10 @@ import net.minecraft.resources.ResourceLocation;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
+import com.phasetranscrystal.breacore.api.fluid.FluidState;
+import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKey;
+import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
 import com.phasetranscrystal.breacore.api.material.Element;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.info.MaterialFlag;
@@ -14,6 +18,7 @@ import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.UnaryOperator;
@@ -58,6 +63,105 @@ public class MaterialBuilder {
     /*
      * Material Types
      */
+
+    /**
+     * Add a {@link FluidProperty} to this Material.<br/>
+     * Will be created as a {@link FluidStorageKeys#LIQUID}, without a Fluid Block.
+     *
+     * @throws IllegalArgumentException If a {@link FluidProperty} has already been added to this Material.
+     */
+    public MaterialBuilder fluid() {
+        fluid(FluidStorageKeys.LIQUID, new FluidRegisterBuilder());
+        return this;
+    }
+
+    /**
+     * Add a {@link FluidProperty} to this Material.<br/>
+     * Will be created with the specified state a with standard {@link FluidRegisterBuilder} defaults.
+     * <p>
+     * Can be called multiple times to add multiple fluids.
+     */
+    public MaterialBuilder fluid(@NotNull FluidStorageKey key, @NotNull FluidState state) {
+        return fluid(key, new FluidRegisterBuilder().state(state));
+    }
+
+    /**
+     * Add a {@link FluidProperty} to this Material.<br/>
+     * <p>
+     * Can be called multiple times to add multiple fluids.
+     */
+    public MaterialBuilder fluid(@NotNull FluidStorageKey key, @NotNull FluidRegisterBuilder builder) {
+        properties.ensureSet(PropertyKey.FLUID);
+        FluidProperty property = properties.getProperty(PropertyKey.FLUID);
+        property.enqueueRegistration(key, builder);
+        return this;
+    }
+
+    /**
+     * Add a liquid for this material.
+     *
+     * @see #fluid(FluidStorageKey, FluidState)
+     */
+    public MaterialBuilder liquid() {
+        return fluid(FluidStorageKeys.LIQUID, FluidState.LIQUID);
+    }
+
+    /**
+     * Add a liquid for this material.
+     *
+     * @see #fluid(FluidStorageKey, FluidState)
+     */
+    public MaterialBuilder liquid(@NotNull FluidRegisterBuilder builder) {
+        return fluid(FluidStorageKeys.LIQUID, builder.state(FluidState.LIQUID));
+    }
+
+    public MaterialBuilder liquid(int temp) {
+        return liquid(new FluidRegisterBuilder().temperature(temp));
+    }
+
+    /**
+     * Add a plasma for this material.
+     *
+     * @see #fluid(FluidStorageKey, FluidState)
+     */
+    public MaterialBuilder plasma() {
+        return fluid(FluidStorageKeys.PLASMA, FluidState.PLASMA);
+    }
+
+    /**
+     * Add a plasma for this material.
+     *
+     * @see #fluid(FluidStorageKey, FluidState)
+     */
+    public MaterialBuilder plasma(@NotNull FluidRegisterBuilder builder) {
+        return fluid(FluidStorageKeys.PLASMA, builder.state(FluidState.PLASMA));
+    }
+
+    public MaterialBuilder plasma(int temp) {
+        return plasma(new FluidRegisterBuilder().temperature(temp));
+    }
+
+    /**
+     * Add a gas for this material.
+     *
+     * @see #fluid(FluidStorageKey, FluidState)
+     */
+    public MaterialBuilder gas() {
+        return fluid(FluidStorageKeys.GAS, FluidState.GAS);
+    }
+
+    /**
+     * Add a gas for this material.
+     *
+     * @see #fluid(FluidStorageKey, FluidState)
+     */
+    public MaterialBuilder gas(@NotNull FluidRegisterBuilder builder) {
+        return fluid(FluidStorageKeys.GAS, builder.state(FluidState.GAS));
+    }
+
+    public MaterialBuilder gas(int temp) {
+        return gas(new FluidRegisterBuilder().temperature(temp));
+    }
 
     /**
      * Add a {@link DustProperty} to this Material.<br/>

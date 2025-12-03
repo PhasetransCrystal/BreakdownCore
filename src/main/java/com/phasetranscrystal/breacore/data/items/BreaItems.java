@@ -71,19 +71,15 @@ public class BreaItems {
                         if (!state.hasProperty(LayeredCauldronBlock.LEVEL)) {
                             return InteractionResult.PASS;
                         }
-
                         int level = state.getValue(LayeredCauldronBlock.LEVEL);
                         if (level == 0)
                             return InteractionResult.PASS;
-
                         player.setItemInHand(hand, ChemicalHelper.get(MaterialItems.purifyMap.get(prefixItem.tagPrefix), prefixItem.material, stack.getCount()));
                         player.awardStat(Stats.USE_CAULDRON);
                         player.awardStat(Stats.ITEM_USED.get(stackItem));
                         LayeredCauldronBlock.lowerFillLevel(state, world, pos);
-
                     }
                 }
-
                 return world.isClientSide ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
             });
 

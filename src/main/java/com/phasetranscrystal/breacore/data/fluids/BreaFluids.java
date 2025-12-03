@@ -6,6 +6,7 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.fluid.potion.PotionFluid;
+import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
@@ -45,7 +46,7 @@ public class BreaFluids {
 
             if (fluidProperty != null) {
                 BreaRegistrate registrate = BreaRegistrate.createIgnoringListenerErrors(material.getModid());
-                // fluidProperty.registerFluids(material, registrate);
+                fluidProperty.registerFluids(material, registrate);
             }
         }
     }
@@ -56,6 +57,6 @@ public class BreaFluids {
 
     public static void handleNonMaterialFluids(@NotNull Material material, @NotNull Supplier<Fluid> fluid) {
         var property = material.getProperty(PropertyKey.FLUID);
-        // property.getStorage().store(FluidStorageKeys.LIQUID, fluid, null);
+        property.getStorage().store(FluidStorageKeys.LIQUID, fluid, null);
     }
 }

@@ -3,16 +3,25 @@ package com.phasetranscrystal.breacore.api.material;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import com.google.common.collect.ImmutableList;
 import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
+import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKey;
+import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
 import com.phasetranscrystal.breacore.api.material.info.MaterialFlag;
 import com.phasetranscrystal.breacore.api.material.info.MaterialFlags;
 import com.phasetranscrystal.breacore.api.material.info.MaterialIconSet;
+import com.phasetranscrystal.breacore.api.material.property.FluidProperty;
 import com.phasetranscrystal.breacore.api.material.property.IMaterialProperty;
 import com.phasetranscrystal.breacore.api.material.property.MaterialProperties;
 import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
+import com.phasetranscrystal.breacore.api.tag.TagUtil;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import com.phasetranscrystal.breacore.utils.BreaMath;
@@ -161,6 +170,124 @@ public class Material implements Comparable<Material> {
     }
 
     protected void calculateDecompositionType() {}
+
+    /**
+     * Retrieves a fluid from the material.
+     * Attempts to retrieve with {@link FluidProperty#getPrimaryKey()}, {@link FluidStorageKeys#LIQUID} and
+     * {@link FluidStorageKeys#GAS}.
+     *
+     * @return the fluid
+     * @see #getFluid(FluidStorageKey)
+     */
+    public Fluid getFluid() {
+        FluidProperty prop = getProperty(PropertyKey.FLUID);
+        if (prop == null) {
+            throw new IllegalArgumentException("Material " + getResourceLocation() + " does not have a Fluid!");
+        }
+
+        Fluid fluid = prop.get(prop.getPrimaryKey());
+        if (fluid != null) return fluid;
+
+        fluid = getFluid(FluidStorageKeys.LIQUID);
+        if (fluid != null) return fluid;
+
+        return getFluid(FluidStorageKeys.GAS);
+    }
+
+    /**
+     * @param key the key for the fluid
+     * @return the fluid corresponding with the key
+     */
+    public Fluid getFluid(@NotNull FluidStorageKey key) {
+        FluidProperty prop = getProperty(PropertyKey.FLUID);
+        if (prop == null) {
+            throw new IllegalArgumentException("Material " + getResourceLocation() + " does not have a Fluid!");
+        }
+
+        return prop.get(key);
+    }
+
+    /**
+     * @param amount the amount the FluidStack should have
+     * @return a FluidStack with the fluid and amount
+     * @see #getFluid(FluidStorageKey, int)
+     */
+    public FluidStack getFluid(int amount) {
+        return new FluidStack(getFluid(), amount);
+    }
+
+    /**
+     * @param key    the key for the fluid
+     * @param amount the amount the FluidStack should have
+     * @return a FluidStack with the fluid and amount
+     */
+    public FluidStack getFluid(@NotNull FluidStorageKey key, int amount) {
+        return new FluidStack(getFluid(key), amount);
+    }
+
+    /**
+     * @return a {@code TagKey<Fluid>} with the material's name as the tag key
+     * @see #getFluid(FluidStorageKey, int)
+     */
+    public TagKey<Fluid> getFluidTag() {
+        return TagUtil.createFluidTag(this.getName());
+    }
+
+    /**
+     * Retrieves a fluid builder from the material.
+     * <br/>
+     * NOTE: only available before the fluids are registered.
+     * <br/>
+     * Attempts to retrieve with {@link FluidProperty#getPrimaryKey()}, {@link FluidStorageKeys#LIQUID} and
+     * {@link FluidStorageKeys#GAS}.
+     *
+     * @return the fluid builder
+     */
+    public FluidRegisterBuilder getFluidBuilder() {
+        FluidProperty prop = getProperty(PropertyKey.FLUID);
+        if (prop == null) {
+            throw new IllegalArgumentException("Material " + getResourceLocation() + " does not have a Fluid!");
+        }
+
+        FluidStorageKey key = prop.getPrimaryKey();
+        FluidRegisterBuilder fluid = null;
+
+        if (key != null) fluid = prop.getStorage().getQueuedBuilder(key);
+        if (fluid != null) return fluid;
+
+        fluid = getFluidBuilder(FluidStorageKeys.LIQUID);
+        if (fluid != null) return fluid;
+
+        return getFluidBuilder(FluidStorageKeys.GAS);
+    }
+
+    /**
+     * NOTE: only available before the fluids are registered.
+     *
+     * @param key the key for the fluid
+     * @return the fluid corresponding with the key
+     */
+    public FluidRegisterBuilder getFluidBuilder(@NotNull FluidStorageKey key) {
+        FluidProperty prop = getProperty(PropertyKey.FLUID);
+        if (prop == null) {
+            throw new IllegalArgumentException("Material " + getResourceLocation() + " does not have a Fluid!");
+        }
+
+        return prop.getStorage().getQueuedBuilder(key);
+    }
+
+    public Item getBucket() {
+        Fluid fluid = getFluid();
+        return fluid.getBucket();
+    }
+
+    public int getBlockHarvestLevel() {
+        if (!hasProperty(PropertyKey.DUST))
+            throw new IllegalArgumentException("Material " + materialInfo.resourceLocation +
+                    " does not have a harvest level! Is probably a Fluid");
+        int harvestLevel = getProperty(PropertyKey.DUST).getHarvestLevel();
+        return harvestLevel > 0 ? harvestLevel - 1 : harvestLevel;
+    }
 
     public void setMaterialARGB(int materialRGB) {
         materialInfo.colors.set(0, materialRGB);
@@ -330,6 +457,14 @@ public class Material implements Comparable<Material> {
     public <T extends IMaterialProperty> void setProperty(PropertyKey<T> key, IMaterialProperty property) {
         properties.setProperty(key, property);
         properties.verify();
+    }
+
+    public boolean isSolid() {
+        return hasProperty(PropertyKey.INGOT) || hasProperty(PropertyKey.GEM);
+    }
+
+    public boolean hasFluid() {
+        return hasProperty(PropertyKey.FLUID);
     }
 
     public void verifyMaterial() {

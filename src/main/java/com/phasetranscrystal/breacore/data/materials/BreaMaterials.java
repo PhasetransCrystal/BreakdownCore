@@ -459,4 +459,12 @@ public class BreaMaterials {
     /// 幽匿
     public static Material Sculk;
     // endregion
+    // 空气
+    /// 幽匿
+    public static Material Air;
+    public static Material NetherAir;
+    public static Material EnderAir;
+    public static Material LiquidAir;
+    public static Material LiquidNetherAir;
+    public static Material LiquidEnderAir;
 }
