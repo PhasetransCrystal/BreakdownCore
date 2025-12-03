@@ -1,12 +1,12 @@
 package com.phasetranscrystal.breacore.common.quench.perk;
 
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.neoforged.bus.api.Event;
-
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 
 import java.util.Collections;
 import java.util.Map;

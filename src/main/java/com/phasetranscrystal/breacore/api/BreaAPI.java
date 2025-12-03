@@ -1,11 +1,13 @@
 package com.phasetranscrystal.breacore.api;
 
-import net.neoforged.fml.ModLoader;
-import net.neoforged.neoforge.registries.RegisterEvent;
+import com.phasetranscrystal.brealib.mixin.registrate.neoforge.RegisterEventAccessor;
 
 import com.phasetranscrystal.breacore.api.material.registry.IMaterialRegistry;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistry;
-import com.phasetranscrystal.brealib.mixin.registrate.neoforge.RegisterEventAccessor;
+
+import net.neoforged.fml.ModLoader;
+import net.neoforged.neoforge.registries.RegisterEvent;
+
 import org.jetbrains.annotations.ApiStatus;
 
 public class BreaAPI {

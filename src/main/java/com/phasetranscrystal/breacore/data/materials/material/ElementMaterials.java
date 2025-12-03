@@ -1,7 +1,13 @@
 package com.phasetranscrystal.breacore.data.materials.material;
 
-import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
+import com.phasetranscrystal.breacore.api.fluid.FluidState;
+import com.phasetranscrystal.breacore.api.fluid.attribute.FluidAttributes;
+import com.phasetranscrystal.breacore.api.fluid.store.FluidStorageKeys;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.data.materials.BreaElements.*;
@@ -18,7 +24,7 @@ public class ElementMaterials {
 
         Aluminium = new MaterialBuilder(BreaUtil.byPath("aluminium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(933))
+                .liquid(new FluidRegisterBuilder().temperature(933))
                 .ore()
                 .color(0x7db9d8).secondaryColor(0x756ac9c)
                 .appendFlags(EXT2_METAL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_RING, GENERATE_FRAME,
@@ -29,7 +35,8 @@ public class ElementMaterials {
 
         Americium = new MaterialBuilder(BreaUtil.byPath("americium"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(1449))
+                .liquid(new FluidRegisterBuilder().temperature(1449))
+                .plasma()
                 .color(0x287869).iconSet(RADIOACTIVE)
                 .appendFlags(EXT_METAL, GENERATE_FOIL, GENERATE_FINE_WIRE)
                 .element(Am)
@@ -37,24 +44,25 @@ public class ElementMaterials {
 
         Antimony = new MaterialBuilder(BreaUtil.byPath("antimony"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(904))
+                .liquid(new FluidRegisterBuilder().temperature(904))
                 .color(0xeaeaff).secondaryColor(0x8181bd).iconSet(SHINY)
                 .flags(MORTAR_GRINDABLE)
                 .element(Sb)
                 .buildAndRegister();
 
         Argon = new MaterialBuilder(BreaUtil.byPath("argon"))
-                // .gas()//.plasma()
+                .gas().plasma()
                 .color(0x00FF00)
                 .element(Ar)
                 .buildAndRegister();
 
         Arsenic = new MaterialBuilder(BreaUtil.byPath("arsenic"))
                 .dust()
-                // .gas(new FluidBuilder().state(FluidState.GAS).temperature(887))
+                .gas(new FluidRegisterBuilder()
+                        .state(FluidState.GAS)
+                        .temperature(887))
                 .color(0x9c9c8d).secondaryColor(0x676756)
                 .element(As)
-                // .hazard(HazardProperty.HazardTrigger.INHALATION, GTMedicalConditions.ARSENICOSIS)
                 .buildAndRegister();
 
         Astatine = new MaterialBuilder(BreaUtil.byPath("astatine"))
@@ -75,17 +83,16 @@ public class ElementMaterials {
 
         Beryllium = new MaterialBuilder(BreaUtil.byPath("beryllium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1560))
+                .liquid(new FluidRegisterBuilder().temperature(1560))
                 .ore()
                 .color(0x73d73d).secondaryColor(0x184537).iconSet(METALLIC)
                 .appendFlags(STD_METAL)
-                // .hazard(HazardProperty.HazardTrigger.SKIN_CONTACT, GTMedicalConditions.BERYLLIOSIS, false)
                 .element(Be)
                 .buildAndRegister();
 
         Bismuth = new MaterialBuilder(BreaUtil.byPath("bismuth"))
                 .ingot(1)
-                // .liquid(new FluidBuilder().temperature(545))
+                .liquid(new FluidRegisterBuilder().temperature(545))
                 .color(0x5fdddd).secondaryColor(0x517385).iconSet(METALLIC)
                 .element(Bi)
                 .buildAndRegister();
@@ -102,7 +109,7 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Bromine = new MaterialBuilder(BreaUtil.byPath("bromine"))
-                // .liquid(new FluidBuilder().attribute(FluidAttributes.ACID))
+                .liquid(new FluidRegisterBuilder().attribute(FluidAttributes.ACID))
                 .color(0x912200).secondaryColor(0x080101).iconSet(SHINY)
                 .element(Br)
                 .buildAndRegister();
@@ -126,7 +133,7 @@ public class ElementMaterials {
 
         Carbon = new MaterialBuilder(BreaUtil.byPath("carbon"))
                 .dust()
-                // .liquid(new FluidBuilder().temperature(4600))
+                .liquid(new FluidRegisterBuilder().temperature(4600))
                 .color(0x333030).secondaryColor(0x221c1c)
                 .element(C)
                 .buildAndRegister();
@@ -135,35 +142,33 @@ public class ElementMaterials {
                 .dust()
                 .color(0x636377).secondaryColor(0x431a34).iconSet(SHINY)
                 .element(Cd)
-                // .hazard(HazardProperty.HazardTrigger.ANY, GTMedicalConditions.POISON)
                 .buildAndRegister();
 
         Cerium = new MaterialBuilder(BreaUtil.byPath("cerium"))
                 .dust()
-                // .liquid(new FluidBuilder().temperature(1068))
+                .liquid(new FluidRegisterBuilder().temperature(1068))
                 .color(0x87917D).secondaryColor(0x5e6458).iconSet(METALLIC)
                 .element(Ce)
                 .buildAndRegister();
 
         Chlorine = new MaterialBuilder(BreaUtil.byPath("chlorine"))
-                // .gas(new FluidBuilder().state(FluidState.GAS).customStill())
+                .gas(new FluidRegisterBuilder().state(FluidState.GAS).customStill())
                 .element(Cl)
                 // TODO hazard
                 .buildAndRegister();
 
         Chromium = new MaterialBuilder(BreaUtil.byPath("chromium"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(2180))
+                .liquid(new FluidRegisterBuilder().temperature(2180))
                 .color(0xf3e0ea).secondaryColor(0x441f2e).iconSet(SHINY)
                 .appendFlags(EXT_METAL, GENERATE_ROTOR)
                 .element(Cr)
                 .blast(1700)
-                // .hazard(HazardProperty.HazardTrigger.SKIN_CONTACT, GTMedicalConditions.CARCINOGEN)
                 .buildAndRegister();
 
         Cobalt = new MaterialBuilder(BreaUtil.byPath("cobalt"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1768))
+                .liquid(new FluidRegisterBuilder().temperature(1768))
                 .ore() // leave for TiCon ore processing
                 .color(0x5050FA).secondaryColor(0x2d2d7a).iconSet(METALLIC)
                 .appendFlags(EXT_METAL, GENERATE_FINE_WIRE)
@@ -178,7 +183,7 @@ public class ElementMaterials {
 
         Copper = new MaterialBuilder(BreaUtil.byPath("copper"))
                 .ingot(1)
-                // .liquid(new FluidBuilder().temperature(1358))
+                .liquid(new FluidRegisterBuilder().temperature(1358))
                 .ore()
                 .color(0xe77c56).secondaryColor(0xe4673e).iconSet(BRIGHT)
                 .appendFlags(EXT_METAL, MORTAR_GRINDABLE, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_RING,
@@ -193,14 +198,14 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Darmstadtium = new MaterialBuilder(BreaUtil.byPath("darmstadtium"))
-                .ingot()
+                .ingot().fluid()
                 .color(0x578062).iconSet(RADIOACTIVE)
                 .appendFlags(EXT2_METAL, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_SMALL_GEAR)
                 .element(Ds)
                 .buildAndRegister();
 
         Deuterium = new MaterialBuilder(BreaUtil.byPath("deuterium"))
-                // .gas(new FluidBuilder().state(FluidState.GAS).customStill())
+                .gas(new FluidRegisterBuilder().state(FluidState.GAS).customStill())
                 .element(D)
                 .buildAndRegister();
 
@@ -228,10 +233,12 @@ public class ElementMaterials {
 
         Europium = new MaterialBuilder(BreaUtil.byPath("europium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1099))
+                .liquid(new FluidRegisterBuilder().temperature(1099))
                 .color(0x20FFFF).secondaryColor(0x429393).iconSet(METALLIC)
-                .appendFlags(STD_METAL, GENERATE_LONG_ROD, GENERATE_FINE_WIRE, GENERATE_SPRING, GENERATE_FOIL, GENERATE_FRAME)
+                .appendFlags(STD_METAL, GENERATE_LONG_ROD, GENERATE_FINE_WIRE, GENERATE_SPRING, GENERATE_FOIL,
+                        GENERATE_FRAME)
                 .element(Eu)
+                .blast(b -> b.temp(6000))
                 .buildAndRegister();
 
         Fermium = new MaterialBuilder(BreaUtil.byPath("fermium"))
@@ -247,9 +254,8 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Fluorine = new MaterialBuilder(BreaUtil.byPath("fluorine"))
-                // .gas(new FluidBuilder().state(FluidState.GAS).customStill())
+                .gas(new FluidRegisterBuilder().state(FluidState.GAS).customStill())
                 .element(F)
-                // .hazard(HazardProperty.HazardTrigger.SKIN_CONTACT, GTMedicalConditions.CHEMICAL_BURNS, false)
                 .buildAndRegister();
 
         Francium = new MaterialBuilder(BreaUtil.byPath("francium"))
@@ -264,7 +270,7 @@ public class ElementMaterials {
 
         Gallium = new MaterialBuilder(BreaUtil.byPath("gallium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(303))
+                .liquid(new FluidRegisterBuilder().temperature(303))
                 .color(0x7a84ca).secondaryColor(0x13132e).iconSet(SHINY)
                 .appendFlags(STD_METAL, GENERATE_FOIL)
                 .element(Ga)
@@ -277,7 +283,7 @@ public class ElementMaterials {
 
         Gold = new MaterialBuilder(BreaUtil.byPath("gold"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1337))
+                .liquid(new FluidRegisterBuilder().temperature(1337))
                 .ore()
                 .color(0xfdf55f).secondaryColor(0xf25833).iconSet(SHINY)
                 .appendFlags(EXT2_METAL, GENERATE_RING, MORTAR_GRINDABLE, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES,
@@ -303,28 +309,33 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Hydrogen = new MaterialBuilder(BreaUtil.byPath("hydrogen"))
-                // .gas()
+                .gas()
                 .color(0x0000B5)
                 .element(H)
                 .buildAndRegister();
 
         Helium = new MaterialBuilder(BreaUtil.byPath("helium"))
-                // .gas(new FluidBuilder().state(FluidState.GAS).customStill())
-                // .plasma()
-                // .liquid(new
-                // FluidBuilder().temperature(4).color(0xFCFF90).name("liquid_helium").translation("gtceu.fluid.liquid_generic"))
+                .gas(new FluidRegisterBuilder().state(FluidState.GAS).customStill())
+                .plasma()
+                .liquid(new FluidRegisterBuilder()
+                        .temperature(4)
+                        .color(0xFCFF90)
+                        .name("liquid_helium")
+                        .translation("gtceu.fluid.liquid_generic"))
                 .element(He)
                 .buildAndRegister();
-        // Helium.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.GAS);
+        Helium.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.GAS);
 
         Helium3 = new MaterialBuilder(BreaUtil.byPath("helium_3"))
-                // .gas(new FluidBuilder().customStill().translation("gtceu.fluid.generic"))
+                .gas(new FluidRegisterBuilder()
+                        .customStill()
+                        .translation("gtceu.fluid.generic"))
                 .element(He3)
                 .buildAndRegister();
 
         Indium = new MaterialBuilder(BreaUtil.byPath("indium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(430))
+                .liquid(new FluidRegisterBuilder().temperature(430))
                 .color(0x5c3588).secondaryColor(0x2b0b4a).iconSet(SHINY)
                 .element(In)
                 .buildAndRegister();
@@ -337,16 +348,17 @@ public class ElementMaterials {
 
         Iridium = new MaterialBuilder(BreaUtil.byPath("iridium"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(2719))
+                .liquid(new FluidRegisterBuilder().temperature(2719))
                 .color(0x99fede).secondaryColor(0x6cd1cf).iconSet(METALLIC)
                 .appendFlags(EXT2_METAL, GENERATE_FINE_WIRE, GENERATE_GEAR, GENERATE_FRAME)
                 .element(Ir)
+                .blast(b -> b.temp(4500))
                 .buildAndRegister();
 
         Iron = new MaterialBuilder(BreaUtil.byPath("iron"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1811))
-                // .plasma()
+                .liquid(new FluidRegisterBuilder().temperature(1811))
+                .plasma()
                 .ore()
                 .color(0xeeeeee).secondaryColor(0x979797).iconSet(METALLIC)
                 .appendFlags(EXT2_METAL, MORTAR_GRINDABLE, GENERATE_ROTOR, GENERATE_SMALL_GEAR, GENERATE_GEAR,
@@ -356,14 +368,16 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Krypton = new MaterialBuilder(BreaUtil.byPath("krypton"))
-                // .gas(new FluidBuilder().customStill().translation("gtceu.fluid.generic"))
+                .gas(new FluidRegisterBuilder()
+                        .customStill()
+                        .translation("gtceu.fluid.generic"))
                 .color(0x80FF80)
                 .element(Kr)
                 .buildAndRegister();
 
         Lanthanum = new MaterialBuilder(BreaUtil.byPath("lanthanum"))
                 .dust()
-                // .liquid(new FluidBuilder().temperature(1193))
+                .liquid(new FluidRegisterBuilder().temperature(1193))
                 .color(0xd17d50).secondaryColor(0x4a3560).iconSet(METALLIC)
                 .element(La)
                 .buildAndRegister();
@@ -376,18 +390,17 @@ public class ElementMaterials {
 
         Lead = new MaterialBuilder(BreaUtil.byPath("lead"))
                 .ingot(1)
-                // .liquid(new FluidBuilder().temperature(600))
+                .liquid(new FluidRegisterBuilder().temperature(600))
                 .ore()
                 .color(0x7e6f82).secondaryColor(0x290633)
                 .appendFlags(EXT2_METAL, MORTAR_GRINDABLE, GENERATE_ROTOR, GENERATE_SPRING, GENERATE_SPRING_SMALL,
                         GENERATE_FINE_WIRE)
                 .element(Pb)
-                // .hazard(HazardProperty.HazardTrigger.INHALATION, GTMedicalConditions.WEAK_POISON)
                 .buildAndRegister();
 
         Lithium = new MaterialBuilder(BreaUtil.byPath("lithium"))
                 .dust()
-                // .liquid(new FluidBuilder().temperature(454))
+                .liquid(new FluidRegisterBuilder().temperature(454))
                 .ore()
                 .color(0xd7e7ee).secondaryColor(0xBDC7DB)
                 .element(Li)
@@ -400,14 +413,14 @@ public class ElementMaterials {
 
         Lutetium = new MaterialBuilder(BreaUtil.byPath("lutetium"))
                 .dust()
-                // .liquid(new FluidBuilder().temperature(1925))
+                .liquid(new FluidRegisterBuilder().temperature(1925))
                 .color(0x00ccff).secondaryColor(0x4c687a).iconSet(METALLIC)
                 .element(Lu)
                 .buildAndRegister();
 
         Magnesium = new MaterialBuilder(BreaUtil.byPath("magnesium"))
                 .dust()
-                // .liquid(new FluidBuilder().temperature(923))
+                .liquid(new FluidRegisterBuilder().temperature(923))
                 .color(0xd6e3ff).secondaryColor(0x594d19).iconSet(FINE)
                 .element(Mg)
                 .buildAndRegister();
@@ -419,7 +432,7 @@ public class ElementMaterials {
 
         Manganese = new MaterialBuilder(BreaUtil.byPath("manganese"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1519))
+                .liquid(new FluidRegisterBuilder().temperature(1519))
                 .color(0x88a669).secondaryColor(0xCDE1B9)
                 .appendFlags(STD_METAL, GENERATE_FOIL, GENERATE_BOLT_SCREW)
                 .element(Mn)
@@ -431,15 +444,14 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Mercury = new MaterialBuilder(BreaUtil.byPath("mercury"))
-                // .fluid()
+                .fluid()
                 .color(0xE6DCDC).iconSet(DULL)
                 .element(Hg)
-                // .hazard(HazardProperty.HazardTrigger.ANY, GTMedicalConditions.WEAK_POISON)
                 .buildAndRegister();
 
         Molybdenum = new MaterialBuilder(BreaUtil.byPath("molybdenum"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(2896))
+                .liquid(new FluidRegisterBuilder().temperature(2896))
                 .ore()
                 .color(0xc1c1ce).secondaryColor(0x404068).iconSet(SHINY)
                 .element(Mo)
@@ -452,7 +464,7 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Neodymium = new MaterialBuilder(BreaUtil.byPath("neodymium"))
-                .ingot().ore()
+                .ingot().fluid().ore()
                 .color(0x6c5863).secondaryColor(0x2c1919).iconSet(METALLIC)
                 .appendFlags(STD_METAL, GENERATE_ROD, GENERATE_BOLT_SCREW)
                 .element(Nd)
@@ -460,7 +472,7 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Neon = new MaterialBuilder(BreaUtil.byPath("neon"))
-                // .gas()
+                .gas()
                 .color(0xFAB4B4)
                 .element(Ne)
                 .buildAndRegister();
@@ -473,8 +485,8 @@ public class ElementMaterials {
 
         Nickel = new MaterialBuilder(BreaUtil.byPath("nickel"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1728))
-                // .plasma()
+                .liquid(new FluidRegisterBuilder().temperature(1728))
+                .plasma()
                 .ore()
                 .color(0xccdff5).secondaryColor(0x59563a).iconSet(METALLIC)
                 .appendFlags(STD_METAL, MORTAR_GRINDABLE)
@@ -487,13 +499,14 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Niobium = new MaterialBuilder(BreaUtil.byPath("niobium"))
-                .ingot()
+                .ingot().fluid()
                 .color(0xb494b4).secondaryColor(0x4b3f4d).iconSet(BRIGHT)
                 .element(Nb)
+                .blast(b -> b.temp(2750))
                 .buildAndRegister();
 
         Nitrogen = new MaterialBuilder(BreaUtil.byPath("nitrogen"))
-                // .gas()//.plasma()
+                .gas().plasma()
                 .color(0x00BFC1)
                 .element(N)
                 .buildAndRegister();
@@ -511,27 +524,32 @@ public class ElementMaterials {
 
         Osmium = new MaterialBuilder(BreaUtil.byPath("osmium"))
                 .ingot(4)
-                // .liquid(new FluidBuilder().temperature(3306))
+                .liquid(new FluidRegisterBuilder().temperature(3306))
                 .color(0x54afff).secondaryColor(0x6e6eff).iconSet(METALLIC)
                 .appendFlags(EXT2_METAL, GENERATE_FOIL)
                 .element(Os)
+                .blast(b -> b.temp(4500))
                 .buildAndRegister();
 
         Oxygen = new MaterialBuilder(BreaUtil.byPath("oxygen"))
-                // .gas()
-                // .liquid(new
-                // FluidBuilder().temperature(85).color(0x6688DD).name("liquid_oxygen").translation("gtceu.fluid.liquid_generic"))
-                // .plasma()
+                .gas()
+                .liquid(new FluidRegisterBuilder()
+                        .temperature(85)
+                        .color(0x6688DD)
+                        .name("liquid_oxygen")
+                        .translation("gtceu.fluid.liquid_generic"))
+                .plasma()
                 .color(0x4CC3FF)
                 .element(O)
                 .buildAndRegister();
-        // Oxygen.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.GAS);
+        Oxygen.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.GAS);
 
         Palladium = new MaterialBuilder(BreaUtil.byPath("palladium"))
-                .ingot().ore()
+                .ingot().fluid().ore()
                 .color(0xbd92b5).secondaryColor(0x535b14).iconSet(SHINY)
                 .appendFlags(EXT_METAL, GENERATE_FOIL, GENERATE_FINE_WIRE)
                 .element(Pd)
+                .blast(b -> b.temp(1828))
                 .buildAndRegister();
 
         Phosphorus = new MaterialBuilder(BreaUtil.byPath("phosphorus"))
@@ -549,7 +567,7 @@ public class ElementMaterials {
 
         Platinum = new MaterialBuilder(BreaUtil.byPath("platinum"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(2041))
+                .liquid(new FluidRegisterBuilder().temperature(2041))
                 .ore()
                 .color(0xfff4ba).secondaryColor(0x8d8d71).iconSet(SHINY)
                 .appendFlags(EXT2_METAL, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_RING, GENERATE_SPRING_SMALL,
@@ -559,7 +577,7 @@ public class ElementMaterials {
 
         Plutonium239 = new MaterialBuilder(BreaUtil.byPath("plutonium_239"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(913))
+                .liquid(new FluidRegisterBuilder().temperature(913))
                 .ore(true)
                 .color(0xba2727).secondaryColor(0x222730).iconSet(RADIOACTIVE)
                 .element(Pu239)
@@ -567,7 +585,7 @@ public class ElementMaterials {
 
         Plutonium241 = new MaterialBuilder(BreaUtil.byPath("plutonium_241"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(913))
+                .liquid(new FluidRegisterBuilder().temperature(913))
                 .color(0xff4c4c).secondaryColor(0x222730).iconSet(RADIOACTIVE)
                 .appendFlags(EXT_METAL)
                 .element(Pu241)
@@ -575,7 +593,7 @@ public class ElementMaterials {
 
         Potassium = new MaterialBuilder(BreaUtil.byPath("potassium"))
                 .dust(1)
-                // .liquid(new FluidBuilder().temperature(337))
+                .liquid(new FluidRegisterBuilder().temperature(337))
                 .color(0xd2e1f2).secondaryColor(0x6189b8).iconSet(METALLIC)
                 .element(K)
                 .buildAndRegister();
@@ -599,7 +617,7 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Radon = new MaterialBuilder(BreaUtil.byPath("radon"))
-                // .gas()
+                .gas()
                 .color(0xFF39FF)
                 .element(Rn)
                 .buildAndRegister();
@@ -616,10 +634,11 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Rhodium = new MaterialBuilder(BreaUtil.byPath("rhodium"))
-                .ingot()
+                .ingot().fluid()
                 .color(0xfd46b1).secondaryColor(0xDC0C58).iconSet(BRIGHT)
                 .appendFlags(EXT2_METAL, GENERATE_GEAR, GENERATE_FINE_WIRE)
                 .element(Rh)
+                .blast(b -> b.temp(2237))
                 .buildAndRegister();
 
         Roentgenium = new MaterialBuilder(BreaUtil.byPath("roentgenium"))
@@ -633,10 +652,11 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Ruthenium = new MaterialBuilder(BreaUtil.byPath("ruthenium"))
-                .ingot()
+                .ingot().fluid()
                 .color(0xa2cde0).secondaryColor(0x3c7285).iconSet(SHINY)
                 .flags(GENERATE_FOIL, GENERATE_GEAR)
                 .element(Ru)
+                .blast(b -> b.temp(2607))
                 .buildAndRegister();
 
         Rutherfordium = new MaterialBuilder(BreaUtil.byPath("rutherfordium"))
@@ -646,10 +666,11 @@ public class ElementMaterials {
 
         Samarium = new MaterialBuilder(BreaUtil.byPath("samarium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1345))
+                .liquid(new FluidRegisterBuilder().temperature(1345))
                 .color(0xc2c289).secondaryColor(0x235254).iconSet(METALLIC)
                 .flags(GENERATE_LONG_ROD)
                 .element(Sm)
+                .blast(b -> b.temp(5400))
                 .buildAndRegister();
 
         Scandium = new MaterialBuilder(BreaUtil.byPath("scandium"))
@@ -669,7 +690,7 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Silicon = new MaterialBuilder(BreaUtil.byPath("silicon"))
-                .ingot()
+                .ingot().fluid()
                 .color(0x707078).secondaryColor(0x10293b).iconSet(METALLIC)
                 .flags(GENERATE_FOIL)
                 .element(Si)
@@ -678,7 +699,7 @@ public class ElementMaterials {
 
         Silver = new MaterialBuilder(BreaUtil.byPath("silver"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(1235))
+                .liquid(new FluidRegisterBuilder().temperature(1235))
                 .ore()
                 .color(0xDCDCFF).secondaryColor(0x5a4705).iconSet(SHINY)
                 .appendFlags(EXT2_METAL, MORTAR_GRINDABLE, GENERATE_FINE_WIRE, GENERATE_RING)
@@ -705,7 +726,7 @@ public class ElementMaterials {
 
         Tantalum = new MaterialBuilder(BreaUtil.byPath("tantalum"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(3290))
+                .liquid(new FluidRegisterBuilder().temperature(3290))
                 .color(0xa8a7c6).secondaryColor(0x1f2b20).iconSet(METALLIC)
                 .appendFlags(STD_METAL, GENERATE_FOIL, GENERATE_FINE_WIRE)
                 .element(Ta)
@@ -736,7 +757,7 @@ public class ElementMaterials {
 
         Thorium = new MaterialBuilder(BreaUtil.byPath("thorium"))
                 .ingot()
-                // .liquid(new FluidBuilder().temperature(2023))
+                .liquid(new FluidRegisterBuilder().temperature(2023))
                 .ore()
                 .color(0x25411b).secondaryColor(0x051E05).iconSet(SHINY)
                 .appendFlags(STD_METAL, GENERATE_ROD)
@@ -757,8 +778,8 @@ public class ElementMaterials {
 
         Tin = new MaterialBuilder(BreaUtil.byPath("tin"))
                 .ingot(1)
-                // .liquid(new FluidBuilder().temperature(505))
-                // .plasma()
+                .liquid(new FluidRegisterBuilder().temperature(505))
+                .plasma()
                 .ore()
                 .color(0xfafeff).secondaryColor(0x4e676c)
                 .appendFlags(EXT2_METAL, MORTAR_GRINDABLE, GENERATE_ROTOR, GENERATE_SPRING, GENERATE_SPRING_SMALL,
@@ -768,14 +789,15 @@ public class ElementMaterials {
 
         Titanium = new MaterialBuilder(BreaUtil.byPath("titanium")) // todo Ore? Look at EBF recipe here if we do Ti
                                                                     // ores
-                .ingot(3)
+                .ingot(3).fluid()
                 .color(0xed8eea).secondaryColor(0xff64bc).iconSet(METALLIC)
                 .appendFlags(EXT2_METAL, GENERATE_ROTOR, GENERATE_SMALL_GEAR, GENERATE_GEAR, GENERATE_FRAME)
                 .element(Ti)
+                .blast(b -> b.temp(1941))
                 .buildAndRegister();
 
         Tritium = new MaterialBuilder(BreaUtil.byPath("tritium"))
-                // .gas(new FluidBuilder().state(FluidState.GAS).customStill())
+                .gas(new FluidRegisterBuilder().state(FluidState.GAS).customStill())
                 .color(0xff316b).secondaryColor(0xd00000)
                 .iconSet(METALLIC)
                 .element(T)
@@ -783,16 +805,17 @@ public class ElementMaterials {
 
         Tungsten = new MaterialBuilder(BreaUtil.byPath("tungsten"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(3695))
+                .liquid(new FluidRegisterBuilder().temperature(3695))
                 .color(0x3b3a32).secondaryColor(0x2a2800).iconSet(METALLIC)
                 .appendFlags(EXT2_METAL, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_FOIL, GENERATE_GEAR,
                         GENERATE_FRAME)
                 .element(W)
+                .blast(b -> b.temp(3600))
                 .buildAndRegister();
 
         Uranium238 = new MaterialBuilder(BreaUtil.byPath("uranium_238"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(1405))
+                .liquid(new FluidRegisterBuilder().temperature(1405))
                 .color(0x1d891d).secondaryColor(0x33342c).iconSet(RADIOACTIVE)
                 .appendFlags(EXT_METAL)
                 .element(U238)
@@ -800,21 +823,21 @@ public class ElementMaterials {
 
         Uranium235 = new MaterialBuilder(BreaUtil.byPath("uranium_235"))
                 .ingot(3)
-                // .liquid(new FluidBuilder().temperature(1405))
+                .liquid(new FluidRegisterBuilder().temperature(1405))
                 .color(0x46FA46).secondaryColor(0x33342c).iconSet(RADIOACTIVE)
                 .appendFlags(EXT_METAL)
                 .element(U235)
                 .buildAndRegister();
 
         Vanadium = new MaterialBuilder(BreaUtil.byPath("vanadium"))
-                .ingot()
+                .ingot().fluid()
                 .color(0x696d76).secondaryColor(0x240808).iconSet(METALLIC)
                 .element(V)
                 .blast(2183)
                 .buildAndRegister();
 
         Xenon = new MaterialBuilder(BreaUtil.byPath("xenon"))
-                // .gas()
+                .gas()
                 .color(0x00FFFF)
                 .element(Xe)
                 .buildAndRegister();
@@ -825,7 +848,7 @@ public class ElementMaterials {
                 .buildAndRegister();
 
         Yttrium = new MaterialBuilder(BreaUtil.byPath("yttrium"))
-                .ingot()
+                .ingot().fluid()
                 .color(0x7d8072).secondaryColor(0x15161a).iconSet(METALLIC)
                 .element(Y)
                 .blast(1799)
@@ -833,7 +856,7 @@ public class ElementMaterials {
 
         Zinc = new MaterialBuilder(BreaUtil.byPath("zinc"))
                 .ingot(1)
-                // .liquid(new FluidBuilder().temperature(693))
+                .liquid(new FluidRegisterBuilder().temperature(693))
                 .color(0xEBEBFA).secondaryColor(0x232c30).iconSet(METALLIC)
                 .appendFlags(STD_METAL, MORTAR_GRINDABLE, GENERATE_FOIL, GENERATE_RING, GENERATE_FINE_WIRE)
                 .element(Zn)

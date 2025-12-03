@@ -1,8 +1,9 @@
 package com.phasetranscrystal.breacore.api.item;
 
+import com.phasetranscrystal.breacore.api.item.component.IItemComponent;
+
 import net.minecraft.world.item.Item;
 
-import com.phasetranscrystal.breacore.api.item.component.IItemComponent;
 import lombok.Getter;
 
 import java.util.ArrayList;

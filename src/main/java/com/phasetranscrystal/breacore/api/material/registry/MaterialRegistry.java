@@ -1,15 +1,16 @@
 package com.phasetranscrystal.breacore.api.material.registry;
 
+import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistry;
+import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistrationInfo;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
-import com.phasetranscrystal.breacore.BreaCore;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistry;
-import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

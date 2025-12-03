@@ -1,5 +1,10 @@
 package com.phasetranscrystal.breacore.common.quench.stuct;
 
+import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.common.quench.EquipAssemblyComponent;
+
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -11,10 +16,6 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.common.quench.EquipAssemblyComponent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;

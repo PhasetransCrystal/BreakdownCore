@@ -1,12 +1,5 @@
 package com.phasetranscrystal.breacore.data.items;
 
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.LayeredCauldronBlock;
-
 import com.phasetranscrystal.breacore.api.item.ComponentItem;
 import com.phasetranscrystal.breacore.api.item.IComponentItem;
 import com.phasetranscrystal.breacore.api.item.TagPrefixItem;
@@ -19,6 +12,14 @@ import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.utils.memoization.CacheMemoizer;
+
+import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
+
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
@@ -71,19 +72,15 @@ public class BreaItems {
                         if (!state.hasProperty(LayeredCauldronBlock.LEVEL)) {
                             return InteractionResult.PASS;
                         }
-
                         int level = state.getValue(LayeredCauldronBlock.LEVEL);
                         if (level == 0)
                             return InteractionResult.PASS;
-
                         player.setItemInHand(hand, ChemicalHelper.get(MaterialItems.purifyMap.get(prefixItem.tagPrefix), prefixItem.material, stack.getCount()));
                         player.awardStat(Stats.USE_CAULDRON);
                         player.awardStat(Stats.ITEM_USED.get(stackItem));
                         LayeredCauldronBlock.lowerFillLevel(state, world, pos);
-
                     }
                 }
-
                 return world.isClientSide ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
             });
 

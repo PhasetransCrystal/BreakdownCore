@@ -1,8 +1,9 @@
 package com.phasetranscrystal.breacore.api.material.registry;
 
+import com.phasetranscrystal.breacore.api.material.Material;
+
 import net.minecraft.resources.ResourceLocation;
 
-import com.phasetranscrystal.breacore.api.material.Material;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.UnmodifiableView;
 

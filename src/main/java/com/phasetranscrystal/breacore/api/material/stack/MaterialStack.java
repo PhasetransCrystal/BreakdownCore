@@ -1,8 +1,10 @@
 package com.phasetranscrystal.breacore.api.material.stack;
 
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;

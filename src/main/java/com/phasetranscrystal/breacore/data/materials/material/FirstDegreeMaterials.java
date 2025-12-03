@@ -1,7 +1,9 @@
 package com.phasetranscrystal.breacore.data.materials.material;
 
-import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
+import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet.*;
@@ -31,6 +33,7 @@ public class FirstDegreeMaterials {
                 .buildAndRegister();
 
         Water = new MaterialBuilder(BreaUtil.byPath("water"))
+                .liquid(new FluidRegisterBuilder().temperature(300))
                 .color(0x0000FF)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Hydrogen, 2, Oxygen, 1)
@@ -63,6 +66,9 @@ public class FirstDegreeMaterials {
 
         Ice = new MaterialBuilder(BreaUtil.byPath("ice"))
                 .dust(0)
+                .liquid(new FluidRegisterBuilder()
+                        .temperature(273)
+                        .customStill())
                 .color(0xeef6ff, false).secondaryColor(0x6389c9).iconSet(SHINY)
                 .flags(NO_SMASHING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES, DISABLE_DECOMPOSITION)
                 .components(Hydrogen, 2, Oxygen, 1)

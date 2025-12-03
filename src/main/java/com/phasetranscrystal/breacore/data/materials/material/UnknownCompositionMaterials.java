@@ -1,7 +1,9 @@
 package com.phasetranscrystal.breacore.data.materials.material;
 
-import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.fluid.FluidRegisterBuilder;
+import com.phasetranscrystal.breacore.api.material.registry.MaterialBuilder;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet.*;
@@ -23,7 +25,7 @@ public class UnknownCompositionMaterials {
                 .buildAndRegister();
 
         Lava = new MaterialBuilder(BreaUtil.byPath("lava"))
-                .color(0xFF4000).buildAndRegister();
+                .fluid().color(0xFF4000).buildAndRegister();
 
         Netherite = new MaterialBuilder(BreaUtil.byPath("netherite"))
                 .ingot().color(0x4b4042).secondaryColor(0x474447)
@@ -31,6 +33,7 @@ public class UnknownCompositionMaterials {
 
         Glowstone = new MaterialBuilder(BreaUtil.byPath("glowstone"))
                 .dust(1)
+                .liquid(new FluidRegisterBuilder().temperature(500))
                 .color(0xfcb34c).secondaryColor(0xce7533).iconSet(SHINY)
                 .flags(NO_SMASHING, GENERATE_PLATE, EXCLUDE_PLATE_COMPRESSOR_RECIPE,
                         EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
@@ -55,6 +58,13 @@ public class UnknownCompositionMaterials {
                 .flags(NO_SMASHING, FLAMMABLE)
                 .buildAndRegister();
 
+        Milk = new MaterialBuilder(BreaUtil.byPath("milk"))
+                .liquid(new FluidRegisterBuilder()
+                        .temperature(295)
+                        .customStill())
+                .color(0xfffbf0).secondaryColor(0xf6eac8).iconSet(FINE)
+                .buildAndRegister();
+
         Wood = new MaterialBuilder(BreaUtil.byPath("wood"))
                 .wood()
                 .color(0xc29f6d).secondaryColor(0x643200).iconSet(WOOD)
@@ -71,52 +81,52 @@ public class UnknownCompositionMaterials {
 
         // These colors are much nicer looking than those in MC's EnumDyeColor
         DyeBlack = new MaterialBuilder(BreaUtil.byPath("black_dye"))
-                .color(0x202020).buildAndRegister();
+                .fluid().color(0x202020).buildAndRegister();
 
         DyeRed = new MaterialBuilder(BreaUtil.byPath("red_dye"))
-                .color(0xFF0000).buildAndRegister();
+                .fluid().color(0xFF0000).buildAndRegister();
 
         DyeGreen = new MaterialBuilder(BreaUtil.byPath("green_dye"))
-                .color(0x00FF00).buildAndRegister();
+                .fluid().color(0x00FF00).buildAndRegister();
 
         DyeBrown = new MaterialBuilder(BreaUtil.byPath("brown_dye"))
-                .color(0x604000).buildAndRegister();
+                .fluid().color(0x604000).buildAndRegister();
 
         DyeBlue = new MaterialBuilder(BreaUtil.byPath("blue_dye"))
-                .color(0x0020FF).buildAndRegister();
+                .fluid().color(0x0020FF).buildAndRegister();
 
         DyePurple = new MaterialBuilder(BreaUtil.byPath("purple_dye"))
-                .color(0x800080).buildAndRegister();
+                .fluid().color(0x800080).buildAndRegister();
 
         DyeCyan = new MaterialBuilder(BreaUtil.byPath("cyan_dye"))
-                .color(0x00FFFF).buildAndRegister();
+                .fluid().color(0x00FFFF).buildAndRegister();
 
         DyeLightGray = new MaterialBuilder(BreaUtil.byPath("light_gray_dye"))
-                .color(0xC0C0C0).buildAndRegister();
+                .fluid().color(0xC0C0C0).buildAndRegister();
 
         DyeGray = new MaterialBuilder(BreaUtil.byPath("gray_dye"))
-                .color(0x808080).buildAndRegister();
+                .fluid().color(0x808080).buildAndRegister();
 
         DyePink = new MaterialBuilder(BreaUtil.byPath("pink_dye"))
-                .color(0xFFC0C0).buildAndRegister();
+                .fluid().color(0xFFC0C0).buildAndRegister();
 
         DyeLime = new MaterialBuilder(BreaUtil.byPath("lime_dye"))
-                .color(0x80FF80).buildAndRegister();
+                .fluid().color(0x80FF80).buildAndRegister();
 
         DyeYellow = new MaterialBuilder(BreaUtil.byPath("yellow_dye"))
-                .color(0xFFFF00).buildAndRegister();
+                .fluid().color(0xFFFF00).buildAndRegister();
 
         DyeLightBlue = new MaterialBuilder(BreaUtil.byPath("light_blue_dye"))
-                .color(0x6080FF).buildAndRegister();
+                .fluid().color(0x6080FF).buildAndRegister();
 
         DyeMagenta = new MaterialBuilder(BreaUtil.byPath("magenta_dye"))
-                .color(0xFF00FF).buildAndRegister();
+                .fluid().color(0xFF00FF).buildAndRegister();
 
         DyeOrange = new MaterialBuilder(BreaUtil.byPath("orange_dye"))
-                .color(0xFF8000).buildAndRegister();
+                .fluid().color(0xFF8000).buildAndRegister();
 
         DyeWhite = new MaterialBuilder(BreaUtil.byPath("white_dye"))
-                .color(0xFFFFFF).buildAndRegister();
+                .fluid().color(0xFFFFFF).buildAndRegister();
 
         TreatedWood = new MaterialBuilder(BreaUtil.byPath("treated_wood"))
                 .wood()
@@ -130,7 +140,7 @@ public class UnknownCompositionMaterials {
                 .buildAndRegister();
 
         Wax = new MaterialBuilder(BreaUtil.byPath("wax"))
-                .ingot()
+                .ingot().fluid()
                 .color(0xfabf29)
                 .flags(NO_SMELTING)
                 .buildAndRegister();

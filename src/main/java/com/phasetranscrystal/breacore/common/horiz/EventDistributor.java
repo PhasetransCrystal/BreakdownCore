@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.common.horiz;
 
+import com.phasetranscrystal.brealib.utils.Tree;
+
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.ICancellableEvent;
@@ -7,7 +9,6 @@ import net.neoforged.bus.api.ICancellableEvent;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.mojang.serialization.MapCodec;
-import com.phasetranscrystal.brealib.utils.Tree;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

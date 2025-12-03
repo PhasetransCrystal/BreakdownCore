@@ -1,5 +1,12 @@
 package com.phasetranscrystal.breacore.api.material;
 
+import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.utils.ItemStackHashStrategy;
+import com.phasetranscrystal.breacore.utils.memoization.MemoizedBlockSupplier;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.TagKey;
@@ -13,12 +20,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import com.mojang.datafixers.util.Pair;
-import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.utils.ItemStackHashStrategy;
-import com.phasetranscrystal.breacore.utils.memoization.MemoizedBlockSupplier;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
@@ -38,7 +39,7 @@ public class ItemMaterialData {
     /** Mapping of an item to a "prefix, material" pair */
     public static final List<Pair<Supplier<? extends ItemLike>, MaterialEntry>> ITEM_MATERIAL_ENTRY = new ArrayList<>();
     public static final Map<ItemLike, MaterialEntry> ITEM_MATERIAL_ENTRY_COLLECTED = new Object2ObjectOpenHashMap<>();
-    /** Mapping of a tag to a "prefix, material" pair */
+    /** Mapping of a tagprefix to a "prefix, material" pair */
     public static final Map<TagKey<Item>, MaterialEntry> TAG_MATERIAL_ENTRY = new Object2ObjectLinkedOpenHashMap<>();
     /** Mapping of a fluid to a material */
     public static final Map<Fluid, Material> FLUID_MATERIAL = new Object2ObjectOpenHashMap<>();

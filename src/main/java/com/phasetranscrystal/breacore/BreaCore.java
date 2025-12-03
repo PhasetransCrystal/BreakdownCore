@@ -1,12 +1,14 @@
 package com.phasetranscrystal.breacore;
 
+import com.phasetranscrystal.brealib.BreaLib;
+
+import com.phasetranscrystal.breacore.client.ClientProxy;
+import com.phasetranscrystal.breacore.common.CommonProxy;
+
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 
-import com.phasetranscrystal.breacore.client.ClientProxy;
-import com.phasetranscrystal.breacore.common.CommonProxy;
-import com.phasetranscrystal.brealib.BreaLib;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;

@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.api.material.stack;
 
 import com.phasetranscrystal.breacore.api.material.Material;
+
 import it.unimi.dsi.fastutil.objects.Reference2LongMap;
 import it.unimi.dsi.fastutil.objects.Reference2LongOpenHashMap;
 import org.jetbrains.annotations.UnmodifiableView;

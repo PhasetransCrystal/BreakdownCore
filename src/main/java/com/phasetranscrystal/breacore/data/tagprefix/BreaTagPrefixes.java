@@ -1,12 +1,4 @@
-package com.phasetranscrystal.breacore.data.tag;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
+package com.phasetranscrystal.breacore.data.tagprefix;
 
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.addon.AddonFinder;
@@ -16,6 +8,14 @@ import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconTypes;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 
 import static com.phasetranscrystal.breacore.api.tag.TagPrefix.*;
 import static com.phasetranscrystal.breacore.api.tag.TagPrefix.Conditions.*;

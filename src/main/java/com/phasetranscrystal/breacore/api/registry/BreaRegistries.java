@@ -1,5 +1,16 @@
 package com.phasetranscrystal.breacore.api.registry;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.material.Element;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
+import com.phasetranscrystal.breacore.api.sound.SoundEntry;
+import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
+import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
+import com.phasetranscrystal.breacore.common.quench.perk.Perk;
+import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -12,15 +23,6 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.mojang.serialization.MapCodec;
-import com.phasetranscrystal.breacore.api.material.Element;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
-import com.phasetranscrystal.breacore.api.sound.SoundEntry;
-import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
-import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
-import com.phasetranscrystal.breacore.common.quench.perk.Perk;
-import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.function.Consumer;

@@ -1,11 +1,11 @@
 package com.phasetranscrystal.breacore.api.attribute;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import java.util.List;
 

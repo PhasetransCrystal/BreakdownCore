@@ -3,6 +3,7 @@ package com.phasetranscrystal.breacore.api.material.info;
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 
 import java.util.Arrays;

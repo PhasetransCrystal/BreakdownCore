@@ -1,8 +1,9 @@
 package com.phasetranscrystal.breacore.utils;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import net.minecraft.client.resources.language.I18n;
 
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.HashMap;

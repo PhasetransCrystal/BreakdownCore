@@ -1,9 +1,10 @@
 package com.phasetranscrystal.breacore.api.material;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import net.minecraft.world.item.DyeColor;
 
 import com.google.common.collect.HashBiMap;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 public class MarkerMaterials {
 

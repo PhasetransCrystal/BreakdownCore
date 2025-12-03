@@ -1,9 +1,9 @@
 package com.phasetranscrystal.breacore.utils;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
-
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import java.net.URL;
 

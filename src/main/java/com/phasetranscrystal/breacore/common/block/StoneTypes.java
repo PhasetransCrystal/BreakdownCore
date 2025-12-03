@@ -1,14 +1,15 @@
 package com.phasetranscrystal.breacore.common.block;
 
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
+
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
-import com.phasetranscrystal.breacore.data.tag.BreaTagPrefixes;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 

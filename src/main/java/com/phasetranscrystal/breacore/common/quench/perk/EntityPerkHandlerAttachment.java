@@ -1,5 +1,12 @@
 package com.phasetranscrystal.breacore.common.quench.perk;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
+import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
+import com.phasetranscrystal.breacore.common.quench.BreaQuench;
+
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -12,11 +19,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
-import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
-import com.phasetranscrystal.breacore.common.quench.BreaQuench;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.joml.Math;
 
 import java.util.HashMap;

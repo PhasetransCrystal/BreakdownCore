@@ -133,6 +133,7 @@ public class MaterialFlags {
     public static final MaterialFlag FORCE_GENERATE_BLOCK = new MaterialFlag.Builder("force_generate_block")
             .requireProps(PropertyKey.DUST)
             .build();
+
     /**
      * 这将阻止材料创建粉尘与方块之间的无序合成配方，
      * 同时阻止通过SHAPE_EXTRUDING/MOLD_BLOCK的挤出和合金冶炼配方。

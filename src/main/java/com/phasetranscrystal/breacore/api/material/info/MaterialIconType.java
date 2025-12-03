@@ -1,5 +1,9 @@
 package com.phasetranscrystal.breacore.api.material.info;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.utils.ResourceHelper;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 
@@ -7,8 +11,6 @@ import com.google.common.base.CaseFormat;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import com.phasetranscrystal.breacore.utils.ResourceHelper;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.apache.logging.log4j.util.Strings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

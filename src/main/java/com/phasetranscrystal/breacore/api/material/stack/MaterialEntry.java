@@ -1,9 +1,10 @@
 package com.phasetranscrystal.breacore.api.material.stack;
 
-import com.google.common.base.Preconditions;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
+
+import com.google.common.base.Preconditions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

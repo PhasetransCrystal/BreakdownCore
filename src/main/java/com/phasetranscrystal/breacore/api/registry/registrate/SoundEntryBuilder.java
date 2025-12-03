@@ -1,5 +1,13 @@
 package com.phasetranscrystal.breacore.api.registry.registrate;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.api.sound.ConfiguredSoundEvent;
+import com.phasetranscrystal.breacore.api.sound.CustomSoundEntry;
+import com.phasetranscrystal.breacore.api.sound.SoundEntry;
+import com.phasetranscrystal.breacore.api.sound.WrappedSoundEntry;
+
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -8,12 +16,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 
 import com.google.gson.JsonObject;
-import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.api.sound.ConfiguredSoundEvent;
-import com.phasetranscrystal.breacore.api.sound.CustomSoundEntry;
-import com.phasetranscrystal.breacore.api.sound.SoundEntry;
-import com.phasetranscrystal.breacore.api.sound.WrappedSoundEntry;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;

@@ -1,11 +1,13 @@
 package com.phasetranscrystal.breacore.api.tag;
 
+import com.phasetranscrystal.brealib.utils.FormattingUtil;
+
+import com.phasetranscrystal.breacore.api.material.Material;
+
 import net.minecraft.Util;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.brealib.utils.FormattingUtil;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +19,7 @@ public class TagType {
     private final String tagPath;
     @Getter
     private boolean isParentTag = false;
-    // this is now memoized because creating tag keys interns them and that's slow
+    // this is now memoized because creating tagprefix keys interns them and that's slow
     private BiFunction<TagPrefix, Material, TagKey<Item>> formatter;
     private Predicate<Material> filter;
 

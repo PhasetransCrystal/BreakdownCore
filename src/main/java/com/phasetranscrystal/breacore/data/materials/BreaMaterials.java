@@ -1,9 +1,6 @@
 package com.phasetranscrystal.breacore.data.materials;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
+import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.BreaAPI;
@@ -14,7 +11,12 @@ import com.phasetranscrystal.breacore.api.material.info.MaterialFlag;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.material.*;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ import java.util.List;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.api.tag.TagPrefix.ORES;
-import static com.phasetranscrystal.breacore.data.tag.BreaTagPrefixes.*;
+import static com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes.*;
 
 public class BreaMaterials {
 
@@ -392,6 +394,7 @@ public class BreaMaterials {
     // TODO:原版材料
     public static Material Water;
     public static Material Lava;
+    public static Material Milk;
     /// 黑曜石
     public static Material Obsidian;
     /// 冰
@@ -458,4 +461,12 @@ public class BreaMaterials {
     /// 幽匿
     public static Material Sculk;
     // endregion
+    // 空气
+    /// 幽匿
+    public static Material Air;
+    public static Material NetherAir;
+    public static Material EnderAir;
+    public static Material LiquidAir;
+    public static Material LiquidNetherAir;
+    public static Material LiquidEnderAir;
 }

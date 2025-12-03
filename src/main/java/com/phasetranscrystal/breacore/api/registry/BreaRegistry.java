@@ -1,5 +1,10 @@
 package com.phasetranscrystal.breacore.api.registry;
 
+import com.phasetranscrystal.brealib.BreaLib;
+
+import com.phasetranscrystal.breacore.mixin.neoforge.MappedRegistryAccess;
+import com.phasetranscrystal.breacore.mixin.neoforge.ResourceKeyAccessor;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.RegistrationInfo;
@@ -14,9 +19,6 @@ import net.neoforged.fml.ModLoadingContext;
 
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Lifecycle;
-import com.phasetranscrystal.breacore.mixin.neoforge.MappedRegistryAccess;
-import com.phasetranscrystal.breacore.mixin.neoforge.ResourceKeyAccessor;
-import com.phasetranscrystal.brealib.BreaLib;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;

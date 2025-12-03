@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.data.datagen.lang;
 
 import com.phasetranscrystal.breacore.api.BreaAPI;
+
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 
 import static com.phasetranscrystal.brealib.utils.FormattingUtil.toEnglishName;

@@ -1,5 +1,13 @@
 package com.phasetranscrystal.breacore.api.item;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.property.DustProperty;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -11,12 +19,6 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.FuelValues;
 
-import com.phasetranscrystal.breacore.api.BreaAPI;
-import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.breacore.api.material.property.DustProperty;
-import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

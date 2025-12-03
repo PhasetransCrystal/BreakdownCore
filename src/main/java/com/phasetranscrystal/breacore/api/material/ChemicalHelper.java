@@ -1,5 +1,14 @@
 package com.phasetranscrystal.breacore.api.material;
 
+import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.BreaAPI;
+import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
+import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
+import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
+import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
+
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -12,14 +21,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import com.mojang.datafixers.util.Pair;
-import com.phasetranscrystal.breacore.BreaCore;
-import com.phasetranscrystal.breacore.api.BreaAPI;
-import com.phasetranscrystal.breacore.api.material.property.PropertyKey;
-import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
-import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
-import com.phasetranscrystal.breacore.api.tag.TagPrefix;
-import com.phasetranscrystal.breacore.data.tag.BreaTagPrefixes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -173,7 +174,7 @@ public class ChemicalHelper {
             materialEntry = ITEM_MATERIAL_ENTRY_COLLECTED.computeIfAbsent(itemKey, item -> {
                 for (TagKey<Item> itemTag : item.asItem().builtInRegistryHolder().tags().toList()) {
                     MaterialEntry materialEntry1 = getMaterialEntry(itemTag);
-                    // check that it's not the empty marker and that it's not a parent tag
+                    // check that it's not the empty marker and that it's not a parent tagprefix
                     if (!materialEntry1.isEmpty() &&
                             materialEntry1.tagPrefix().getItemParentTags().stream().noneMatch(itemTag::equals)) {
                         return materialEntry1;
@@ -195,7 +196,7 @@ public class ChemicalHelper {
                     prefix.getItemTags(material).stream()
                             .filter(allItemTags::contains)
                             .forEach(tagKey -> {
-                                // remove the tag so that the next iteration is faster.
+                                // remove the tagprefix so that the next iteration is faster.
                                 allItemTags.remove(tagKey);
                                 TAG_MATERIAL_ENTRY.put(tagKey, new MaterialEntry(prefix, material));
                             });

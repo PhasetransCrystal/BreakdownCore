@@ -1,13 +1,15 @@
 package com.phasetranscrystal.breacore.data.misc;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-import com.phasetranscrystal.breacore.BreaCore;
-import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import org.jetbrains.annotations.NotNull;
 

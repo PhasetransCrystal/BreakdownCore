@@ -1,10 +1,10 @@
 package com.phasetranscrystal.breacore.common.registry;
 
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTab;
-
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
+
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
 
 public class BreaRegistration {
 

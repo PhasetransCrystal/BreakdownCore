@@ -1,10 +1,11 @@
 package com.phasetranscrystal.breacore.data.materials;
 
-import net.minecraft.core.Holder;
+import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import com.phasetranscrystal.breacore.api.BreaAPI;
 import com.phasetranscrystal.breacore.api.material.Element;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+
+import net.minecraft.core.Holder;
 
 import java.util.Optional;
 

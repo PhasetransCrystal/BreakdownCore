@@ -1,8 +1,10 @@
 package com.phasetranscrystal.breacore.api.material.property;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.material.Material;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import lombok.Getter;
 import lombok.Setter;
 
