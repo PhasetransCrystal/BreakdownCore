@@ -4,6 +4,8 @@ import com.phasetranscrystal.breacore.api.material.stack.ItemMaterialInfo;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialStack;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
+import com.phasetranscrystal.breacore.data.datagen.TagsHandler;
+import com.phasetranscrystal.breacore.data.items.MaterialItems;
 import com.phasetranscrystal.breacore.utils.ItemStackHashStrategy;
 import com.phasetranscrystal.breacore.utils.memoization.MemoizedBlockSupplier;
 
@@ -39,7 +41,7 @@ public class ItemMaterialData {
     /** Mapping of an item to a "prefix, material" pair */
     public static final List<Pair<Supplier<? extends ItemLike>, MaterialEntry>> ITEM_MATERIAL_ENTRY = new ArrayList<>();
     public static final Map<ItemLike, MaterialEntry> ITEM_MATERIAL_ENTRY_COLLECTED = new Object2ObjectOpenHashMap<>();
-    /** Mapping of a tagprefix to a "prefix, material" pair */
+    /** Mapping of a tag to a "prefix, material" pair */
     public static final Map<TagKey<Item>, MaterialEntry> TAG_MATERIAL_ENTRY = new Object2ObjectLinkedOpenHashMap<>();
     /** Mapping of a fluid to a material */
     public static final Map<Fluid, Material> FLUID_MATERIAL = new Object2ObjectOpenHashMap<>();
@@ -171,6 +173,23 @@ public class ItemMaterialData {
                 .add(supplier);
     }
 
+    public static void reinitializeMaterialData() {
+        // Clear old data
+        MATERIAL_ENTRY_ITEM_MAP.clear();
+        MATERIAL_ENTRY_BLOCK_MAP.clear();
+        ITEM_MATERIAL_ENTRY.clear();
+        FLUID_MATERIAL.clear();
+
+        // Load new data
+        TagsHandler.initExtraUnificationEntries();
+        for (TagPrefix prefix : TagPrefix.values()) {
+            prefix.getIgnored().forEach((mat, items) -> registerMaterialEntries(Arrays.asList(items), prefix, mat));
+        }
+        MaterialItems.toUnify.forEach((materialEntry, supplier) -> registerMaterialEntry(supplier, materialEntry));
+        // WoodMachineRecipes.registerMaterialInfo();
+        // StoneMachineRecipes.registerMaterialInfo();
+    }
+
     @ApiStatus.Internal
     public static void resolveItemMaterialInfos(RecipeOutput provider) {
         for (var entry : UNRESOLVED_ITEM_MATERIAL_INFO.entrySet()) {
@@ -192,6 +211,8 @@ public class ItemMaterialData {
             } else {
                 matInfo.addMaterialStacks(stacks);
             }
+            // RecyclingRecipes.registerRecyclingRecipes(provider, entry.getKey().copyWithCount(1),
+            // matInfo.getMaterials(), false, null);
         }
         UNRESOLVED_ITEM_MATERIAL_INFO.clear();
     }

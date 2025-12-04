@@ -211,6 +211,15 @@ public class BreaTagPrefixes {
             .generateItem(true)
             .generationCondition(mat -> mat.hasFlag(MaterialFlags.GENERATE_PLATE));
 
+    public static final TagPrefix lens = new TagPrefix("lens")
+            .defaultTagPath("lenses/%s")
+            .unformattedTagPath("lenses")
+            .materialAmount((BreaAPI.M * 3) / 4)
+            .materialIconType(BreaMaterialIconTypes.lens)
+            .unificationEnabled(true)
+            .enableRecycling()
+            .generateItem(true)
+            .generationCondition(mat -> mat.hasFlag(MaterialFlags.GENERATE_LENS));
     /// 长杆
     public static final TagPrefix rodLong = new TagPrefix("longRod")
             .idPattern("long_%s_rod")

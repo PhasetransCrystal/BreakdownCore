@@ -3,9 +3,12 @@
   "minVersion": "0.8",
   "package": "com.phasetranscrystal.breacore.mixin",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "com.phasetranscrystal.breacore.mixin.BreaMixinPlugin",
   "mixins": [
     "neoforge.BlockPropertiesAccessor",
     "neoforge.MappedRegistryAccess",
+    "neoforge.OreConfigurationMixin",
+    "neoforge.ReloadableServerResourcesMixin",
     "neoforge.ResourceKeyAccessor",
     "registrate.AbstractRegistrateAccessor"
   ],
