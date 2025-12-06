@@ -3,7 +3,16 @@ package com.phasetranscrystal.breacore.api.registry.registrate;
 import com.phasetranscrystal.brealib.utils.FormattingUtil;
 
 import com.phasetranscrystal.breacore.BreaCore;
+import com.phasetranscrystal.breacore.api.block.IMachineBlock;
+import com.phasetranscrystal.breacore.api.block.MetaMachineBlock;
+import com.phasetranscrystal.breacore.api.blockentity.MetaMachineBlockEntity;
+import com.phasetranscrystal.breacore.api.item.MetaMachineItem;
+import com.phasetranscrystal.breacore.api.machine.IMachineBlockEntity;
+import com.phasetranscrystal.breacore.api.machine.MachineDefinition;
+import com.phasetranscrystal.breacore.api.machine.MetaMachine;
+import com.phasetranscrystal.breacore.api.machine.registrate.MachineBuilder;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -12,6 +21,9 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -26,15 +38,16 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import org.apache.commons.lang3.function.TriFunction;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class BreaRegistrate extends AbstractRegistrate<BreaRegistrate> {
@@ -160,5 +173,21 @@ public class BreaRegistrate extends AbstractRegistrate<BreaRegistrate> {
     public <P> NoConfigBuilder<CreativeModeTab, CreativeModeTab, P> defaultCreativeTab(P parent, String name,
                                                                                        Consumer<CreativeModeTab.Builder> config) {
         return createCreativeModeTab(parent, name, config);
+    }
+
+    public <DEFINITION extends MachineDefinition> MachineBuilder<DEFINITION> machine(String name,
+                                                                                     Function<ResourceLocation, DEFINITION> definitionFactory,
+                                                                                     Function<IMachineBlockEntity, MetaMachine> metaMachine,
+                                                                                     BiFunction<BlockBehaviour.Properties, DEFINITION, IMachineBlock> blockFactory,
+                                                                                     BiFunction<IMachineBlock, Item.Properties, MetaMachineItem> itemFactory,
+                                                                                     TriFunction<BlockEntityType<?>, BlockPos, BlockState, IMachineBlockEntity> blockEntityFactory) {
+        return new MachineBuilder<>(this, name, definitionFactory, metaMachine, blockFactory, itemFactory,
+                blockEntityFactory);
+    }
+
+    public MachineBuilder<MachineDefinition> machine(String name,
+                                                     Function<IMachineBlockEntity, MetaMachine> metaMachine) {
+        return new MachineBuilder<>(this, name, MachineDefinition::createDefinition, metaMachine,
+                MetaMachineBlock::new, MetaMachineItem::new, MetaMachineBlockEntity::createBlockEntity);
     }
 }

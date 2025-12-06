@@ -14,13 +14,13 @@ public class UnknownCompositionMaterials {
     public static void register() {
         Gunpowder = new MaterialBuilder(BreaUtil.byPath("gunpowder"))
                 .dust(0)
-                .color(0xa4a4a4).secondaryColor(0x767676).iconSet(ROUGH)
+                .color(0xa4a4a4).secondaryColor(0x767676).iconSet(DULL)
                 .flags(FLAMMABLE, EXPLOSIVE, NO_SMELTING, NO_SMASHING)
                 .buildAndRegister();
 
         Stone = new MaterialBuilder(BreaUtil.byPath("stone"))
                 .dust(2)
-                .color(0x8f8f8f).secondaryColor(0x898989).iconSet(ROUGH)
+                .color(0x8f8f8f).secondaryColor(0x898989).iconSet(DULL)
                 .flags(MORTAR_GRINDABLE, GENERATE_GEAR, NO_SMASHING, NO_SMELTING)
                 .buildAndRegister();
 
@@ -34,7 +34,7 @@ public class UnknownCompositionMaterials {
         Glowstone = new MaterialBuilder(BreaUtil.byPath("glowstone"))
                 .dust(1)
                 .liquid(new FluidRegisterBuilder().temperature(500))
-                .color(0xfcb34c).secondaryColor(0xce7533).iconSet(SHINY)
+                .color(0xfcb34c).secondaryColor(0xce7533).iconSet(DULL)
                 .flags(NO_SMASHING, GENERATE_PLATE, EXCLUDE_PLATE_COMPRESSOR_RECIPE,
                         EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
                 .buildAndRegister();
@@ -42,19 +42,19 @@ public class UnknownCompositionMaterials {
         NetherStar = new MaterialBuilder(BreaUtil.byPath("nether_star"))
                 .gem(4)
                 .color(0xfeffc6).secondaryColor(0x7fd7e2)
-                .iconSet(NETHERSTAR)
+                .iconSet(DULL)
                 .flags(NO_SMASHING, NO_SMELTING, GENERATE_LENS)
                 .buildAndRegister();
 
         Endstone = new MaterialBuilder(BreaUtil.byPath("endstone"))
                 .dust(1)
-                .color(0xf6fabd).secondaryColor(0xc5be8b).iconSet(ROUGH)
+                .color(0xf6fabd).secondaryColor(0xc5be8b).iconSet(DULL)
                 .flags(NO_SMASHING)
                 .buildAndRegister();
 
         Netherrack = new MaterialBuilder(BreaUtil.byPath("netherrack"))
                 .dust(1)
-                .color(0x7c4249).secondaryColor(0x400b0b).iconSet(ROUGH)
+                .color(0x7c4249).secondaryColor(0x400b0b).iconSet(DULL)
                 .flags(NO_SMASHING, FLAMMABLE)
                 .buildAndRegister();
 
@@ -62,19 +62,19 @@ public class UnknownCompositionMaterials {
                 .liquid(new FluidRegisterBuilder()
                         .temperature(295)
                         .customStill())
-                .color(0xfffbf0).secondaryColor(0xf6eac8).iconSet(FINE)
+                .color(0xfffbf0).secondaryColor(0xf6eac8).iconSet(DULL)
                 .buildAndRegister();
 
         Wood = new MaterialBuilder(BreaUtil.byPath("wood"))
                 .wood()
-                .color(0xc29f6d).secondaryColor(0x643200).iconSet(WOOD)
+                .color(0xc29f6d).secondaryColor(0x643200).iconSet(DULL)
                 .flags(GENERATE_PLATE, GENERATE_ROD, GENERATE_BOLT_SCREW, GENERATE_LONG_ROD, FLAMMABLE, GENERATE_GEAR,
                         GENERATE_FRAME)
                 .buildAndRegister();
 
         Paper = new MaterialBuilder(BreaUtil.byPath("paper"))
                 .dust(0)
-                .color(0xFAFAFA).secondaryColor(0x878787).iconSet(FINE)
+                .color(0xFAFAFA).secondaryColor(0x878787).iconSet(DULL)
                 .flags(GENERATE_PLATE, FLAMMABLE, NO_SMELTING, NO_SMASHING,
                         MORTAR_GRINDABLE, EXCLUDE_PLATE_COMPRESSOR_RECIPE)
                 .buildAndRegister();
@@ -130,13 +130,13 @@ public class UnknownCompositionMaterials {
 
         TreatedWood = new MaterialBuilder(BreaUtil.byPath("treated_wood"))
                 .wood()
-                .color(0x644218).secondaryColor(0x4e0b00).iconSet(WOOD)
+                .color(0x644218).secondaryColor(0x4e0b00).iconSet(DULL)
                 .flags(GENERATE_PLATE, FLAMMABLE, GENERATE_ROD, GENERATE_FRAME)
                 .buildAndRegister();
 
         Sculk = new MaterialBuilder(BreaUtil.byPath("sculk"))
                 .dust(1)
-                .color(0x015a5c).secondaryColor(0x001616).iconSet(ROUGH)
+                .color(0x015a5c).secondaryColor(0x001616).iconSet(DULL)
                 .buildAndRegister();
 
         Wax = new MaterialBuilder(BreaUtil.byPath("wax"))

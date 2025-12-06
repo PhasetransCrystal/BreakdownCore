@@ -17,28 +17,28 @@ public class SecondDegreeMaterials {
                 .liquid(new FluidRegisterBuilder()
                         .temperature(1200)
                         .customStill())
-                .color(0xffffff).iconSet(GLASS)
+                .color(0xffffff).iconSet(DULL)
                 .flags(GENERATE_LENS, NO_SMASHING, EXCLUDE_BLOCK_CRAFTING_RECIPES, DECOMPOSITION_BY_CENTRIFUGING)
                 .components(SiliconDioxide, 1)
                 .buildAndRegister();
 
         Amethyst = new MaterialBuilder(BreaUtil.byPath("amethyst"))
                 .gem(3).ore()
-                .color(0xcfa0f3).secondaryColor(0x734fbc).iconSet(RUBY)
+                .color(0xcfa0f3).secondaryColor(0x734fbc).iconSet(DULL)
                 .appendFlags(EXT_METAL, NO_SMASHING, NO_SMELTING, HIGH_SIFTER_OUTPUT, GENERATE_LENS)
                 .components(SiliconDioxide, 4, Iron, 1)
                 .buildAndRegister();
 
         EchoShard = new MaterialBuilder(BreaUtil.byPath("echo_shard"))
                 .gem(3)
-                .color(0x002b2d).iconSet(RUBY)
+                .color(0x002b2d).iconSet(DULL)
                 .appendFlags(EXT_METAL, NO_SMASHING, NO_SMELTING, GENERATE_ROD)
                 .components(SiliconDioxide, 3, Sculk, 2)
                 .buildAndRegister();
 
         Lapis = new MaterialBuilder(BreaUtil.byPath("lapis"))
                 .gem(1).ore(6, 4)
-                .color(0x85a9ff).secondaryColor(0x2a7fff).iconSet(LAPIS)
+                .color(0x85a9ff).secondaryColor(0x2a7fff).iconSet(DULL)
                 .flags(NO_SMASHING, NO_SMELTING, CRYSTALLIZABLE, NO_WORKING, DECOMPOSITION_BY_ELECTROLYZING,
                         EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES,
                         GENERATE_PLATE, GENERATE_ROD)
@@ -49,33 +49,34 @@ public class SecondDegreeMaterials {
                 .liquid(new FluidRegisterBuilder()
                         .temperature(4000)
                         .customStill())
-                .color(0xfff94d, false).secondaryColor(0xff330c).iconSet(FINE)
+                .color(0xfff94d, false).secondaryColor(0xff330c)
+                .iconSet(DULL)
                 .flags(NO_SMELTING, MORTAR_GRINDABLE, DECOMPOSITION_BY_CENTRIFUGING) // todo burning flag
                 .buildAndRegister();
 
         Deepslate = new MaterialBuilder(BreaUtil.byPath("deepslate"))
                 .dust()
-                .color(0x797979).secondaryColor(0x2f2f37).iconSet(ROUGH)
+                .color(0x797979).secondaryColor(0x2f2f37).iconSet(DULL)
                 .flags(NO_SMASHING, DECOMPOSITION_BY_CENTRIFUGING)
                 .buildAndRegister();
 
         Concrete = new MaterialBuilder(BreaUtil.byPath("concrete"))
                 .dust()
                 .liquid(new FluidRegisterBuilder().temperature(286))
-                .color(0xfaf3e8).secondaryColor(0xbbbaba).iconSet(ROUGH)
+                .color(0xfaf3e8).secondaryColor(0xbbbaba).iconSet(DULL)
                 .flags(NO_SMASHING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
                 .components(Stone, 1)
                 .buildAndRegister();
 
         Andesite = new MaterialBuilder(BreaUtil.byPath("andesite"))
                 .dust()
-                .color(0xa8aa9a).iconSet(ROUGH)
+                .color(0xa8aa9a).iconSet(DULL)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .buildAndRegister();
 
         Flint = new MaterialBuilder(BreaUtil.byPath("flint"))
                 .gem(1)
-                .color(0xc7c7c7).secondaryColor(0x212121).iconSet(FLINT)
+                .color(0xc7c7c7).secondaryColor(0x212121).iconSet(DULL)
                 .flags(NO_SMASHING, MORTAR_GRINDABLE, DECOMPOSITION_BY_CENTRIFUGING)
                 .components(SiliconDioxide, 1)
                 .buildAndRegister();
@@ -119,7 +120,7 @@ public class SecondDegreeMaterials {
 
         Clay = new MaterialBuilder(BreaUtil.byPath("clay"))
                 .dust(1)
-                .color(0xbec9e8).secondaryColor(0x373944).iconSet(ROUGH)
+                .color(0xbec9e8).secondaryColor(0x373944).iconSet(DULL)
                 .flags(MORTAR_GRINDABLE, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES)
                 .components(Sodium, 2, Lithium, 1, Aluminium, 2, Silicon, 2, Water, 6)
                 .buildAndRegister();
@@ -127,7 +128,7 @@ public class SecondDegreeMaterials {
         Redstone = new MaterialBuilder(BreaUtil.byPath("redstone"))
                 .dust().ore(5, 1, true)
                 .liquid(new FluidRegisterBuilder().temperature(500))
-                .color(0xff0000).secondaryColor(0x340605).iconSet(ROUGH)
+                .color(0xff0000).secondaryColor(0x340605).iconSet(DULL)
                 .flags(GENERATE_PLATE, NO_SMASHING, NO_SMELTING, EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES,
                         EXCLUDE_PLATE_COMPRESSOR_RECIPE, DECOMPOSITION_BY_CENTRIFUGING)
                 .buildAndRegister();

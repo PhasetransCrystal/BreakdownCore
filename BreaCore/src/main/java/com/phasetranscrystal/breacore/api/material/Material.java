@@ -565,13 +565,9 @@ public class Material implements Comparable<Material> {
             // Verify IconSet
 
             if (iconSet == null) {
-                if (p.hasProperty(PropertyKey.GEM)) {
-                    iconSet = BreaMaterialIconSet.GEM_VERTICAL;
-                } else if (p.hasProperty(PropertyKey.DUST) || p.hasProperty(PropertyKey.INGOT)) {
-                    iconSet = BreaMaterialIconSet.DULL;
-                } else if (p.hasProperty(PropertyKey.FLUID)) {
+                if (p.hasProperty(PropertyKey.FLUID)) {
                     iconSet = BreaMaterialIconSet.FLUID;
-                } else iconSet = MaterialIconSet.DULL;
+                } else iconSet = BreaMaterialIconSet.DULL;
             }
 
             // Verify MaterialRGB

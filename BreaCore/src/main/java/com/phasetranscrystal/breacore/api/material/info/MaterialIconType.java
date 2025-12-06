@@ -81,19 +81,19 @@ public record MaterialIconType(String name) {
             return null; // check minecraft for null for CI environments
         if (!iconSet.isRootIconset) {
             while (!iconSet.isRootIconset) {
-                ResourceLocation location = BreaUtil.byPath(String.format("textures/block/material_sets/%s/%s%s.png", iconSet.name, this.name, suffix));
+                ResourceLocation location = BreaUtil.byPath(String.format("textures/gensource/block/%s/%s%s.png", iconSet.name, this.name, suffix));
                 if (ResourceHelper.isResourceExist(location) || ResourceHelper.isResourceExistRaw(location))
                     break;
                 iconSet = iconSet.parentIconset;
             }
         }
 
-        ResourceLocation location = BreaUtil.byPath(String.format("textures/block/material_sets/%s/%s%s.png", iconSet.name, this.name, suffix));
+        ResourceLocation location = BreaUtil.byPath(String.format("textures/gensource/block/%s/%s%s.png", iconSet.name, this.name, suffix));
         if (!suffix.isEmpty() && !ResourceHelper.isResourceExist(location) &&
                 !ResourceHelper.isResourceExistRaw(location)) {
             return null;
         }
-        location = BreaUtil.byPath(String.format("block/material_sets/%s/%s%s", iconSet.name, this.name, suffix));
+        location = BreaUtil.byPath(String.format("gensource/block/%s/%s%s", iconSet.name, this.name, suffix));
         if (suffix.isEmpty()) {
             BLOCK_TEXTURE_CACHE.put(this, materialIconSet, location);
         } else {
@@ -116,14 +116,14 @@ public record MaterialIconType(String name) {
         if (!iconSet.isRootIconset && BreaUtil.isClientSide() && Minecraft.getInstance() != null &&
                 Minecraft.getInstance().getResourceManager() != null) { // check minecraft for null for CI environments
             while (!iconSet.isRootIconset) {
-                ResourceLocation location = BreaUtil.byPath(String.format("models/block/material_sets/%s/%s.json", iconSet.name, this.name));
+                ResourceLocation location = BreaUtil.byPath(String.format("models/block/gensource/%s/%s.json", iconSet.name, this.name));
                 if (ResourceHelper.isResourceExist(location) || ResourceHelper.isResourceExistRaw(location))
                     break;
                 iconSet = iconSet.parentIconset;
             }
         }
 
-        ResourceLocation location = BreaUtil.byPath(String.format("block/material_sets/%s/%s", iconSet.name, this.name));
+        ResourceLocation location = BreaUtil.byPath(String.format("block/gensource/%s/%s", iconSet.name, this.name));
         ITEM_MODEL_CACHE.put(this, materialIconSet, location);
 
         return location;
@@ -143,14 +143,14 @@ public record MaterialIconType(String name) {
                 Minecraft.getInstance().getResourceManager() != null) { // check minecraft for null for CI environments
             while (!iconSet.isRootIconset) {
                 ResourceLocation location = BreaUtil
-                        .byPath(String.format("models/item/material_sets/%s/%s.json", iconSet.name, this.name));
+                        .byPath(String.format("item/gensource/%s/%s.json", iconSet.name, this.name));
                 if (ResourceHelper.isResourceExist(location) || ResourceHelper.isResourceExistRaw(location))
                     break;
                 iconSet = iconSet.parentIconset;
             }
         }
 
-        ResourceLocation location = BreaUtil.byPath(String.format("item/material_sets/%s/%s", iconSet.name, this.name));
+        ResourceLocation location = BreaUtil.byPath(String.format("item/gensource/%s/%s", iconSet.name, this.name));
         ITEM_MODEL_CACHE.put(this, materialIconSet, location);
 
         return location;
@@ -182,7 +182,7 @@ public record MaterialIconType(String name) {
                 Minecraft.getInstance().getResourceManager() != null) { // check minecraft for null for CI environments
             while (!iconSet.isRootIconset) {
                 ResourceLocation location = BreaUtil
-                        .byPath(String.format("textures/item/material_sets/%s/%s%s.png", iconSet.name, this.name, suffix));
+                        .byPath(String.format("textures/itemgensource//%s/%s%s.png", iconSet.name, this.name, suffix));
                 if (ResourceHelper.isResourceExist(location) || ResourceHelper.isResourceExistRaw(location))
                     break;
                 iconSet = iconSet.parentIconset;
@@ -190,12 +190,12 @@ public record MaterialIconType(String name) {
         }
 
         ResourceLocation location = BreaUtil
-                .byPath(String.format("textures/item/material_sets/%s/%s%s.png", iconSet.name, this.name, suffix));
+                .byPath(String.format("textures/item/gensource/%s/%s%s.png", iconSet.name, this.name, suffix));
         if (!suffix.isEmpty() && !ResourceHelper.isResourceExist(location) &&
                 !ResourceHelper.isResourceExistRaw(location)) {
             return null;
         }
-        location = BreaUtil.byPath(String.format("item/material_sets/%s/%s%s", iconSet.name, this.name, suffix));
+        location = BreaUtil.byPath(String.format("item/gensource/%s/%s%s", iconSet.name, this.name, suffix));
         if (suffix.isEmpty()) {
             ITEM_TEXTURE_CACHE.put(this, materialIconSet, location);
         } else {

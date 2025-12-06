@@ -18,6 +18,7 @@ import com.phasetranscrystal.breacore.data.datagen.lang.MaterialLangGenerator;
 import com.phasetranscrystal.breacore.data.entity.BreaEntityTypes;
 import com.phasetranscrystal.breacore.data.fluids.BreaFluids;
 import com.phasetranscrystal.breacore.data.items.BreaItems;
+import com.phasetranscrystal.breacore.data.machine.BreaMachines;
 import com.phasetranscrystal.breacore.data.materials.BreaElements;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconTypes;
@@ -74,6 +75,7 @@ public class CommonProxy {
         BreaBlocks.init();
         BreaEntityTypes.init();
         BreaBlockEntities.init();
+        BreaMachines.init();
 
         BreaItems.init();
 
@@ -92,13 +94,6 @@ public class CommonProxy {
 
             ModList.get().getModContainerById(namespace).map(ModContainer::getEventBus).ifPresent(registrate::registerEventListeners);
         });
-    }
-
-    public static void registry() {
-        BreaCreativeModeTabs.init();
-        BreaFluids.init();
-        BreaBlocks.init();
-        BreaItems.init();
     }
 
     private static void initMaterials() {
