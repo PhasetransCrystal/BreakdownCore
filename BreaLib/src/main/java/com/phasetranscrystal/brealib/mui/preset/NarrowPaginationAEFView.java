@@ -1,28 +1,36 @@
 package com.phasetranscrystal.brealib.mui.preset;
 
-import com.phasetranscrystal.brealib.mui.AMImageStore;
 import com.phasetranscrystal.brealib.mui.MuiHelper;
 import com.phasetranscrystal.brealib.mui.PublicTexture;
+import com.phasetranscrystal.brealib.mui.property.AlphaProperty;
 
 import net.minecraft.resources.ResourceLocation;
 
-import icyllis.modernui.animation.ObjectAnimator;
-import icyllis.modernui.animation.PropertyValuesHolder;
-import icyllis.modernui.animation.TimeInterpolator;
+import icyllis.modernui.animation.*;
 import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.*;
 import icyllis.modernui.util.IntProperty;
-import icyllis.modernui.view.Gravity;
-import icyllis.modernui.view.MotionEvent;
-import icyllis.modernui.view.View;
-import icyllis.modernui.view.ViewGroup;
+import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
+import org.jetbrains.annotations.Range;
 
-public class NarrowPaginationAEFView extends RootAEFView {
+public abstract class NarrowPaginationAEFView extends RootAEFView {
 
     public static final int PAGINATION_WIDTH = (int) (RootAEFView.TOP_BOTTOM_HEIGHT * 0.625F);
     public static final int PAGINATION_BUTTON_HEIGHT = PAGINATION_WIDTH * 3;
     public static final int PAGINATION_EDGE_DIST = 3;
+
+    protected int paginationWidth;
+    protected int paginationButtonHeight;
+    protected int paginationEdgeDist;
+    protected int paginationCR;
+    protected PaginationGroup paginationGroup;
+
+    protected View mainView;
+    protected RelativeLayout.LayoutParams mainViewLayoutParams;
+    protected ObjectAnimator mainViewAnimator;
+
+    private AniListener aniListener;
 
     public NarrowPaginationAEFView(Context context, ResourceLocation icon, String title) {
         super(context, icon, title);
@@ -35,60 +43,78 @@ public class NarrowPaginationAEFView extends RootAEFView {
         paginationButtonHeight = dp(PAGINATION_BUTTON_HEIGHT);
         paginationEdgeDist = dp(PAGINATION_EDGE_DIST);
         paginationCR = paginationWidth / 2 - paginationEdgeDist;
+
+        mainViewLayoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        mainViewLayoutParams.setMargins(paginationWidth, 0, 0, 0);
+
+        mainViewAnimator = ObjectAnimator.ofFloat(null, AlphaProperty.INSTANCE, 0, 1);
+        mainViewAnimator.setDuration(100);
+        aniListener = new AniListener();
+        mainViewAnimator.addListener(aniListener);
     }
-
-    private int paginationWidth;
-    private int paginationButtonHeight;
-    private int paginationEdgeDist;
-    private int paginationCR;
-
-    protected PaginationButtonGroup centerRadioGroup;
 
     @Override
-    public RelativeLayout createCenterLayout() {
-        RelativeLayout centerLayout = new RelativeLayout(getContext());
+    public void createCenterLayout(RelativeLayout centerLayout) {
+        paginationGroup = new PaginationGroup(getContext());
+        paginationGroup.setOrientation(LinearLayout.VERTICAL);
+        paginationGroup.setGravity(Gravity.CENTER);
+        MuiHelper.setTestingBoarder(paginationGroup);
+        centerLayout.addView(paginationGroup, new LinearLayout.LayoutParams(paginationWidth, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        centerRadioGroup = new PaginationButtonGroup(getContext());
-        centerRadioGroup.setOrientation(LinearLayout.VERTICAL);
-        centerRadioGroup.setGravity(Gravity.CENTER);
-        MuiHelper.setTestingBoarder(centerRadioGroup);
-        centerLayout.addView(centerRadioGroup, new LinearLayout.LayoutParams(paginationWidth, ViewGroup.LayoutParams.MATCH_PARENT));
-
-        centerRadioGroup.addView(new PageButton(getContext(), 1001, PublicTexture.getPublicImage(PublicTexture.ICON_BACKPACK)));
-        centerRadioGroup.addView(new PageButton(getContext(), 1002, PublicTexture.getPublicImage(PublicTexture.ICON_BACKPACK)));
-        centerRadioGroup.addView(new PageButton(getContext(), 1003, PublicTexture.getPublicImage(PublicTexture.ICON_BACKPACK)));
-        centerRadioGroup.preCheck(1001);
-
-        return centerLayout;
+        for (int i = 1; i <= getPaginationCount(); i++) {
+            paginationGroup.addView(new PageButton(getContext(), 10000 + i, getPaginationIcon(i), i));
+        }
+        if (getPaginationCount() > 0) {
+            paginationGroup.preCheck(10001);
+            mainView = createView(1);
+            mainViewAnimator.setTarget(mainView);
+            centerLayout.addView(mainView, mainViewLayoutParams);
+            paginationGroup.setOnCheckedChangeListener((group, id) -> {
+                // if (!init) return;
+                if (paginationGroup.animator.isRunning()) paginationGroup.animator.cancel();
+                PageButton view = findViewById(id);
+                paginationGroup.animator.setValues(PropertyValuesHolder.ofInt(PaginationGroup.property, paginationGroup.flagY, view.getTop() + view.getHeight() / 2));
+                paginationGroup.animator.start();
+                aniListener.toIndex = id - 10000;
+                mainViewAnimator.reverse();
+            });
+        } else {
+            centerLayout.addView(createView(0), mainViewLayoutParams);
+        }
     }
 
-    public class PaginationButtonGroup extends RadioGroup {
+    @Range(from = 0, to = 4)
+    public abstract int getPaginationCount();
+
+    public abstract View createView(int index);
+
+    public abstract ResourceLocation getPaginationIcon(int index);
+
+    public class PaginationGroup extends RadioGroup {
 
         public static final int CHECKED_BG_COLOR = 0xDF2C2C2C;
         private final Paint paint = new Paint();
+
         private int flagY;
         private final ObjectAnimator animator;
 
         private boolean init = false;
 
-        {
-            paint.setColor(CHECKED_BG_COLOR);
-        }
-
-        public PaginationButtonGroup(Context context) {
+        public PaginationGroup(Context context) {
             super(context);
             setWillNotDraw(false);
+            paint.setColor(CHECKED_BG_COLOR);
             animator = ObjectAnimator.ofInt(this, property, 0);
             animator.setDuration(250);
             animator.setInterpolator(TimeInterpolator.DECELERATE);
 
-            setOnCheckedChangeListener((group, id) -> {
-                if (!init) return;
-                System.out.println("flag B id=" + id);
-                if (animator.isRunning()) animator.cancel();
-                View view = findViewById(id);
-                animator.setValues(PropertyValuesHolder.ofInt(property, flagY, view.getTop() + view.getHeight() / 2));
-                animator.start();
+            OneShotPreDrawListener.add(this, () -> {
+                if (this.getChildCount() >= 1 && this.getCheckedId() != View.NO_ID) {
+                    PageButton view = findViewById(getCheckedId());
+                    this.flagY = view.getHeight() / 2 + view.getTop();
+                    mainViewAnimator.start();
+                    // init = true;
+                }
             });
         }
 
@@ -102,17 +128,9 @@ public class NarrowPaginationAEFView extends RootAEFView {
             super.onDraw(canvas);
             MuiHelper.imageMesh(PublicTexture.getPublicImage(PublicTexture.ROOT_LEFT_DEC), canvas,
                     0, 0, getWidth(), getWidth(), getWidth(), getHeight(), false);
-            if (this.getChildCount() >= 1 && this.getCheckedId() != NO_ID) {
-                if (!init) {
-                    View view = findViewById(getCheckedId());
-                    this.flagY = view.getHeight() / 2 + view.getTop();
-                    init = true;
-                    System.out.println("flag A y=" + flagY);
-                    post(this::invalidate);
-                } else {
-                    canvas.drawRoundRect(paginationEdgeDist, flagY - paginationButtonHeight / 2, getWidth() - paginationEdgeDist, flagY + paginationButtonHeight / 2,
-                            paginationCR, paginationCR, paginationCR, paginationCR, paint);
-                }
+            if (this.getChildCount() >= 1) {
+                canvas.drawRoundRect(paginationEdgeDist, flagY - paginationButtonHeight / 2, getWidth() - paginationEdgeDist, flagY + paginationButtonHeight / 2,
+                        paginationCR, paginationCR, paginationCR, paginationCR, paint);
             }
         }
 
@@ -125,20 +143,20 @@ public class NarrowPaginationAEFView extends RootAEFView {
 
         public static final PosProperty property = new PosProperty();
 
-        public static class PosProperty extends IntProperty<PaginationButtonGroup> {
+        public static class PosProperty extends IntProperty<PaginationGroup> {
 
             public PosProperty() {
                 super("pagination_moving_animator");
             }
 
             @Override
-            public void setValue(PaginationButtonGroup object, int value) {
+            public void setValue(PaginationGroup object, int value) {
                 object.flagY = value;
                 object.invalidate();
             }
 
             @Override
-            public Integer get(PaginationButtonGroup object) {
+            public Integer get(PaginationGroup object) {
                 return object.flagY;
             }
         }
@@ -151,6 +169,7 @@ public class NarrowPaginationAEFView extends RootAEFView {
         public static final int COLOR_UNCHECKED = 0x9FFF0000;
 
         public final Image icon;
+        public final int index;
         public final ObjectAnimator textureColorAnimator;
         private final Paint paint = new Paint();
 
@@ -158,16 +177,17 @@ public class NarrowPaginationAEFView extends RootAEFView {
             paint.setColor(COLOR_UNCHECKED);
         }
 
-        public PageButton(Context context, int id, ResourceLocation imgLoc) {
-            this(context, id, AMImageStore.get(imgLoc));
+        private PageButton(Context context, int id, ResourceLocation imgLoc, int index) {
+            this(context, id, Image.create(imgLoc.getNamespace(), imgLoc.getPath()), index);
         }
 
-        public PageButton(Context context, int id, Image icon) {
+        private PageButton(Context context, int id, Image icon, int index) {
             super(context, null, null, null);
             setId(id);
             setFocusable(true);
             setClickable(true);
             this.icon = icon;
+            this.index = index;
 
             textureColorAnimator = ObjectAnimator.ofArgb(this, colorProperty, COLOR_UNCHECKED, COLOR_CHECKED);
             setOnHoverListener((view, event) -> switch (event.getAction()) {
@@ -206,6 +226,23 @@ public class NarrowPaginationAEFView extends RootAEFView {
             @Override
             public Integer get(PageButton object) {
                 return object.paint.getColor();
+            }
+        }
+    }
+
+    private class AniListener implements AnimatorListener {
+
+        public int toIndex;
+
+        @Override
+        public void onAnimationEnd(Animator animation, boolean isReverse) {
+            if (isReverse) {
+                removeView(mainView);
+                mainView = createView(toIndex);
+                mainView.setAlpha(0);
+                mainViewAnimator.setTarget(mainView);
+                centerLayout.addView(mainView, mainViewLayoutParams);
+                mainViewAnimator.start();
             }
         }
     }

@@ -23,6 +23,7 @@ import java.util.HashMap;
 import javax.annotation.Nonnull;
 
 @EventBusSubscriber
+@Deprecated
 public class AMImageStore {
 
     private static final AMImageStore INSTANCE = new AMImageStore();

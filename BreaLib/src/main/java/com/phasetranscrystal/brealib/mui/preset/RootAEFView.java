@@ -102,7 +102,8 @@ public abstract class RootAEFView extends RelativeLayout {
         }
 
         // 中部布局
-        centerLayout = createCenterLayout();
+        centerLayout = new RelativeLayout(getContext());
+        createCenterLayout(centerLayout);
         MuiHelper.setTestingBoarder(centerLayout);
         LayoutParams centerOuterLayoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         centerOuterLayoutParams.setMargins(0, tbHeight, 0, tbHeight);
@@ -160,7 +161,7 @@ public abstract class RootAEFView extends RelativeLayout {
         gradientPaint.setShader(new LinearGradient(0, tbHeight, 0, getHeight() - tbHeight, GRADIENT_COLOR, GRADIENT_POSITON, Shader.TileMode.CLAMP, null));
     }
 
-    public abstract RelativeLayout createCenterLayout();
+    public abstract void createCenterLayout(RelativeLayout center);
 
     public static class CloseButton extends HoverAlphaButton {
 

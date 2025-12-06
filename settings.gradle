@@ -33,7 +33,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = 'PhasetransCrystal'
+rootProject.name = 'BreakdownCore'
 
 include ':BreaCore'
 include ':BreaLib'
