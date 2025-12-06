@@ -1,10 +1,11 @@
 package com.phasetranscrystal.breacore.api;
 
-import com.phasetranscrystal.brealib.mixin.registrate.neoforge.RegisterEventAccessor;
+import com.phasetranscrystal.brealib.mixin.neoforge.RegisterEventAccessor;
 
 import com.phasetranscrystal.breacore.api.material.registry.IMaterialRegistry;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistry;
 
+import net.minecraft.util.RandomSource;
 import net.neoforged.fml.ModLoader;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
@@ -31,6 +32,9 @@ public class BreaAPI {
      * 每个材料单位的流体量（质因数：3 * 3 * 2 * 2 * 2 * 2）
      */
     public static final int L = 144;
+
+    public static final long CLIENT_TIME = 0;
+    public static final RandomSource RNG = RandomSource.createThreadSafe();
 
     public static IMaterialRegistry materialManager;
 

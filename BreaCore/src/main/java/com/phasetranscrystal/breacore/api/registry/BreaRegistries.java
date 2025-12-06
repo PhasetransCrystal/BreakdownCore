@@ -2,6 +2,7 @@ package com.phasetranscrystal.breacore.api.registry;
 
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 
+import com.phasetranscrystal.breacore.api.machine.MachineDefinition;
 import com.phasetranscrystal.breacore.api.material.Element;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
@@ -105,4 +106,7 @@ public class BreaRegistries {
 
     public static final ResourceKey<Registry<DimensionMarker>> DIMENSION_MARKER_REGISTRY = makeRegistryKey(BreaUtil.byPath("dimension_marker"));
     public static final BreaRegistry<DimensionMarker> DIMENSION_MARKERS = new BreaRegistry<>(DIMENSION_MARKER_REGISTRY);
+
+    public static final ResourceKey<Registry<MachineDefinition>> MACHINE_KEY = makeRegistryKey(BreaUtil.byPath("machine"));
+    public static final BreaRegistry<MachineDefinition> MACHINES = new BreaRegistry<>(MACHINE_KEY);
 }

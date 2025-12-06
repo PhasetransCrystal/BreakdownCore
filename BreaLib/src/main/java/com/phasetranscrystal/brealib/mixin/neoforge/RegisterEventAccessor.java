@@ -1,4 +1,4 @@
-package com.phasetranscrystal.brealib.mixin.registrate.neoforge;
+package com.phasetranscrystal.brealib.mixin.neoforge;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
