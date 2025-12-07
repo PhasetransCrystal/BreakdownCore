@@ -4,6 +4,7 @@ import com.phasetranscrystal.brealib.utils.ShapeUtil;
 
 import com.phasetranscrystal.breacore.api.block.IMachineBlock;
 import com.phasetranscrystal.breacore.api.item.MetaMachineItem;
+import com.phasetranscrystal.breacore.api.mui.editor.EditableMachineUI;
 
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -74,6 +75,10 @@ public class MachineDefinition implements Supplier<IMachineBlock> {
     @Getter
     @Setter
     private BiConsumer<ItemStack, Consumer<Component>> tooltipBuilder;
+    @Nullable
+    @Getter
+    @Setter
+    private EditableMachineUI editableUI;
     @Getter
     @Setter
     private Supplier<BlockState> appearance;

@@ -134,7 +134,7 @@ public abstract class RootAEFView extends RelativeLayout {
         // canvas.drawSimpleText(I18n.get(titleKey),
         // FontFamily.getSystemFontWithAlias("微软雅黑").getClosestMatch(FontPaint.NORMAL),
         // tbHeight * 1.2F, tbHeight * 0.8F, paint);
-        canvas.drawImage(PublicTexture.getPublicImage(PublicTexture.ROOT_NAME_DEC), null,
+        canvas.drawImage(PublicTexture.ROOT_NAME_DEC.getTexture().get(), null,
                 new RectF(tbHeight * 1.2F, tbHeight * 0.15F, tbHeight * 2.2F, tbHeight * 0.35F), null);
 
         // 绘制中部渐变区域
@@ -180,7 +180,7 @@ public abstract class RootAEFView extends RelativeLayout {
 
             setOnClickListener(behavior);
 
-            setBackground(new ImageDrawable(null, PublicTexture.getPublicImage(PublicTexture.ROOT_CLOSE_BUTTON)));
+            setBackground(new ImageDrawable(null, PublicTexture.ROOT_CLOSE_BUTTON.getTexture().get()));
         }
     }
 }

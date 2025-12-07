@@ -1,5 +1,6 @@
 package com.phasetranscrystal.breacore.common.machine.debug;
 
+import com.phasetranscrystal.brealib.mui.TestingFragment;
 import com.phasetranscrystal.brealib.mui.modular.ModularUI;
 
 import com.phasetranscrystal.breacore.api.machine.IMachineBlockEntity;
@@ -16,6 +17,6 @@ public class TestMachine extends MetaMachine implements IUIMachine {
 
     @Override
     public ModularUI createUI(Player entityPlayer) {
-        return new ModularUI();
+        return new ModularUI(new TestingFragment(), this, entityPlayer);
     }
 }

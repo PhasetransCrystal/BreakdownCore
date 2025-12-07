@@ -2,10 +2,10 @@ package com.phasetranscrystal.brealib.mui;
 
 import com.phasetranscrystal.brealib.BreaLib;
 import com.phasetranscrystal.brealib.mui.preset.NarrowPaginationAEFView;
+import com.phasetranscrystal.brealib.mui.widget.WidgetGroup;
 
 import net.minecraft.resources.ResourceLocation;
 
-import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.util.DataSet;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.LayoutInflater;
@@ -17,7 +17,7 @@ import icyllis.modernui.widget.RelativeLayout;
 import icyllis.modernui.widget.TextView;
 import org.jetbrains.annotations.Range;
 
-public class TestingFragment extends Fragment {
+public class TestingFragment extends WidgetGroup {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, DataSet savedInstanceState) {
@@ -55,7 +55,7 @@ public class TestingFragment extends Fragment {
 
             @Override
             public ResourceLocation getPaginationIcon(int index) {
-                return PublicTexture.ICON_BACKPACK;
+                return PublicTexture.ICON_BACKPACK.getLocation();
             }
         };
 

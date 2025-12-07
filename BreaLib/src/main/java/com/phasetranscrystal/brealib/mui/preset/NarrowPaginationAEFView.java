@@ -126,7 +126,7 @@ public abstract class NarrowPaginationAEFView extends RootAEFView {
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            MuiHelper.imageMesh(PublicTexture.getPublicImage(PublicTexture.ROOT_LEFT_DEC), canvas,
+            MuiHelper.imageMesh((PublicTexture.ROOT_LEFT_DEC.getTexture().get()), canvas,
                     0, 0, getWidth(), getWidth(), getWidth(), getHeight(), false);
             if (this.getChildCount() >= 1) {
                 canvas.drawRoundRect(paginationEdgeDist, flagY - paginationButtonHeight / 2, getWidth() - paginationEdgeDist, flagY + paginationButtonHeight / 2,

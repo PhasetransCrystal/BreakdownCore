@@ -12,8 +12,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 public class MachineUIFactory extends UIFactory<MetaMachine> {
 
@@ -31,7 +29,6 @@ public class MachineUIFactory extends UIFactory<MetaMachine> {
         return null;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     protected MetaMachine readHolderFromSyncData(RegistryFriendlyByteBuf syncData) {
         Level world = Minecraft.getInstance().level;

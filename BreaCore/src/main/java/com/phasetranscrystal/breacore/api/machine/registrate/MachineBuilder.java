@@ -9,6 +9,7 @@ import com.phasetranscrystal.breacore.api.machine.IMachineBlockEntity;
 import com.phasetranscrystal.breacore.api.machine.MachineDefinition;
 import com.phasetranscrystal.breacore.api.machine.MetaMachine;
 import com.phasetranscrystal.breacore.api.machine.mulityblock.PartAbility;
+import com.phasetranscrystal.breacore.api.mui.editor.EditableMachineUI;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.config.ConfigHolder;
 
@@ -108,6 +109,10 @@ public class MachineBuilder<DEFINITION extends MachineDefinition> {
     @Getter // getter for KJS
     @Setter
     @Nullable
+    private EditableMachineUI editableUI;
+    @Getter // getter for KJS
+    @Setter
+    @Nullable
     private String langValue = null;
 
     public MachineBuilder(AbstractRegistrate<?> registrate, String name,
@@ -200,6 +205,9 @@ public class MachineBuilder<DEFINITION extends MachineDefinition> {
         definition.setRegressWhenWaiting(this.regressWhenWaiting);
         if (appearance == null) {
             appearance = block::getDefaultState;
+        }
+        if (editableUI != null) {
+            definition.setEditableUI(editableUI);
         }
         definition.setAppearance(appearance);
         definition.setAllowExtendedFacing(allowExtendedFacing);

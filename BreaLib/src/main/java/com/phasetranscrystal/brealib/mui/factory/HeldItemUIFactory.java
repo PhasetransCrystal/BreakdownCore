@@ -1,11 +1,12 @@
 package com.phasetranscrystal.brealib.mui.factory;
 
+import com.phasetranscrystal.brealib.BreaLib;
 import com.phasetranscrystal.brealib.mui.modular.IUIHolder;
 import com.phasetranscrystal.brealib.mui.modular.ModularUI;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +18,7 @@ public class HeldItemUIFactory extends UIFactory<HeldItemUIFactory.HeldItemHolde
     public static final HeldItemUIFactory INSTANCE = new HeldItemUIFactory();
 
     public HeldItemUIFactory() {
-        super(BreaUtil.byPath("held_item"));
+        super(ResourceLocation.fromNamespaceAndPath(BreaLib.MOD_ID, "held_item"));
     }
 
     public final boolean openUI(Player player, InteractionHand hand) {
@@ -75,7 +76,6 @@ public class HeldItemUIFactory extends UIFactory<HeldItemUIFactory.HeldItemHolde
         public void markAsDirty() {}
     }
 
-    @Deprecated
     public interface IHeldItemUIHolder extends IUIHolder.Item {
 
     }

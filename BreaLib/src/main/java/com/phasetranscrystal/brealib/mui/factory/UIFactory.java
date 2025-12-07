@@ -1,6 +1,5 @@
 package com.phasetranscrystal.brealib.mui.factory;
 
-import com.phasetranscrystal.brealib.mui.TestingFragment;
 import com.phasetranscrystal.brealib.mui.modular.ModularUI;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -8,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 
 import icyllis.modernui.mc.neoforge.MuiForgeApi;
+import io.netty.buffer.Unpooled;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,15 @@ public abstract class UIFactory<T> {
     }
 
     public final boolean openUI(T holder, Player player) {
-        MuiForgeApi.openScreen(new TestingFragment());
+        ModularUI uiTemplate = createUITemplate(holder, player);
+        if (uiTemplate == null) return false;
+        // uiTemplate.initWidgets();
+        if (player.containerMenu != player.inventoryMenu) {
+            player.closeContainer();
+        }
+        RegistryFriendlyByteBuf serializedHolder = new RegistryFriendlyByteBuf(Unpooled.buffer(), player.registryAccess());
+        writeHolderToSyncData(serializedHolder, holder);
+        MuiForgeApi.openScreen(uiTemplate.mainGroup);
         return true;
     }
 

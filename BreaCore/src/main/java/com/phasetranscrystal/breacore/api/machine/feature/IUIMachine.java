@@ -5,7 +5,6 @@ import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import com.phasetranscrystal.breacore.api.mui.factory.MachineUIFactory;
 
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -19,8 +18,8 @@ public interface IUIMachine extends IUIHolder, IMachineFeature {
 
     default InteractionResult tryToOpenUI(Player player, InteractionHand hand, BlockHitResult hit) {
         if (this.shouldOpenUI(player, hand, hit)) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                MachineUIFactory.INSTANCE.openUI(self(), serverPlayer);
+            if (player.level().isClientSide) {
+                MachineUIFactory.INSTANCE.openUI(self(), player);
             }
         } else {
             return InteractionResult.PASS;

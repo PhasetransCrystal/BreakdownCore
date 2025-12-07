@@ -1,18 +1,23 @@
 package com.phasetranscrystal.breacore.api.block.debug;
 
-import com.phasetranscrystal.brealib.mui.modular.IUIBlock;
+import com.phasetranscrystal.breacore.api.blockentity.debug.TestBlockEntity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class MuiTestBlock extends Block implements IUIBlock {
+import org.jetbrains.annotations.Nullable;
+
+import static com.phasetranscrystal.breacore.data.blocks.BreaBlocks.TestMuiBlock;
+
+public class MuiTestBlock extends Block implements EntityBlock {
 
     public MuiTestBlock(Properties p_49795_) {
         super(p_49795_);
@@ -20,11 +25,14 @@ public class MuiTestBlock extends Block implements IUIBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        return tryToOpenUI(player, InteractionHand.MAIN_HAND, hitResult);
+        if (level.getBlockEntity(pos) instanceof TestBlockEntity tbe) {
+            tbe.use(player);
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        return tryToOpenUI(player, hand, hitResult);
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return TestMuiBlock.getSibling(Registries.BLOCK_ENTITY_TYPE).value().create(blockPos, blockState);
     }
 }
