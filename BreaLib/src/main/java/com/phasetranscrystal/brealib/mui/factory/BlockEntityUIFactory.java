@@ -10,8 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 public class BlockEntityUIFactory extends UIFactory<BlockEntity> {
 
@@ -29,7 +27,6 @@ public class BlockEntityUIFactory extends UIFactory<BlockEntity> {
         return null;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     protected BlockEntity readHolderFromSyncData(RegistryFriendlyByteBuf syncData) {
         Level world = Minecraft.getInstance().level;

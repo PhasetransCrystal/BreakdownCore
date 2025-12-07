@@ -8,6 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -27,9 +29,14 @@ public class CheckMatBlock extends Block {
         if (player.isShiftKeyDown()) {
             return InteractionResult.TRY_WITH_EMPTY_HAND;
         }
-        displayMaterial(player, ChemicalHelper.getMaterialStack(stack).material(), "Material Stack:%s");
         var item = stack.getItem();
-        displayMaterial(player, ChemicalHelper.getMaterialStack(item).material(), "Material Item:%s");
+        if (item instanceof BucketItem bi) {
+            displayMaterial(player, ChemicalHelper.getMaterial(bi.content), "Material Fluid Bucket:%s");
+        } else if (item instanceof BlockItem mbi) {
+            displayMaterial(player, ChemicalHelper.getMaterialStack(mbi.getBlock()).material(), "Material Item:%s");
+        } else {
+            displayMaterial(player, ChemicalHelper.getMaterialStack(item).material(), "Material Item:%s");
+        }
         return InteractionResult.SUCCESS;
     }
 
