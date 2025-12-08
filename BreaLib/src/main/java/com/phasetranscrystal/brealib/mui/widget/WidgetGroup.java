@@ -182,6 +182,9 @@ public class WidgetGroup extends Widget {
     @Override
     public void modifyView(ViewGroup container) {
         for (var widget : widgets) {
+            if (!widget.isVisible()) {
+                continue;
+            }
             var ccon = widget.createContainer(container.getContext());
             widget.drawBackground(ccon);
             widget.modifyView(ccon);

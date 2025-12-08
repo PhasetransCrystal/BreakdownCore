@@ -1,6 +1,7 @@
 package com.phasetranscrystal.brealib.mui;
 
 import com.phasetranscrystal.brealib.BreaLib;
+import com.phasetranscrystal.brealib.mui.texture.GuiTexture;
 
 import net.minecraft.resources.ResourceLocation;
 

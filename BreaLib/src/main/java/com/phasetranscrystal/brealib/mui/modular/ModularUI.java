@@ -1,6 +1,7 @@
 package com.phasetranscrystal.brealib.mui.modular;
 
-import com.phasetranscrystal.brealib.mui.GuiTexture;
+import com.phasetranscrystal.brealib.BreaLib;
+import com.phasetranscrystal.brealib.mui.texture.GuiTexture;
 import com.phasetranscrystal.brealib.mui.widget.SlotWidget;
 import com.phasetranscrystal.brealib.mui.widget.Widget;
 import com.phasetranscrystal.brealib.mui.widget.WidgetGroup;
@@ -136,5 +137,32 @@ public final class ModularUI extends Fragment {
         layout.addView(mg, lp);
 
         return layout;
+    }
+
+    // WARNING! WIDGET CHANGES SHOULD BE *STRICTLY* SYNCHRONIZED BETWEEN SERVER AND CLIENT,
+    // OTHERWISE ID MISMATCH CAN HAPPEN BETWEEN ASSIGNED SLOTS!
+    public void addNativeSlot(Slot slotHandle, SlotWidget slotWidget) {
+        if (this.slotMap.containsKey(slotHandle)) {
+            BreaLib.LOGGER.error("duplicated slot {}, {}", slotHandle, slotWidget);
+        }
+        this.slotMap.put(slotHandle, slotWidget);
+        /*
+         * if (container != null) {
+         * container.addSlot(slotHandle);
+         * }
+         */
+    }
+
+    // WARNING! WIDGET CHANGES SHOULD BE *STRICTLY* SYNCHRONIZED BETWEEN SERVER AND CLIENT,
+    // OTHERWISE ID MISMATCH CAN HAPPEN BETWEEN ASSIGNED SLOTS!
+    public void removeNativeSlot(Slot slotHandle) {
+        if (this.slotMap.containsKey(slotHandle)) {
+            this.slotMap.remove(slotHandle);
+            /*
+             * if (container != null) {
+             * container.removeSlot(slotHandle);
+             * }
+             */
+        }
     }
 }

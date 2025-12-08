@@ -1,9 +1,8 @@
 package com.phasetranscrystal.brealib.mui.widget;
 
-import com.phasetranscrystal.brealib.mui.GuiTexture;
 import com.phasetranscrystal.brealib.mui.modular.ModularUI;
 import com.phasetranscrystal.brealib.mui.modular.WidgetUIAccess;
-import com.phasetranscrystal.brealib.mui.widget.layout.Align;
+import com.phasetranscrystal.brealib.mui.texture.GuiTexture;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 import com.phasetranscrystal.brealib.utils.Position;
 import com.phasetranscrystal.brealib.utils.Size;
@@ -39,9 +38,6 @@ public class Widget {
     private Size size;
     @Getter
     protected WidgetGroup parent;
-    @Getter
-    @Setter
-    private Align align = Align.NONE;
     @Getter
     protected boolean isClientSideWidget;
     @Getter

@@ -1,4 +1,4 @@
-package com.phasetranscrystal.brealib.mui;
+package com.phasetranscrystal.brealib.mui.texture;
 
 import icyllis.modernui.graphics.Image;
 
