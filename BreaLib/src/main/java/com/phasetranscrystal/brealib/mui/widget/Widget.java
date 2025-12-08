@@ -28,8 +28,12 @@ public class Widget {
     @Setter
     protected WidgetUIAccess uiAccess;
     @Getter
+    protected GuiTexture backgroundTexture;
+    @Getter
     private Position parentPosition = Position.ORIGIN;
-
+    @Setter
+    @Getter
+    protected String id = "";
     @Getter
     private Position selfPosition;
     @Getter
@@ -92,7 +96,12 @@ public class Widget {
         return new FrameLayout(context);
     }
 
+    public Widget setBackground(GuiTexture texture) {
+        return setBackground(texture, new Rect(0, 0, 0, 0));
+    }
+
     public Widget setBackground(GuiTexture texture, Rect rect) {
+        this.backgroundTexture = texture;
         return this;
     }
 

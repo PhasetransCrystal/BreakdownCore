@@ -43,4 +43,8 @@ public class GuiTexture {
             getTexture();
         }
     }
+
+    public GuiTexture copy() {
+        return new GuiTexture(location);
+    }
 }

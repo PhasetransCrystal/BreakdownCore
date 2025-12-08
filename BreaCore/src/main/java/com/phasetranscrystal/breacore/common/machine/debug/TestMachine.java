@@ -7,6 +7,7 @@ import com.phasetranscrystal.brealib.mui.modular.ModularUI;
 import com.phasetranscrystal.brealib.mui.preset.NarrowPaginationAEFView;
 import com.phasetranscrystal.brealib.mui.widget.Widget;
 import com.phasetranscrystal.brealib.mui.widget.WidgetGroup;
+import com.phasetranscrystal.brealib.mui.widget.custom.PlayerInventoryWidget;
 
 import com.phasetranscrystal.breacore.api.machine.IMachineBlockEntity;
 import com.phasetranscrystal.breacore.api.machine.MetaMachine;
@@ -104,6 +105,7 @@ public class TestMachine extends MetaMachine implements IUIMachine {
 
                         container.addView(centerBox, params);
                     }
-                });
+                })
+                .widget(new PlayerInventoryWidget(130, 200));
     }
 }
