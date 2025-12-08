@@ -5,6 +5,7 @@ import com.phasetranscrystal.brealib.BreaLib;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
+
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -90,5 +91,12 @@ public final class BreaUtil {
 
     public static Path getGamePath() {
         return FMLLoader.getGamePath();
+    }
+
+    public static boolean isRemote() {
+        if (isClientSide()) {
+            return Minecraft.getInstance().isSameThread();
+        }
+        return false;
     }
 }

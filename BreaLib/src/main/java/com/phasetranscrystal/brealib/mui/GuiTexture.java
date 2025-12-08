@@ -1,8 +1,9 @@
 package com.phasetranscrystal.brealib.mui;
 
+import icyllis.modernui.graphics.Image;
+
 import net.minecraft.resources.ResourceLocation;
 
-import icyllis.modernui.graphics.Image;
 import lombok.Getter;
 
 import java.util.HashMap;

@@ -4,6 +4,7 @@ import com.phasetranscrystal.breacore.utils.LocalizationUtils;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;

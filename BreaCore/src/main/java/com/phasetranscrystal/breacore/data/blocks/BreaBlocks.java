@@ -20,6 +20,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+
 import net.neoforged.neoforge.common.Tags;
 
 import com.google.common.collect.ImmutableTable;

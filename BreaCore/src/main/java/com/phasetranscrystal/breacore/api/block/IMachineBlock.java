@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import org.jetbrains.annotations.NotNull;

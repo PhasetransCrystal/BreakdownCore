@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 

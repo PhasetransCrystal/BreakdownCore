@@ -3,6 +3,7 @@ package com.phasetranscrystal.breacore.common.horiz;
 import com.phasetranscrystal.brealib.utils.Tree;
 
 import net.minecraft.resources.ResourceLocation;
+
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.ICancellableEvent;
 

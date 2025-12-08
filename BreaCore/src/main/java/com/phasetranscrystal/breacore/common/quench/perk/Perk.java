@@ -6,6 +6,7 @@ import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+
 import net.neoforged.bus.api.Event;
 
 import java.util.Collections;

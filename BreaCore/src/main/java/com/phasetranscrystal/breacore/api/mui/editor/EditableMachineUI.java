@@ -2,7 +2,6 @@ package com.phasetranscrystal.breacore.api.mui.editor;
 
 import com.phasetranscrystal.brealib.mui.widget.WidgetGroup;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
-import com.phasetranscrystal.brealib.utils.Position;
 
 import com.phasetranscrystal.breacore.api.machine.MetaMachine;
 
@@ -57,7 +56,7 @@ public class EditableMachineUI implements IEditableUI<WidgetGroup, MetaMachine> 
         if (hasCustomUI()) {
             var nbt = getCustomUI();
             var group = new WidgetGroup();
-            group.setSelfPosition(new Position(0, 0));
+            // group.setSelfPosition(new Position(0, 0));
             return group;
         }
         return null;

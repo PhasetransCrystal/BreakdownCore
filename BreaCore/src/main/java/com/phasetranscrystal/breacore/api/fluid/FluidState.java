@@ -4,6 +4,7 @@ import com.phasetranscrystal.breacore.data.tags.CustomTags;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
+
 import net.neoforged.neoforge.common.Tags;
 
 import lombok.Getter;

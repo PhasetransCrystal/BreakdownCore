@@ -8,6 +8,7 @@ import com.phasetranscrystal.breacore.common.quench.perk.ExtraPerkWeightComponen
 
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
+
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 

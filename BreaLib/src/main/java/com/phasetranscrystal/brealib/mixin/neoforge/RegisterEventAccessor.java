@@ -2,6 +2,7 @@ package com.phasetranscrystal.brealib.mixin.neoforge;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
+
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import org.spongepowered.asm.mixin.Mixin;

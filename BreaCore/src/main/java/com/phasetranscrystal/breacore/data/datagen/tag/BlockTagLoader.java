@@ -4,6 +4,7 @@ import com.phasetranscrystal.breacore.data.tags.CustomTags;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+
 import net.neoforged.neoforge.common.Tags;
 
 import com.tterrag.registrate.providers.RegistrateTagsProvider;

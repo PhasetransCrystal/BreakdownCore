@@ -14,6 +14,7 @@ import net.minecraft.network.VarInt;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 

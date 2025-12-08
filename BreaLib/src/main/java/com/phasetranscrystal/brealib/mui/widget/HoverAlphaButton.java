@@ -2,12 +2,12 @@ package com.phasetranscrystal.brealib.mui.widget;
 
 import com.phasetranscrystal.brealib.mui.property.AlphaProperty;
 
-import net.minecraft.client.Minecraft;
-
 import icyllis.modernui.animation.ObjectAnimator;
 import icyllis.modernui.core.Context;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.widget.Button;
+
+import net.minecraft.client.Minecraft;
 
 public class HoverAlphaButton extends Button {
 

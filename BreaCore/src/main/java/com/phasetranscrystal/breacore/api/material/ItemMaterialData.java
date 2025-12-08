@@ -19,6 +19,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import com.mojang.datafixers.util.Pair;

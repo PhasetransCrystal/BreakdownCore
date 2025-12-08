@@ -4,10 +4,6 @@ import com.phasetranscrystal.brealib.mui.MuiHelper;
 import com.phasetranscrystal.brealib.mui.PublicTexture;
 import com.phasetranscrystal.brealib.mui.widget.HoverAlphaButton;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.resources.ResourceLocation;
-
 import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.*;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
@@ -16,6 +12,11 @@ import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.*;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.resources.ResourceLocation;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

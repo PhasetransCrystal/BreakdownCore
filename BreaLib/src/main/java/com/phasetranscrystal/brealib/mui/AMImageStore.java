@@ -2,19 +2,20 @@ package com.phasetranscrystal.brealib.mui;
 
 import com.phasetranscrystal.brealib.BreaLib;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
-import net.neoforged.neoforge.event.GameShuttingDownEvent;
-
 import icyllis.modernui.ModernUI;
 import icyllis.modernui.annotation.NonNull;
 import icyllis.modernui.annotation.Nullable;
 import icyllis.modernui.graphics.Bitmap;
 import icyllis.modernui.graphics.BitmapFactory;
 import icyllis.modernui.graphics.Image;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
+
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
+import net.neoforged.neoforge.event.GameShuttingDownEvent;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;

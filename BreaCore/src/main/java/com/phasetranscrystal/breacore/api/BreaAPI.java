@@ -6,6 +6,7 @@ import com.phasetranscrystal.breacore.api.material.registry.IMaterialRegistry;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistry;
 
 import net.minecraft.util.RandomSource;
+
 import net.neoforged.fml.ModLoader;
 import net.neoforged.neoforge.registries.RegisterEvent;
 

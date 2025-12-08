@@ -4,14 +4,15 @@ import com.phasetranscrystal.brealib.mui.MuiHelper;
 import com.phasetranscrystal.brealib.mui.PublicTexture;
 import com.phasetranscrystal.brealib.mui.property.AlphaProperty;
 
-import net.minecraft.resources.ResourceLocation;
-
 import icyllis.modernui.animation.*;
 import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.*;
 import icyllis.modernui.util.IntProperty;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
+
+import net.minecraft.resources.ResourceLocation;
+
 import org.jetbrains.annotations.Range;
 
 public abstract class NarrowPaginationAEFView extends RootAEFView {

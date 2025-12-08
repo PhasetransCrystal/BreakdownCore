@@ -4,6 +4,7 @@ import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
 import lombok.Getter;

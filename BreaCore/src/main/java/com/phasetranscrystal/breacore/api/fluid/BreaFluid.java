@@ -9,6 +9,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
+
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
 import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
