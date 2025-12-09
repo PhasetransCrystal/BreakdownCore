@@ -52,7 +52,7 @@ public class SimpleItemView extends ItemView {
                 TextColor textColor = stack.getDisplayName().getStyle().getColor();
                 if (textColor != null) {
                     canvas.clipRect(x0, y0 + actuallyLos - f, x0 + actuallyLos, y0 + actuallyLos);
-                    bottomBarPaint.setColor(textColor.getValue());
+                    bottomBarPaint.setColor(textColor.getValue() | 0xFF000000);
                     canvas.drawRoundRect(x0, y0 + actuallyLos - 2 * f, x0 + actuallyLos, y0 + actuallyLos, f, f, f, f, bottomBarPaint);
                 }
             }
