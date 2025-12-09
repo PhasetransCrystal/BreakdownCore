@@ -13,4 +13,6 @@ public class PublicTexture {
     public static final GuiTexture ROOT_INSIDE_DEC1 = new GuiTexture(ResourceLocation.fromNamespaceAndPath(BreaLib.MOD_ID, "ui_public/dec1.png"), true);
 
     public static final GuiTexture ICON_BACKPACK = new GuiTexture(ResourceLocation.fromNamespaceAndPath(BreaLib.MOD_ID, "ui_public/icon/backpack.png"), true);
+
+    public static final GuiTexture BG_ITEM_SIMPLE = new GuiTexture(ResourceLocation.fromNamespaceAndPath(BreaLib.MOD_ID, "ui_public/slots/decorated_alpha.png"), true);
 }

@@ -7,6 +7,7 @@ import com.phasetranscrystal.brealib.mui.factory.BlockEntityUIFactory;
 import com.phasetranscrystal.brealib.mui.modular.IUIHolder;
 import com.phasetranscrystal.brealib.mui.modular.ModularUI;
 import com.phasetranscrystal.brealib.mui.preset.NarrowPaginationAEFView;
+import com.phasetranscrystal.brealib.mui.preset.view.SimpleItemView;
 import com.phasetranscrystal.brealib.mui.widget.Widget;
 import com.phasetranscrystal.brealib.mui.widget.WidgetGroup;
 
@@ -22,6 +23,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -71,10 +74,24 @@ public class TestBlockEntity extends BlockEntity implements IUIHolder.Block {
                                 TextView textView = new TextView(getContext());
                                 textView.setText("index:" + index);
                                 textView.setTextSize(12);
+                                textView.setId(1300);
                                 RelativeLayout.LayoutParams textViewParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                                 textViewParams.addRule(RelativeLayout.BELOW, 1200);
                                 textViewParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
                                 layout.addView(textView, textViewParams);
+
+                                ItemStack stack = new ItemStack(switch (index) {
+                                    case 1 -> Items.APPLE;
+                                    case 2 -> Items.GOLDEN_APPLE;
+                                    case 3 -> Items.ENCHANTED_GOLDEN_APPLE;
+                                    default -> Items.CHEST;
+                                });
+                                stack.setCount(index);
+                                SimpleItemView itemView = new SimpleItemView(getContext(), stack);
+                                RelativeLayout.LayoutParams itemViewParams = new RelativeLayout.LayoutParams(dp(40), dp(40));
+                                itemViewParams.addRule(RelativeLayout.RIGHT_OF, 1300);
+                                itemViewParams.setMargins(index * dp(20), 0, 0, 0);
+                                layout.addView(itemView, itemViewParams);
                                 return layout;
                             }
 

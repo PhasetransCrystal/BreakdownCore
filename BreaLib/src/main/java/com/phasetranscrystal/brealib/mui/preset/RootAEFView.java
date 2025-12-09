@@ -2,7 +2,7 @@ package com.phasetranscrystal.brealib.mui.preset;
 
 import com.phasetranscrystal.brealib.mui.MuiHelper;
 import com.phasetranscrystal.brealib.mui.PublicTexture;
-import com.phasetranscrystal.brealib.mui.widget.HoverAlphaButton;
+import com.phasetranscrystal.brealib.mui.preset.view.HoverAlphaButton;
 
 import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.*;

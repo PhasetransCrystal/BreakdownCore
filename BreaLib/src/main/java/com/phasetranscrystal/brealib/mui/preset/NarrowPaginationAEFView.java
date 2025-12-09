@@ -238,7 +238,7 @@ public abstract class NarrowPaginationAEFView extends RootAEFView {
         @Override
         public void onAnimationEnd(Animator animation, boolean isReverse) {
             if (isReverse) {
-                removeView(mainView);
+                centerLayout.removeView(mainView);
                 mainView = createView(toIndex);
                 mainView.setAlpha(0);
                 mainViewAnimator.setTarget(mainView);
