@@ -9,6 +9,8 @@ import com.phasetranscrystal.breacore.api.blast.player.SkillDataSynPacket;
 import com.phasetranscrystal.breacore.api.blast.player.SkillGroup;
 import com.phasetranscrystal.breacore.api.blast.skill.Skill;
 import com.phasetranscrystal.breacore.api.blast.skill.SkillData;
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 
 import net.minecraft.core.particles.ParticleTypes;

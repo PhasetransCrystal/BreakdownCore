@@ -2,6 +2,13 @@ package com.phasetranscrystal.breacore.common.blast;
 
 import com.phasetranscrystal.breacore.api.blast.player.SkillGroup;
 
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.common.blast.player.SkillGroup;
+import com.phasetranscrystal.breacore.common.blast.skill.Skill;
+
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -10,12 +17,20 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
-@EventBusSubscriber
 public class BreaBlastTest {
+
+    public static void bootstrap() {
+        if (BreaUtil.isDev()) {
+            SKILL.register(BreaCore.getModEventBus());
+
+            // bus.addListener(BreaBlastTest::testSkillInit);
+        }
+    }
 
     @SubscribeEvent
     public static void testSkillInit(EntityJoinLevelEvent event) {
