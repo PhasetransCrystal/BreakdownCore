@@ -88,7 +88,9 @@ public class SkillGroup {
     public boolean changeTo(Skill<?> skill) {
         if (skill == null || !unlockedSkills.contains(skill) || currentSkill.skill == skill)
             return false;
-        currentSkill.requestDisable();
+        if (this.player != null) {
+            currentSkill.requestDisable();
+        }
         currentSkill = new SkillData<>((Skill<Player>) skill);
         if (this.player != null) {
             this.currentSkill.bindEntity(this.player);
