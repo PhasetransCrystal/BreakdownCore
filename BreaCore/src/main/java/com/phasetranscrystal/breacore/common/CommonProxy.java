@@ -8,6 +8,7 @@ import com.phasetranscrystal.breacore.api.material.event.PostMaterialEvent;
 import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
+import com.phasetranscrystal.breacore.common.blast.BreaBlast;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
 import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 import com.phasetranscrystal.breacore.config.ConfigHolder;
@@ -63,6 +64,7 @@ public class CommonProxy {
         ConfigHolder.init();
         BreaHoriz.bootstrap();
         BreaQuench.bootstrap();
+        BreaBlast.bootstrap();
 
         BreaElements.init();
         BreaMaterialIconSet.init();

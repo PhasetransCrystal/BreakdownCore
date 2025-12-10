@@ -8,6 +8,7 @@ import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
 import com.phasetranscrystal.breacore.api.sound.SoundEntry;
 import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
+import com.phasetranscrystal.breacore.common.blast.skill.Skill;
 import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
@@ -97,8 +98,8 @@ public class BreaRegistries {
     public static final BreaRegistry<PartRemouldType> PART_REMOULD_TYPE = new BreaRegistry<>(PART_REMOULD_TYPE_KEY);
     public static final BreaRegistry<Perk> PERK = new BreaRegistry<>(PERK_KEY);
 
-    public static final ResourceKey<Registry<Material>> MATERIAL_KEY = makeRegistryKey(BreaUtil.byPath("material"));
-    public static final ResourceKey<Registry<Element>> ELEMENT_KEY = makeRegistryKey(BreaUtil.byPath("element"));
+    public static final ResourceKey<Registry<Material>> MATERIAL_KEY = makeRegistryKey(BreaUtil.byPath("metal/material"));
+    public static final ResourceKey<Registry<Element>> ELEMENT_KEY = makeRegistryKey(BreaUtil.byPath("metal/element"));
     public static final BreaRegistry<Element> ELEMENTS = new BreaRegistry<>(ELEMENT_KEY);
     public static final MaterialRegistry MATERIALS = new MaterialRegistry(MATERIAL_KEY);
 
@@ -110,4 +111,7 @@ public class BreaRegistries {
 
     public static final ResourceKey<Registry<MachineDefinition>> MACHINE_KEY = makeRegistryKey(BreaUtil.byPath("machine"));
     public static final BreaRegistry<MachineDefinition> MACHINES = new BreaRegistry<>(MACHINE_KEY);
+
+    public static final ResourceKey<Registry<Skill<?>>> SKILL_KEY = makeRegistryKey(BreaUtil.byPath("blast/skill"));
+    public static final BreaRegistry<Skill<?>> SKILL = new BreaRegistry<>(SKILL_KEY);
 }
